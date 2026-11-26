@@ -39,3 +39,7 @@ Compared plugin source files in the `.66.a` phase folder with the installed plug
 ## Disposition
 
 The full functional/security regression item on the current seven-item checklist is **PASS** for its enumerated `.66.a` scopes. Checklist items **1–7 are PASS**: the fresh ZIP was built from the phase folder, archive integrity and package-to-phase hashes passed, and GitHub content/ref readback passed on `main` and `version/1.2.4.66.a`. The owner may now install and validate this candidate on the site. Root project roadmap was not changed.
+
+## Release notes follow-up — 2026-11-26
+
+After the regression above, the admin dashboard What's New array was updated to include a `.66.a` entry and owner test checklist. This is release-note content; it does not change passkey, authorization, database, or profile behavior. The updated file was copied to the already-running local clone. The logged-in synthetic President account could not open the admin dashboard to verify its rendering, so dashboard visual confirmation remains pending. A refreshed ZIP and source hashes supersede the earlier same-day candidate; the earlier regression results remain scoped to the tested code and behaviors.

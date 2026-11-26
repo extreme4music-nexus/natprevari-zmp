@@ -4,6 +4,20 @@
 
 **CURRENT .66.a CHECKLIST: ITEMS 1–7 PASS. FRESH ZIP, PHASE HASH CHECK, RESTRICTIVE LICENSE, AND GITHUB SYNC/READBACK ARE COMPLETE. OWNER INSTALLATION/TEST OF THE ZIP IS THE NEXT USER-SIDE STEP. NEWER SAME-SCOPE PASS EVIDENCE SUPERSEDES EVERY OLDER NOT RUN/FAIL/OPEN STATEMENT BELOW. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
 
+## CURRENT .66.a RELEASE NOTES AND OWNER TEST CHECKLIST — 2026-11-26
+
+The WordPress dashboard **ЗМП Натпревари → Што е ново?** now has a dedicated `1.2.4.66.a` entry. The list below describes the actual phase features and their expected behavior; it does not claim that synthetic school or subject rows are included in the ZIP.
+
+1. **President passkeys:** on the President's own WordPress profile, register, view, or remove that account's passkey. Registration/removal asks for the current password. The section is shown only when the account has an active President mandate or an already registered passkey. For a test, use a synthetic President account with `subscriber + zmp_teacher` and an active mandate.
+2. **Passkey login:** on the WordPress login page, sign in with a previously registered passkey. The normal username/password form remains available. Confirm a failed or cancelled ceremony does not create a session.
+3. **President subject decisions:** for a synthetic pending subject proposal, test approve as new, approve as alias, and reject. Each decision requires a fresh passkey. Cancel or authenticator failure must leave the proposal pending.
+4. **School profile save/readback:** change a synthetic user's per-school employment fields and visibility selections, save, reload, and confirm the values persist. Only fields explicitly selected for directory visibility are shown there.
+5. **Role stacking:** every ZMP member requires `subscriber`; `zmp_teacher` is optional and additive. The President always requires both. Verify that adding teacher, moderator, commission, testator, or organizer roles preserves unrelated features and does not replace existing roles.
+6. **Schema failure handling:** passkey table creation/migration is checked independently. A missing or partially migrated schema must fail closed without saving a subject decision or creating an authenticated session.
+7. **Privacy-safe diagnostics:** inspect Debugging events for failed passkey/profile actions. They must contain only safe event details, never a password, PIN, authenticator assertion, challenge, or request body.
+
+Local evidence for these scopes is recorded in `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md` and `reports/FULL_FUNCTIONAL_SECURITY_REGRESSION_1.2.4.66.a_2026-11-26.md`. The owner's installation/visual check on the official site remains separate. The ZIP contains code only; it does not copy synthetic database rows, create an active President mandate, or populate the live approved-subject catalog.
+
 ## CURRENT .65 TRANSFER ADDENDUM — 2026-11-25
 
 The direct comparison found and transferred one additional user-facing .65 change that had been incomplete in this phase: when a valid Subscriber + Teacher account has no linked teacher record, the WordPress profile now explains to check both roles and the linked teacher record. The service still returns `teacher_profile_required`; the missing-link state is not mislabeled as a schema failure.
