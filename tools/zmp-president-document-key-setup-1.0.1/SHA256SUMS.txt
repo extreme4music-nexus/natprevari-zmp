@@ -1,0 +1,2 @@
+SHA256  zmp-president-document-key-setup-1.0.1.zip
+c3466fd40c1e9b2f018ae750146c13750b0b13c020cc9de2350f1d75c868511d
