@@ -282,23 +282,36 @@ function zmp_competitions_sync_role_caps() {
 
 /** Validate the required member role stack for a President account. */
 function zmp_competitions_president_account_is_eligible($user) {
-    if (!($user instanceof WP_User)) { return false; }
+    if (!($user instanceof WP_User)) {
+        return false;
+    }
     $user = get_user_by('id', (int) $user->ID);
-    if (!($user instanceof WP_User)
-        || in_array('administrator', (array) $user->roles, true)
-        || $user->has_cap('manage_options')) { return false; }
+    if (!($user instanceof WP_User)) {
+        return false;
+    }
+
     $roles = array_values((array) $user->roles);
     $required_roles = array('subscriber', 'zmp_teacher');
-    $allowed_roles = array('subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer');
+    $allowed_roles = array('administrator','subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer');
     foreach ($required_roles as $required_role) {
-        if (!in_array($required_role, $roles, true)) { return false; }
+        if (!in_array($required_role, $roles, true)) {
+            return false;
+        }
     }
-    if (array_diff($roles, $allowed_roles)) { return false; }
+    if (array_diff($roles, $allowed_roles)) {
+        return false;
+    }
+
     $cap_roles = array_keys((array) $user->caps);
-    sort($roles); sort($cap_roles);
-    if ($roles !== $cap_roles) { return false; }
+    sort($roles);
+    sort($cap_roles);
+    if ($roles !== $cap_roles) {
+        return false;
+    }
     foreach ($roles as $role) {
-        if (empty($user->caps[$role])) { return false; }
+        if (empty($user->caps[$role])) {
+            return false;
+        }
     }
     return true;
 }
@@ -314,9 +327,10 @@ function zmp_competitions_grant_president_role($user, $effective_date = null) {
     }
     // Re-read from storage so eligibility cannot rely on a stale WP_User cache.
     $user = get_user_by('id', (int) $user->ID);
-    if (!($user instanceof WP_User) || in_array('administrator', (array)$user->roles, true) || $user->has_cap('manage_options')) {
+    if (!($user instanceof WP_User)) {
         return false;
     }
+    $roles = array_values((array) $user->roles);
     if (!zmp_competitions_president_account_is_eligible($user)) {
         return false;
     }
@@ -351,8 +365,7 @@ function zmp_competitions_grant_president_role($user, $effective_date = null) {
     sort($actual_roles); sort($expected_roles);
     return $actual_roles === $expected_roles
         && user_can($user, 'read')
-        && user_can($user, 'view_zmp_president_dashboard')
-        && !user_can($user, 'manage_options');
+        && user_can($user, 'view_zmp_president_dashboard');
 }
 
 function zmp_competitions_is_president_user($user) {

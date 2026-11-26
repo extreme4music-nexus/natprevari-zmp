@@ -1,4 +1,8 @@
-# 🚨 CURRENT OWNER STATUS — 2026-11-26 — READ FIRST
+# 🚨 STATUS UPDATE — 2026-11-27
+
+**THE 2026-11-26 STATUS BELOW IS HISTORICAL AND IS NOT THE CURRENT ACCEPTANCE.** On 2026-11-27 the appointment policy was corrected to permit Administrator + Subscriber + Teacher and allowed stacked ZMP roles. Eligibility/list matrix **21/21 PASS**; full stacked Administrator appointment **PASS**; role/capability preservation **PASS**; synthetic cleanup **PASS**; changed PHP lint **PASS**. A matching `TypeError` was reproduced and fixed in the local appointment grant path. The refreshed ZIP still requires owner installation to confirm the live-site error is resolved; no full `.66.a` acceptance is claimed.
+
+# 🚨 HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 

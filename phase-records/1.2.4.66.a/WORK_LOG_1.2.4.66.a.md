@@ -1,4 +1,8 @@
-# 🚨 CURRENT OWNER STATUS — 2026-11-26 — READ FIRST
+# 🚨 STATUS UPDATE — 2026-11-27
+
+**THE 2026-11-26 STATUS BELOW IS HISTORICAL AND IS NOT THE CURRENT ACCEPTANCE.** On 2026-11-27 the appointment policy was corrected to permit Administrator + Subscriber + Teacher and allowed stacked ZMP roles. Eligibility/list matrix **21/21 PASS**; full stacked Administrator appointment **PASS**; role/capability preservation **PASS**; synthetic cleanup **PASS**; changed PHP lint **PASS**. A matching `TypeError` was reproduced and fixed in the local appointment grant path. The refreshed ZIP still requires owner installation to confirm the live-site error is resolved; no full `.66.a` acceptance is claimed.
+
+# 🚨 HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
@@ -1157,3 +1161,9 @@ Recorded the administrator-as-appointing-actor versus separate candidate rule; c
 ## 2026-11-27 — Editable primary school profile
 
 Removed the readonly form attributes and the server-side immutable-primary-school rejection. Linked mentor profiles can correct the school and municipality. The save updates the same engagement row and preserves its stable ID; incomplete primary engagement shows its own subject/grade controls. Verified by the new local regression fixture with 5/5 PASS and exact cleanup on the existing `:8111` clone. See `reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_1.2.4.66.a_2026-11-27.md`.
+
+## 2026-11-27 — President Administrator role stack and appointment fatal
+
+Owner rule: `subscriber` is mandatory for every member; President must have `subscriber + zmp_teacher`; Administrator and allowed ZMP roles may be combined and preserved. Removed admin/manage_options exclusions from eligibility, role grant, mandate creation, and the form's candidate list. The initial matrix run exposed the remaining admin candidate-list filter. A full synthetic appointment then reproduced a `TypeError` because `$roles` was undefined in the grant postcondition and the postcondition rejected `manage_options`; both were corrected.
+
+Existing local clone `:8111`: eligibility/candidate list matrix **21/21 PASS**; full Administrator + Subscriber + Teacher + Moderator + Commission + Testator + Organizer appointment **PASS**; role/capability preservation **PASS**; cleanup **PASS**. Changed PHP lint and package integrity/path parity **PASS**. New test ZIP: `zmp-competitions-1.2.4.66.a-2026-11-27-president-role-stack-fix.zip`, SHA-256 `23afe3a03b8687383036a10a7508d47ad6c80779023744e11686aa2bc3310ee2`. Owner install/retry remains required for live confirmation; the full phase is not accepted. See `reports/PRESIDENT_ADMIN_ROLE_STACK_CORRECTION_1.2.4.66.a_2026-11-27.md` and `reports/PRESIDENT_ADMIN_ROLE_STACK_ZIP_BUILD_1.2.4.66.a_2026-11-27.md`.

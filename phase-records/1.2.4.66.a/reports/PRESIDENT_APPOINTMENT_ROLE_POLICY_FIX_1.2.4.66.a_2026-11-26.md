@@ -6,15 +6,15 @@
 
 ## Finding
 
-The administrator is the authorized actor who records the President's mandate. The administrator's own account is not eligible to become President; that restriction does not prevent the administrator from appointing another registered account.
+SUPERSEDED 2026-11-27: The administrator is authorized to record the President's mandate. An Administrator account may also be the appointee when it has `subscriber + zmp_teacher`; allowed stacked roles are preserved.
 
 The existing notice incorrectly said that Teacher, Moderator, Testator, and Commission accounts were ineligible. The form help text also said that only a Subscriber account could be selected. Actual code allowed several stacked ZMP roles but only required Subscriber, so it did not enforce the Owner's mandatory President Teacher role.
 
 ## Correction
 
-- Added one shared President-account eligibility check in zmp-competitions.php. It requires Subscriber and Teacher, rejects administrator/manage_options, rejects unapproved capabilities/roles, and preserves allowed stacked roles.
+- HISTORICAL AND SUPERSEDED 2026-11-27: this snapshot rejected administrator/manage_options. The current rule allows Administrator + Subscriber + Teacher and the explicitly allowed stacked ZMP roles; see [the correction report](PRESIDENT_ADMIN_ROLE_STACK_CORRECTION_1.2.4.66.a_2026-11-27.md).
 - The mandate service, role-grant path, and appointment candidate list now use that shared check.
-- Rewrote the administrator notice and form help text: an administrator records the mandate for a separate candidate; the candidate must already have Subscriber and Teacher; allowed Moderator, Commission, Testator, Organizer, and existing President roles are retained; no role is silently changed.
+- HISTORICAL AND SUPERSEDED 2026-11-27: the earlier form text required a separate non-administrator candidate. Current help text allows Administrator + Subscriber + Teacher and preserves allowed stacked roles.
 
 ## Verification
 

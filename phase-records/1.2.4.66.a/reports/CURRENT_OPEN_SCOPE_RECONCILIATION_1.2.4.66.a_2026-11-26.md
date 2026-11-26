@@ -32,4 +32,4 @@ Read-only output checks: 26,645 bytes rendered; the What's New section was prese
 
 ## President appointment role-policy correction - 2026-11-26
 
-The administrator appoints the first President; the administrator's own account is excluded as the appointee. The page previously stated that Teacher/Moderator/Commission/Testator accounts could not be selected, which contradicted the role-stacking policy and the code. The UI and all candidate-validation paths now require Subscriber+Teacher, permit allowed additional ZMP roles, and preserve existing roles. Focused result: 18/18 PASS with synthetic cleanup and database integrity PASS. See [focused report](PRESIDENT_APPOINTMENT_ROLE_POLICY_FIX_1.2.4.66.a_2026-11-26.md). Items 6 and 7 are deferred for this updated source.
+SUPERSEDED 2026-11-27: the administrator appoints the first President, and an Administrator account is also eligible when it has `subscriber + zmp_teacher`. The 2026-11-26 result (18/18) covers the earlier non-administrator rule only; rerun that matrix against the corrected stacked-role policy. Items 6 and 7 remain subject to current-source evidence.

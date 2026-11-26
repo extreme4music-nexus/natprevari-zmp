@@ -448,11 +448,8 @@ class ZMP_President_Mandate {
         }
         $user = get_user_by('id', absint($user_id));
         if (!($user instanceof WP_User)) { return self::error('mandate_invalid_user', 'Изберете постоечки WordPress корисник.'); }
-        if (in_array('administrator', (array) $user->roles, true) || $user->has_cap('manage_options')) {
-            return self::error('president_account_admin', 'Претседателот мора да користи посебна сметка без администраторски права.');
-        }
         if (!self::eligible_appointee($user)) {
-            return self::error('president_account_ineligible', 'Изберете посебна сметка со единствена улога Претплатник и без дополнителни права.');
+            return self::error('president_account_ineligible', 'Изберете сметка со задолжителни улоги subscriber и zmp_teacher и само дозволени комбинирани улоги.');
         }
         if (!self::transaction_start()) { return self::error('mandate_db_write_failed', 'Не може безбедно да започне евиденцијата за мандатот.'); }
 

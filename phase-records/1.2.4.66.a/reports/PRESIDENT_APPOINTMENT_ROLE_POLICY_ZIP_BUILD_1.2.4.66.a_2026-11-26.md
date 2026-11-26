@@ -6,7 +6,7 @@
 
 ## Correction delivered
 
-The administrator is the authorized person who records the first President's mandate. The selected President is a separate non-administrator account. The appointment page's warning previously sounded as if Teacher and other valid ZMP roles disqualified candidates; that wording was incorrect. The form, mandate service, and role-grant path now share the same eligibility rule: require `subscriber + zmp_teacher`, reject Administrator/manage_options, and preserve allowed Moderator, Commission, Testator, Organizer, and President roles. The admin-facing `.66.a` What's New entry now explains the first appointment and the candidate's role requirements.
+SUPERSEDED 2026-11-27: The administrator records the first President's mandate. The appointee may also have the Administrator role, provided `subscriber + zmp_teacher` are present. The current code preserves Administrator and allowed stacked ZMP roles.
 
 ## Verification
 

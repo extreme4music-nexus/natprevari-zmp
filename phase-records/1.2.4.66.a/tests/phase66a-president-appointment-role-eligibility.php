@@ -37,7 +37,8 @@ try {
         'teacher_only' => array(array('zmp_teacher'), false),
         'subscriber_teacher' => array(array('subscriber','zmp_teacher'), true),
         'stacked_member_roles' => array(array('subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer'), true),
-        'administrator_stack' => array(array('administrator','subscriber','zmp_teacher'), false),
+        'administrator_stack' => array(array('administrator','subscriber','zmp_teacher'), true),
+        'administrator_with_all_member_roles' => array(array('administrator','subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer'), true),
         'unapproved_editor_stack' => array(array('subscriber','zmp_teacher','editor'), false),
     );
     foreach ($cases as $name => $case) {

@@ -172,7 +172,7 @@ class ZMP_President_Mandate_Admin {
             'error_appointment_requires_admin' => array('error', __('Само администратор може да назначи претседател.', 'zmp-competitions')),
             'error_mandate_revoke_requires_admin' => array('error', __('Само администратор може да отповика мандат.', 'zmp-competitions')),
             'error_mandate_invalid_user' => array('error', __('Изберете постоечки WordPress корисник што може да ја добие претседателската улога.', 'zmp-competitions')),
-            'error_president_account_admin' => array('error', __('Администраторска сметка не може да биде претседател. Назначете посебна сметка без администраторски пристап.', 'zmp-competitions')),
+            'error_president_account_admin' => array('error', __('Сметката не ги исполнува задолжителните улоги за Претседател: subscriber и zmp_teacher.', 'zmp-competitions')),
             'error_mandate_invalid_start_date' => array('error', __('Внесете валиден датум за почеток на мандатот.', 'zmp-competitions')),
             'error_mandate_invalid_end_date' => array('error', __('Внесете валиден датум за крај на мандатот.', 'zmp-competitions')),
             'error_mandate_invalid_date_range' => array('error', __('Крајниот датум мора да биде на или по почетниот датум.', 'zmp-competitions')),
@@ -335,7 +335,7 @@ class ZMP_President_Mandate_Admin {
 
         $renewal_user_id = absint($renewal_user_id);
         return array_values(array_filter($users, static function ($user) use ($renewal_user_id) {
-            if (!($user instanceof WP_User) || $user->has_cap('manage_options')) {
+            if (!($user instanceof WP_User)) {
                 return false;
             }
 
@@ -442,7 +442,7 @@ class ZMP_President_Mandate_Admin {
 
             <div class="notice notice-warning zmp-pm-account-notice" role="note">
                 <p><strong><?php esc_html_e('Користете посебна, неадминистраторска сметка.', 'zmp-competitions'); ?></strong>
-                    <?php esc_html_e('Администраторот го евидентира мандатот за посебна сметка. Администраторската сметка не може да биде Претседател; оваа форма не му дава администраторски права на кандидатот. Кандидатот мора веќе да има subscriber и zmp_teacher.', 'zmp-competitions'); ?>
+                    <?php esc_html_e('Администраторот го евидентира мандатот. Кандидатот мора веќе да има subscriber и zmp_teacher. Администраторските и другите дозволени ЗМП улоги може да останат комбинирани; формата не ги менува.', 'zmp-competitions'); ?>
                     <?php esc_html_e('Кандидатот може да ги задржи и другите дозволени ЗМП улоги, како модератор, комисија, тестатор или организатор; формата не ги менува. Администраторски сметки не се прифатливи.', 'zmp-competitions'); ?>
                     <a href="<?php echo esc_url(admin_url('user-new.php')); ?>"><?php esc_html_e('Додај корисник', 'zmp-competitions'); ?></a>
                 </p>
@@ -711,7 +711,7 @@ class ZMP_President_Mandate_Admin {
                                         <option value="<?php echo esc_attr($user->ID); ?>"><?php echo esc_html($user->display_name . ' (#' . $user->ID . ')'); ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <p class="description" id="zmp-pm-user-help"><?php esc_html_e('Изберете регистриран корисник што веќе има subscriber и zmp_teacher, без администраторски права. Тековниот Претседател може да се избере при обновување. Дозволените дополнителни ЗМП улоги се зачувуваат и формата не ги менува.', 'zmp-competitions'); ?></p>
+                                <p class="description" id="zmp-pm-user-help"><?php esc_html_e('Изберете регистриран корисник што веќе има subscriber и zmp_teacher. Администраторските и дозволените дополнителни ЗМП улоги се зачувуваат; формата не ги менува. Тековниот Претседател може да се избере при обновување.', 'zmp-competitions'); ?></p>
                             </div>
                             <div class="zmp-pm-field">
                                 <label for="zmp-pm-start-date"><?php esc_html_e('Почеток на мандатот', 'zmp-competitions'); ?></label>

@@ -17,7 +17,23 @@
 ---
 # Release manifest — ZMP Competitions 1.2.4.66.a
 
-# 🚨 CURRENT TEST CANDIDATE — 2026-11-26
+# 🚨 CURRENT TEST CANDIDATE — 2026-11-27 — PRESIDENT ROLE STACK FIX
+
+**MANDATORY OWNER RULE: every member has `subscriber`; the President also has `zmp_teacher`; Administrator and allowed ZMP roles may be stacked on the same account. If this fails, the entire phase is FAIL regardless of other PASS results.**
+
+- ZIP: `ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-president-role-stack-fix.zip`.
+- SHA-256: `23afe3a03b8687383036a10a7508d47ad6c80779023744e11686aa2bc3310ee2`; size 7,113,892 bytes; 2,244 files.
+- Package integrity: **PASS**; path count matches stage **2,244/2,244**. Focused role eligibility/list test: **21/21 PASS**; full stacked Administrator appointment **PASS**; role/capability preservation and synthetic cleanup **PASS**; modified PHP source lint PASS.
+- This is a focused test ZIP, not a full-phase acceptance claim. A matching `TypeError` was reproduced and fixed in the appointment grant path; owner installation/retry remains pending to confirm the live-site result.
+- Evidence: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/PRESIDENT_ADMIN_ROLE_STACK_CORRECTION_1.2.4.66.a_2026-11-27.md`.
+
+## Superseded candidate
+
+The 2026-11-27 `editable-school-profile.zip` and every earlier `.66.a` ZIP predate the Administrator + Subscriber + Teacher role-stack correction. Keep them for history; do not use them to test President appointment.
+
+---
+
+# HISTORICAL TEST CANDIDATE — 2026-11-26
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE FOR MEMBERS GENERALLY; THE PRESIDENT MUST HAVE BOTH `subscriber` AND `zmp_teacher`. THE ROLE-POLICY-FIX ZIP BELOW IS THE CURRENT INSTALLABLE TEST CANDIDATE. ITEMS 1–5 RETAIN EXACT-SCOPE PASS; FOCUSED PRESIDENT APPOINTMENT MATRIX IS 18/18 PASS. FULL CURRENT-SOURCE REGRESSION, GITHUB READBACK, AND OWNER INSTALLATION REMAIN OPEN.**
 
