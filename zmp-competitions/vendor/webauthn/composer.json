@@ -1,0 +1,13 @@
+{
+    "require": {
+        "web-auth/webauthn-lib": "5.3.9",
+        "symfony/serializer": "^7.3",
+        "symfony/property-info": "^7.3",
+        "phpdocumentor/reflection-docblock": "^6.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        }
+    }
+}

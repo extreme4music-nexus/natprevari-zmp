@@ -1,0 +1,4 @@
+.temp/
+*.sql
+*.sql.gz
+*.log

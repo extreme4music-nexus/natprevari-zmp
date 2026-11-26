@@ -1,0 +1,710 @@
+/* ЗМП Натпревари - Јавни стилови */
+.zmp-container {
+    max-width: 900px;
+    margin: 30px auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: #1e293b;
+    line-height: 1.5;
+}
+
+.zmp-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin-bottom: 25px;
+    border: 1px solid #e2e8f0;
+}
+
+.zmp-header-box {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 20px;
+}
+
+.zmp-header-box h2 {
+    color: #1e3a8a;
+    font-size: 26px;
+    margin: 0 0 8px 0;
+}
+
+.zmp-header-box p {
+    color: #64748b;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Формулари */
+.zmp-form-group {
+    margin-bottom: 18px;
+}
+
+.zmp-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #334155;
+    font-size: 14px;
+}
+
+.zmp-form-group input,
+.zmp-form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.zmp-form-group input:focus,
+.zmp-form-group select:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.zmp-form-row {
+    display: flex;
+    gap: 15px;
+}
+
+/* Author styles must not override the semantic hidden state on flex rows. */
+.zmp-form-row[hidden] {
+    display: none !important;
+}
+.zmp-form-row .zmp-form-group {
+    flex: 1;
+}
+
+/* Копчиња */
+.zmp-btn {
+    display: inline-block;
+    font-weight: 600;
+    padding: 12px 24px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.zmp-btn-primary {
+    background-color: #1e3a8a;
+    color: #ffffff;
+}
+
+.zmp-btn-primary:hover {
+    background-color: #1e40af;
+    color: #ffffff;
+}
+
+.zmp-btn-secondary {
+    background-color: #64748b;
+    color: #ffffff;
+}
+
+.zmp-btn-success {
+    background-color: #16a34a;
+    color: #ffffff;
+}
+
+.zmp-btn-gold {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+}
+
+.zmp-btn-large {
+    font-size: 18px;
+    padding: 16px 36px;
+}
+
+/* Известувања */
+.zmp-alert {
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.zmp-alert-success {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.zmp-alert-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.zmp-alert-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+/* Табели */
+.zmp-table-responsive {
+    overflow-x: auto;
+}
+
+.zmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.zmp-table th, .zmp-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+    font-size: 14px;
+}
+
+.zmp-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+}
+
+.zmp-code {
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+.zmp-pin {
+    font-weight: bold;
+    color: #0284c7;
+}
+
+.zmp-badge {
+    background: #e2e8f0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.zmp-phase-pill {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* Тест соба и тајмер */
+.zmp-exam-header {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    border: 2px solid #2563eb;
+}
+
+.zmp-timer-box {
+    text-align: right;
+    background: #fef2f2;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #fecaca;
+}
+
+.zmp-timer-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #991b1b;
+}
+
+.zmp-timer-digits {
+    font-size: 24px;
+    font-weight: 800;
+    color: #dc2626;
+    font-family: monospace;
+}
+
+/* Прашања */
+.zmp-question-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.zmp-q-num {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.zmp-q-text {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #0f172a;
+}
+
+.zmp-q-image img {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #cbd5e1;
+}
+
+.zmp-audio-player-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.zmp-audio-player-box label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1e3a8a;
+    font-size: 14px;
+}
+
+.zmp-audio-player-box audio {
+    width: 100%;
+}
+
+.zmp-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.zmp-option-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 15px;
+}
+
+.zmp-option-item:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.zmp-option-item.zmp-selected {
+    background-color: #eff6ff;
+    border-color: #2563eb;
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+.zmp-option-item input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Награди и Резултати */
+.zmp-score-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #1e3a8a;
+    color: #fff;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.zmp-score-number {
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.zmp-score-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.zmp-award-banner {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.zmp-award-gold { background: #fef3c7; color: #b45309; border: 2px solid #f59e0b; }
+.zmp-award-silver { background: #f1f5f9; color: #475569; border: 2px solid #94a3b8; }
+.zmp-award-bronze { background: #ffedd5; color: #9a3412; border: 2px solid #f97316; }
+.zmp-award-secondary { background: #f3f4f6; color: #4b5563; border: 2px solid #d1d5db; }
+
+.zmp-award-tag {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.zmp-tag-gold { background: #fef3c7; color: #b45309; }
+.zmp-tag-silver { background: #f1f5f9; color: #475569; }
+.zmp-tag-bronze { background: #ffedd5; color: #9a3412; }
+.zmp-tag-secondary { background: #f3f4f6; color: #4b5563; }
+
+.zmp-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+    min-width: 0;
+    max-width: 100%;
+}
+.zmp-filter-bar > label {
+    flex: 1 1 170px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.zmp-filter-bar select,
+.zmp-filter-bar input:not([type="hidden"]) {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.zmp-filter-bar > button {
+    flex: 0 0 auto;
+    max-width: 100%;
+}
+.zmp-filter-bar select {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+/* Навигациски табови */
+.zmp-tabs-bar {
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.zmp-tabs-bar .zmp-btn {
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 6px;
+}
+
+.zmp-incident-box {
+    border-left: 4px solid #dc2626;
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.zmp-commission-dashboard { margin: 0 auto 30px; }
+.zmp-commission-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px 4px 13px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid #dbe4ef;
+    scrollbar-width: thin;
+}
+.zmp-commission-tab {
+    position: relative;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 15px;
+    border: 1px solid #d8e1ec;
+    border-radius: 8px 8px 0 0;
+    background: #f5f8fc;
+    color: #18324f;
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+    text-decoration: none;
+}
+.zmp-commission-tab:hover, .zmp-commission-tab:focus-visible { border-color: #1674d1; outline: 2px solid #93c5fd; outline-offset: 1px; }
+.zmp-commission-tab[aria-current="page"] { color: #fff; background: #174a7e; border-color: #174a7e; box-shadow: 0 3px 0 #0b6acb; }
+.zmp-commission-tab__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 23px;
+    height: 23px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #1685ee;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    animation: zmp-commission-blue-pulse 1.4s ease-in-out infinite;
+}
+@keyframes zmp-commission-tab-alert {
+    0%, 100% { background: #eff7ff; box-shadow: 0 0 0 0 rgba(22,133,238,.35); }
+    50% { background: #d9edff; box-shadow: 0 0 0 6px rgba(22,133,238,0); }
+}
+.zmp-commission-tab[data-notification-count]:not([data-notification-count="0"]):not([aria-pressed="true"]) {
+    color: #075da8;
+    border-color: #1685ee;
+    animation: zmp-commission-tab-alert 1.6s ease-in-out infinite;
+}
+@keyframes zmp-commission-blue-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(22,133,238,.52); }
+    55% { box-shadow: 0 0 0 8px rgba(22,133,238,0); }
+}
+.zmp-commission-message { padding: 16px; border: 1px solid #dbe4ef; border-radius: 9px; margin: 12px 0; background: #fff; }
+.zmp-commission-message.is-unread { border-left: 5px solid #1685ee; background: #eff7ff; }
+.zmp-commission-message header { display: flex; justify-content: space-between; gap: 12px; color: #132b45; }
+.zmp-commission-message header span, .zmp-commission-message__meta { color: #64748b; font-size: 13px; }
+.zmp-commission-message__action { margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) { .zmp-commission-tab__badge, .zmp-commission-tab[data-notification-count] { animation: none; } }
+
+/* Circular invitation setup stays scannable inside the moderator portal. */
+.zmp-circular-invitations .zmp-circular-form fieldset { border: 1px solid #d7e0eb; border-radius: 8px; margin: 18px 0; padding: 14px 16px; }
+.zmp-circular-invitations .zmp-circular-form legend { color: #17365d; font-weight: 700; padding: 0 6px; }
+.zmp-circular-invitations .zmp-circular-category { border-top: 1px solid #e7edf4; padding: 10px 0; }
+.zmp-circular-invitations .zmp-circular-category summary { cursor: pointer; font-weight: 600; }
+.zmp-circular-invitations .zmp-circular-category summary label { display: inline-flex; align-items: center; gap: 8px; }
+.zmp-circular-invitations .zmp-circular-groups,
+.zmp-circular-invitations .zmp-circular-contacts { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 8px 16px; margin: 12px 0 4px; }
+.zmp-circular-invitations .zmp-circular-groups label,
+.zmp-circular-invitations .zmp-circular-contacts label { display: flex; align-items: flex-start; gap: 8px; }
+.zmp-circular-invitations .zmp-form { margin: 12px 0; }
+.zmp-circular-invitations td details { min-width: 220px; }
+.zmp-circular-invitations td details ul { max-height: 220px; overflow: auto; padding-left: 18px; }
+@media (max-width: 640px) { .zmp-circular-invitations .zmp-circular-groups, .zmp-circular-invitations .zmp-circular-contacts { grid-template-columns: 1fr; } }
+/* Version 1.2.4.35 — consistent, responsive role workspaces. */
+.zmp-workspace{--zmp-workspace-accent:#174a7e;max-width:1280px;margin:0 auto 24px}
+.zmp-workspace__nav{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;padding:10px 4px 14px;margin:0 0 18px;border-bottom:1px solid #d7e0ea;scrollbar-width:thin}
+.zmp-workspace__tab{position:relative;display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;min-height:42px;padding:9px 14px;border:1px solid #d4dce6;border-radius:9px;background:#f4f7fa;color:#24364b;text-decoration:none;font-weight:600;line-height:1.25;transition:background-color .15s ease,border-color .15s ease,color .15s ease}
+.zmp-workspace__tab:hover,.zmp-workspace__tab:focus-visible{border-color:var(--zmp-workspace-accent);color:var(--zmp-workspace-accent);outline:2px solid transparent;box-shadow:0 0 0 3px rgba(23,74,126,.13)}
+.zmp-workspace__tab[aria-current="page"]{background:var(--zmp-workspace-accent);border-color:var(--zmp-workspace-accent);color:#fff}
+.zmp-workspace__badge{display:inline-flex;align-items:center;justify-content:center;min-width:21px;height:21px;padding:0 6px;border-radius:999px;background:#1686d9;color:#fff;font-size:12px;font-weight:700}
+.zmp-workspace__tab[aria-current="page"] .zmp-workspace__badge{background:#fff;color:var(--zmp-workspace-accent)}
+.zmp-workspace__panel{min-width:0;animation:zmp-workspace-in .16s ease-out}
+.zmp-workspace__panel[hidden],[data-commission-panel][hidden]{display:none!important}
+.zmp-workspace__panel>.zmp-card:first-child{margin-top:0}
+.zmp-workspace__panel .zmp-table-responsive{max-width:100%;overflow-x:auto}
+.zmp-workspace__panel:focus{outline:none}
+.zmp-commission-tabs{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;padding:10px 4px 14px;scrollbar-width:thin}
+.zmp-commission-tab{flex:0 0 auto;min-height:42px;border-radius:9px!important}
+@keyframes zmp-workspace-in{from{opacity:.65;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){.zmp-workspace__nav,.zmp-commission-tabs{margin-inline:-8px;padding-inline:8px}.zmp-workspace__tab{min-height:44px;padding:10px 12px}.zmp-workspace__panel .zmp-card{padding:16px}}
+
+
+/* Version 1.2.4.38 — align public and mentor navigation with the commission palette. */
+.zmp-workspace__nav{align-items:stretch;border-bottom:1px solid #dbe4ef}
+.zmp-workspace__tab{border-radius:8px 8px 0 0;background:#f5f8fc;color:#18324f;font-weight:650}
+.zmp-workspace__tab[aria-current="page"]{background:#174a7e;border-color:#174a7e;color:#fff;box-shadow:0 3px 0 #0b6acb}
+.zmp-workspace__tab[data-notification-count]:not([data-notification-count="0"]){color:#075da8;border-color:#1685ee;animation:zmp-commission-tab-alert 1.6s ease-in-out infinite}
+.zmp-workspace__tab[aria-current="page"][data-notification-count]:not([data-notification-count="0"]){color:#fff;background:#174a7e}
+.zmp-workspace__tab[data-notification-count]:not([data-notification-count="0"]) .zmp-workspace__badge{animation:zmp-commission-blue-pulse 1.4s ease-in-out infinite}
+.zmp-natprevari-portal__nav .zmp-natprevari-portal__tab[data-notification-count]:not([data-notification-count="0"]){color:#075da8;border-color:#1685ee;animation:zmp-commission-tab-alert 1.6s ease-in-out infinite}
+.zmp-natprevari-portal__tab:focus-visible{outline-offset:2px}
+.zmp-profile-overview>h3{margin:0 0 14px;color:#17365d}
+.zmp-profile-overview>.zmp-container{max-width:none;padding:0}
+.zmp-profile-overview .zmp-header-box{border-radius:10px 10px 0 0}
+.zmp-profile-schools{margin:16px 0 24px;border:1px solid #d8e1ec;border-radius:10px;background:#f8fbff;overflow:hidden}
+.zmp-profile-schools>summary{cursor:pointer;padding:15px 18px;color:#174a7e;font-weight:700;background:#f5f8fc}
+.zmp-profile-schools[open]>summary{border-bottom:1px solid #dbe4ef}
+.zmp-profile-schools .zmp-card{margin:0;border:0;box-shadow:none}
+.zmp-public-announcements article,.zmp-public-category__item{border-bottom:1px solid #e2e8f0;padding:14px 0}
+.zmp-public-announcements article:last-child,.zmp-public-category__item:last-child{border-bottom:0}
+.zmp-public-category__item h3{margin:0 0 6px}
+.zmp-public-category__item time{display:block;color:#64748b;font-size:.9em;margin-bottom:8px}
+@media(prefers-reduced-motion:reduce){.zmp-workspace__tab[data-notification-count],.zmp-workspace__badge{animation:none!important}}
+
+
+/* Version 1.2.4.41 — clear upload state and progress for online regional entries. */
+.zmp-youtube-entry{display:grid;gap:12px;min-width:240px;max-width:720px;padding:12px;border:1px solid #cbd8e6;border-radius:10px;background:#f8fbff;color:#18324f}
+.zmp-youtube-slot{display:grid;gap:8px;padding:12px;border:1px solid #dbe4ef;border-radius:8px;background:#fff}
+.zmp-youtube-state{display:inline-flex;width:max-content;max-width:100%;padding:4px 9px;border-radius:999px;background:#edf2f7;color:#334155;font-size:.9em;font-weight:650}
+.zmp-youtube-state-ready{background:#dcfce7;color:#166534}.zmp-youtube-state-processing{background:#fef3c7;color:#92400e}.zmp-youtube-state-failed,.zmp-youtube-state-privacy_error{background:#fee2e2;color:#991b1b}
+.zmp-youtube-upload-form{display:grid;gap:8px}.zmp-youtube-upload-form progress{width:100%;height:12px;accent-color:#1769aa}.zmp-youtube-progress{min-height:1.3em;font-size:.9em;color:#475569}.zmp-youtube-finalize{padding-top:8px;border-top:1px solid #dbe4ef}
+.zmp-video-review iframe{max-width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:8px}
+@media(max-width:640px){.zmp-youtube-entry{min-width:0;padding:10px}.zmp-youtube-upload-form input[type=file]{max-width:100%}}
+
+/* Version 1.2.4.47 — shared portal visual foundation. */
+.zmp-container,.zmp-workspace,.zmp-commission-dashboard,.zmp-natprevari-portal{--zmp-brand-900:#174a7e;--zmp-brand-700:#1769aa;--zmp-brand-100:#eaf3fb;--zmp-ink:#18324f;--zmp-muted:#64748b;--zmp-border:#d8e1ec;--zmp-surface:#fff;--zmp-surface-soft:#f5f8fc;--zmp-radius:12px;--zmp-shadow:0 3px 14px rgba(24,50,79,.08);color:var(--zmp-ink)}
+.zmp-container .zmp-card,.zmp-workspace .zmp-card,.zmp-commission-dashboard .zmp-card,.zmp-natprevari-portal .zmp-card{border:1px solid var(--zmp-border);border-radius:var(--zmp-radius);box-shadow:var(--zmp-shadow);background:var(--zmp-surface)}
+.zmp-card--notice{border-inline-start:4px solid var(--zmp-brand-700)!important;background:var(--zmp-surface-soft)!important}
+.zmp-muted{color:var(--zmp-muted);font-size:.94em}
+.zmp-workspace__nav,.zmp-commission-tabs,.zmp-tabs-bar{gap:8px;border-bottom:1px solid var(--zmp-border)}
+.zmp-workspace__tab,.zmp-commission-tab{border-color:var(--zmp-border);background:var(--zmp-surface-soft);color:var(--zmp-ink);transition:background-color .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease}
+.zmp-workspace__tab:hover,.zmp-workspace__tab:focus-visible,.zmp-commission-tab:hover,.zmp-commission-tab:focus-visible{border-color:var(--zmp-brand-700);color:var(--zmp-brand-900);box-shadow:0 0 0 3px rgba(23,105,170,.15)}
+.zmp-workspace__tab[aria-current="page"],.zmp-commission-tab[aria-current="page"]{background:var(--zmp-brand-900);border-color:var(--zmp-brand-900);color:#fff;box-shadow:inset 0 -3px 0 #1685ee}
+.zmp-workspace__panel,.zmp-commission-panel{min-width:0}
+.zmp-workspace__panel h3,.zmp-workspace__panel h4,.zmp-commission-panel h3,.zmp-commission-panel h4{color:var(--zmp-brand-900)}
+.zmp-container :focus-visible,.zmp-workspace :focus-visible,.zmp-commission-dashboard :focus-visible{outline:2px solid #1685ee;outline-offset:2px}
+@media(max-width:640px){.zmp-workspace__panel>.zmp-card,.zmp-commission-panel>.zmp-card{padding:16px}}
+/* Version 1.2.4.47 — mobile teacher layout and overflow fixes. */
+@media(max-width:640px){
+  .zmp-container{width:100%;max-width:100%;margin:16px auto;padding:0 12px;box-sizing:border-box}
+  .zmp-container .zmp-card{padding:16px;box-sizing:border-box}
+  .zmp-form-row,.zmp-filter-bar{flex-direction:column;align-items:stretch;min-width:0}
+  .zmp-form-row>*,.zmp-filter-bar>*{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+  .zmp-container input,.zmp-container select,.zmp-container textarea{max-width:100%;min-width:0;box-sizing:border-box}
+  .zmp-registration-category-workspace,.zmp-category-registration,.zmp-mentor-category-results,.zmp-profile-overview{min-width:0;max-width:100%}
+  .zmp-table-responsive{max-width:100%;overflow-x:auto}
+}
+.zmp-form-group textarea[name="complaint_text"]{display:block;width:100%!important;max-width:100%;min-width:0;box-sizing:border-box}
+/* .48: accessible, responsive Drive matrix catalog */
+.zmp-matrix-picker{border:1px solid #cbd5e1;border-radius:12px;padding:14px;margin:14px 0}
+.zmp-matrix-dialog{position:fixed;inset:0;background:rgba(15,23,42,.80);z-index:99999;display:grid;place-items:center;padding:16px;box-sizing:border-box}
+.zmp-matrix-dialog[hidden]{display:none}
+.zmp-matrix-dialog-inner{background:#fff;color:#172033;border-radius:16px;width:min(760px,100%);max-height:90vh;overflow:auto;padding:22px;box-shadow:0 20px 70px rgba(0,0,0,.32);box-sizing:border-box}
+.zmp-matrix-result{display:grid;grid-template-columns:minmax(120px,1fr) auto auto;gap:12px;align-items:center;border-bottom:1px solid #e2e8f0;padding:14px 0}
+.zmp-matrix-result audio{grid-column:1/-1;width:100%}
+.zmp-matrix-dialog label{display:block;margin:10px 0}
+.zmp-matrix-dialog input{max-width:100%;box-sizing:border-box}
+.zmp-matrix-result button:focus-visible,.zmp-matrix-dialog button:focus-visible,.zmp-matrix-dialog input:focus-visible,.zmp-matrix-dialog audio:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+.zmp-matrix-dialog button{min-height:40px}
+@media(max-width:600px){.zmp-matrix-dialog{padding:8px}.zmp-matrix-dialog-inner{padding:16px;max-height:94vh}.zmp-matrix-result{grid-template-columns:1fr 1fr}.zmp-matrix-result strong{grid-column:1/-1}.zmp-matrix-result audio{grid-column:1/-1}}
+
+/* .49 mobile jury warning readability: prevent nested cards from collapsing the available text width. */
+@media(max-width:640px){
+  .zmp-commission-dashboard .zmp-category-jury{
+    min-width:0;max-width:100%;padding:14px;box-sizing:border-box;
+  }
+  .zmp-commission-dashboard .zmp-category-jury>details.zmp-card,
+  .zmp-commission-dashboard .zmp-category-jury .zmp-jury-entry{
+    min-width:0;max-width:100%;padding:14px;box-sizing:border-box;
+  }
+  .zmp-commission-dashboard .zmp-category-jury .zmp-jury-delivery-warning{
+    display:block;width:100%;max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;white-space:normal;line-height:1.5;
+  }
+}
+
+/* 1.2.4.54 teacher catalog: approved external audio tools only. */
+.zmp-approved-tools{display:grid;gap:20px;min-width:0}
+.zmp-approved-tools__intro h3{margin:0 0 8px;color:var(--zmp-brand-900,#174a7e)}
+.zmp-approved-tools__intro p{margin:0;color:var(--zmp-muted,#64748b);line-height:1.6}
+.zmp-approved-tools__rights{margin:0;padding:14px 16px;border:1px solid #bfdbfe;border-inline-start:4px solid #1769aa;border-radius:10px;background:#eff6ff;color:#18324f}
+.zmp-approved-tools__rights p{margin:6px 0 0;line-height:1.6}
+.zmp-approved-tools__group{display:grid;gap:12px;min-width:0}
+.zmp-approved-tools__group h4{margin:0;color:var(--zmp-ink,#18324f)}
+.zmp-approved-tools__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;min-width:0}
+.zmp-approved-tools__card{display:flex;flex-direction:column;gap:10px;min-width:0;padding:16px;border:1px solid var(--zmp-border,#d8e1ec);border-radius:12px;background:var(--zmp-surface,#fff);box-shadow:var(--zmp-shadow,0 3px 14px rgba(24,50,79,.08));overflow-wrap:anywhere}
+.zmp-approved-tools__card p{margin:0;line-height:1.55}
+.zmp-approved-tools__card-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.zmp-approved-tools__card-heading h5{margin:0;font-size:1.05rem;line-height:1.4}
+.zmp-approved-tools__badge{flex:0 0 auto;padding:4px 8px;border-radius:999px;background:#eaf3fb;color:#174a7e;font-size:.78rem;font-weight:700;line-height:1.3}
+.zmp-approved-tools__rights-note{padding-top:8px;border-top:1px solid var(--zmp-border,#d8e1ec);color:var(--zmp-muted,#64748b);font-size:.92rem}
+.zmp-approved-tools__links{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:auto!important;padding-top:8px}
+.zmp-approved-tools__links a:not(.zmp-btn){color:#175f99;font-weight:600;text-underline-offset:3px}
+.zmp-approved-tools__links a:focus-visible{outline:3px solid #2563eb;outline-offset:3px;border-radius:4px}
+.zmp-approved-tools__links .zmp-btn{min-height:42px;display:inline-flex;align-items:center;gap:6px}
+
+/* Version 1.2.4.63 — searchable, access-controlled teacher register. */
+.zmp-teacher-register{min-width:0;max-width:100%;color:#18324f}
+.zmp-teacher-register>h2,.zmp-teacher-register h3,.zmp-teacher-register h4{color:#174a7e;line-height:1.25}
+.zmp-register-proposal,.zmp-register-directory{min-width:0;margin:18px 0;padding:18px;border:1px solid #d8e1ec;border-radius:12px;background:#fff;box-shadow:0 3px 14px rgba(24,50,79,.06)}
+.zmp-register-proposal__row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end}
+.zmp-register-proposal__row input{width:100%;min-width:0;min-height:44px}
+.zmp-register-proposal__list{margin:0;padding-inline-start:20px}
+.zmp-register-proposal__list li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #e8eef5}
+.zmp-register-status{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#edf4fb;color:#174a7e;font-size:.9em;font-weight:650}
+.zmp-register-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end}
+.zmp-register-filters label{display:flex;min-width:0;flex-direction:column;gap:5px;font-weight:600}
+.zmp-register-filters input{box-sizing:border-box;width:100%;min-width:0;min-height:42px}
+.zmp-register-filters .zmp-btn{min-height:42px;justify-content:center}
+.zmp-register-export{display:flex;justify-content:flex-end;margin:12px 0}
+.zmp-register-table-wrap{max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid #d8e1ec;border-radius:8px}
+.zmp-register-table-wrap:focus-visible{outline:2px solid #1685ee;outline-offset:2px}
+.zmp-register-table{min-width:760px;margin:0}
+.zmp-register-pagination{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.zmp-register-pagination .zmp-btn{min-width:42px;min-height:42px;justify-content:center}
+.zmp-register-count,.zmp-register-empty{padding:10px 12px;border-radius:8px;background:#f5f8fc}
+@media(max-width:640px){
+ .zmp-register-proposal,.zmp-register-directory{padding:14px;margin:14px 0}
+ .zmp-register-proposal__row{grid-template-columns:minmax(0,1fr)}
+ .zmp-register-proposal__row .zmp-btn{width:100%;justify-content:center}
+ .zmp-register-filters{grid-template-columns:minmax(0,1fr)}
+ .zmp-register-export{justify-content:stretch}
+ .zmp-register-export .zmp-btn{width:100%;justify-content:center}
+}
+
+/* Phase .64: school-scoped profile, employment directory, and protected email-request UI. */
+.zmp-school-profile,.zmp-school-email-access,.zmp-employment-directory{box-sizing:border-box;min-width:0;max-width:100%;color:#18324f}
+.zmp-school-profile__school,.zmp-school-profile__visibility,.zmp-school-email-access__school,.zmp-school-email-access__request,.zmp-school-email-access__decision,.zmp-employment-directory__school,.zmp-employment-directory__person{box-sizing:border-box;min-width:0;margin:1rem 0;padding:1rem;border:1px solid #d8e1ec;border-radius:10px;background:#fff}
+.zmp-school-profile__school>legend,.zmp-school-profile__visibility>legend{padding:0 .35rem;font-weight:700;color:#174a7e}
+.zmp-school-profile__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.zmp-school-profile__field{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.zmp-school-profile__field label,.zmp-school-email-access__form label{font-weight:600}
+.zmp-school-profile__field input:not([type="checkbox"]),.zmp-school-profile__field select,.zmp-school-email-access__form select,.zmp-school-email-access__form textarea{box-sizing:border-box;width:100%;max-width:100%;min-width:0}
+.zmp-school-profile__field--check{flex-direction:row;align-items:center;justify-content:flex-start;gap:.5rem}
+.zmp-school-profile__field--check label{display:inline-flex;align-items:center;gap:.5rem}
+.zmp-school-profile__visibility{margin-top:1rem;background:#f7f9fc}
+.zmp-school-profile__visibility-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem 1rem}
+.zmp-school-profile__visibility-grid label{display:flex;align-items:flex-start;gap:.5rem;min-width:0}
+.zmp-school-profile__visibility-grid input,.zmp-school-profile__field--check input{flex:0 0 auto;margin-top:.2rem}
+.zmp-school-email-access__form{display:grid;gap:.55rem;max-width:48rem}
+.zmp-school-email-access__form button,.zmp-school-email-access__decision-actions button,.zmp-school-email-access__disclose button{min-height:2.75rem;width:max-content;max-width:100%}
+.zmp-school-email-access__request-list,.zmp-employment-directory__people{list-style:none;margin:0;padding:0}
+.zmp-school-email-access__decision-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.zmp-school-email-access__decision-actions form{margin:0}
+.zmp-school-email-access__requests,.zmp-school-email-access__president{margin-top:1.5rem}
+.zmp-employment-directory__people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.zmp-employment-directory__person h4{margin:.1rem 0 .75rem;color:#174a7e}
+.zmp-employment-directory__person dl{display:grid;grid-template-columns:minmax(8rem,auto) minmax(0,1fr);gap:.35rem .8rem;margin:0}
+.zmp-employment-directory__person dt{font-weight:600}
+.zmp-employment-directory__person dd{min-width:0;margin:0;overflow-wrap:anywhere}
+.zmp-employment-directory__municipality{font-size:.9em;font-weight:400;color:#53677e}
+.zmp-school-email-disclosure{max-width:42rem;margin:10vh auto;padding:1.5rem;border:1px solid #d8e1ec;border-radius:12px;background:#fff;color:#18324f;overflow-wrap:anywhere}
+@media screen and (max-width:640px){
+ .zmp-school-profile__grid,.zmp-school-profile__visibility-grid,.zmp-employment-directory__people{grid-template-columns:minmax(0,1fr)}
+ .zmp-school-profile__school,.zmp-school-profile__visibility,.zmp-school-email-access__school,.zmp-school-email-access__request,.zmp-school-email-access__decision,.zmp-employment-directory__school,.zmp-employment-directory__person{padding:.85rem}
+ .zmp-employment-directory__person dl{grid-template-columns:minmax(0,1fr)}
+ .zmp-employment-directory__person dd{margin:0 0 .4rem}
+}
+.zmp-approved-tools__empty{padding:20px;border:1px dashed #9fb4ca;border-radius:12px;background:var(--zmp-surface-soft,#f5f8fc);text-align:center}
+.zmp-approved-tools__empty h4{margin:0 0 6px;color:var(--zmp-ink,#18324f)}
+.zmp-approved-tools__empty p{margin:0;color:var(--zmp-muted,#64748b);line-height:1.55}
+@media(max-width:640px){
+  .zmp-approved-tools{gap:16px}
+  .zmp-approved-tools__grid{grid-template-columns:minmax(0,1fr)}
+  .zmp-approved-tools__card{padding:14px}
+  .zmp-approved-tools__card-heading{flex-wrap:wrap}
+  .zmp-approved-tools__links{align-items:flex-start;flex-direction:column}
+}

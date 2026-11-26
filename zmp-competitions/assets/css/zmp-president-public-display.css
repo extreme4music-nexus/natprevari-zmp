@@ -1,0 +1,104 @@
+.zmp-president-public-display__list[role="list"] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: 1rem;
+    margin-block: 1rem;
+}
+
+.zmp-president-public-display[hidden],
+.zmp-president-public-display__list[hidden],
+.zmp-president-public-display__name[hidden],
+.zmp-president-public-display__term[hidden],
+.zmp-president-public-display__transition[hidden],
+.zmp-president-photo-preview[hidden] {
+    display: none !important;
+}
+
+.zmp-president-public-display__card[role="listitem"] {
+    display: grid;
+    grid-template-columns: minmax(4rem, 6rem) minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid #d6dbe2;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.zmp-president-public-display__card[role="listitem"]:not(.has-photo) {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.zmp-president-public-display__photo {
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    max-width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f1f3f5;
+}
+
+.zmp-president-public-display__details {
+    min-width: 0;
+}
+
+.zmp-president-public-display__name,
+.zmp-president-public-display__term {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.zmp-president-public-display__term {
+    margin-block-start: 0.35rem;
+}
+
+@media (max-width: 35rem) {
+    .zmp-president-public-display__list[role="list"] {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .zmp-president-public-display__card[role="listitem"] {
+        grid-template-columns: 4rem minmax(0, 1fr);
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .zmp-president-public-display__photo {
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zmp-president-public-display__card,
+    .zmp-president-public-display__photo {
+        scroll-behavior: auto;
+    }
+}
+
+.zmp-president-public-photo-field {
+    display: grid;
+    justify-items: start;
+    gap: 0.5rem;
+}
+
+.zmp-president-photo-preview {
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    max-width: 100%;
+    border: 1px solid #d6dbe2;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f1f3f5;
+}
+
+.zmp-president-photo-preview[hidden] {
+    display: none;
+}
+
+.zmp-president-photo-status {
+    margin: 0;
+}
