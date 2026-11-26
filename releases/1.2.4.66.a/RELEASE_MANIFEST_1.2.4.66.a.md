@@ -11,6 +11,7 @@
 - Source-hash list: `HASHES/SOURCE_SHA256_1.2.4.66.a-2026-11-27-editable-school-profile.txt`; ZIP hash: `HASHES/ZIP_SHA256_1.2.4.66.a-2026-11-27-editable-school-profile.txt`.
 - Focused runtime report: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_1.2.4.66.a_2026-11-27.md`.
 - Build report: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_ZIP_BUILD_1.2.4.66.a_2026-11-27.md`.
+- GitHub sync/readback: **PASS** on `main` and `version/1.2.4.66.a`; both refs and the remote ZIP matched at commit `404a7db5f7d0f179b78ca69780dd590da5e4a275`. Report: `phase-records/1.2.4.66.a/reports/GITHUB_SYNC_READBACK_EDITABLE_PRIMARY_SCHOOL_1.2.4.66.a_2026-11-27.md`.
 - Owner installation and visual confirmation: pending.
 
 ---
