@@ -159,3 +159,7 @@ Local synthetic passkey registration and passkey sign-in are now Owner-verified 
 ## 2026-11-24 — Messenger legacy index migration repair
 Backported the scoped legacy scoped_threads index repair. It replaces only the exact obsolete non-unique index before dbDelta(); ambiguous metadata, unique index and drop failures fail closed. Synthetic runtime passed 7/7; evidence: 
 reports/MESSENGER_LEGACY_SCOPED_THREADS_REPAIR_1.2.4.66_a_2026-11-24.md. Source/runtime hash 5CE8A617291C0CFDE349B819DA61275965148973E43683EED6062A71DBE8E832.
+
+## 2026-11-27 — Editable primary school
+
+Authorized editors can correct primary school and municipality for an existing linked Teacher/President profile. The existing primary engagement row is updated in place so subject and grade links remain attached. The municipality and region checks remain active. Local regression: 5/5 PASS on the existing :8111 clone. See reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_1.2.4.66.a_2026-11-27.md.

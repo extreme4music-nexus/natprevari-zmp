@@ -72,6 +72,12 @@ For a remaining **President/Teacher profile browser submit/readback**, the local
 
 Status: **synthetic implementation under review; not released**. Do not diagnose this phase through production or real accounts.
 
+## Primary school profile fields locked or rejected — 2026-11-27
+
+Expected: an authorized editor can change the primary school and municipality on a linked Teacher profile, including a President who is also a Teacher and Subscriber. The save handler validates the school name and supported municipality, updates the same primary engagement row when present, derives its region, and preserves its subject/grade link. If no primary engagement exists, the form includes the primary subject/grade selector when the approved catalog is populated.
+
+Local reproduction fixture: `tests/phase66a-editable-primary-school.php`. It submits through `ZMP_Support::save_user_profile_fields()` on the existing local `:8111` clone and checks render, initial save, correction/readback, role stack, assignment continuity and cleanup. Result on 2026-11-27: **5/5 PASS**. Do not weaken region validation or remove the subject/grade completeness requirement.
+
 ## Planned categories
 - `passkey_registration`: expected behavior is registration only for the current account owner with the exact `zmp_president` role and an active mandate, after current-password reauthentication and a valid one-use session-bound challenge. Options and finish both recheck authority. For a denial, check the synthetic user's current role and mandate state; never log the password, challenge, user handle, or credential payload.
 - `passkey_login`: expected behavior is a valid assertion creating a WordPress session for only the credential's bound user; public failures must not enumerate accounts.

@@ -1153,3 +1153,7 @@ eports/MESSENGER_LEGACY_SCOPED_THREADS_REPAIR_1.2.4.66_a_2026-11-24.md. Producti
 ## 2026-11-26 - President first-appointment correction and test ZIP
 
 Recorded the administrator-as-appointing-actor versus separate candidate rule; corrected the .66.a eligibility/UI wording and required President role stack; focused matrix 18/18 PASS. Built and checked test ZIP zmp-competitions-1.2.4.66.a-2026-11-26-role-policy-fix.zip (SHA-256 EE660D4F521BD655CE79B61E37995AF5933261B45C0FB84882AF547AD8447CD6, 7137152 bytes, path parity 2,244/2,244, PHP lint 1,968/1,968). Full current-source regression and owner installation remain open. GitHub readback PASS at commit ed434feabfcf965c0ed873a0eb39eaad892db803. See reports/PRESIDENT_APPOINTMENT_ROLE_POLICY_ZIP_BUILD_1.2.4.66.a_2026-11-26.md.
+
+## 2026-11-27 — Editable primary school profile
+
+Removed the readonly form attributes and the server-side immutable-primary-school rejection. Linked mentor profiles can correct the school and municipality. The save updates the same engagement row and preserves its stable ID; incomplete primary engagement shows its own subject/grade controls. Verified by the new local regression fixture with 5/5 PASS and exact cleanup on the existing `:8111` clone. See `reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_1.2.4.66.a_2026-11-27.md`.

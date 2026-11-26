@@ -1,3 +1,19 @@
+**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE FOR MEMBERS GENERALLY; THE PRESIDENT MUST HAVE BOTH `subscriber` AND `zmp_teacher`. OTHER AUTHORIZED ROLES MAY BE STACKED WITHOUT BREAKING SCHOOL PROFILE FUNCTIONS.**
+
+# CURRENT INSTALL CANDIDATE — 2026-11-27
+
+**Primary school and municipality are editable for linked Teacher/President profiles. Local existing-clone regression: 5/5 PASS. The current install candidate is the editable-school-profile ZIP below; all earlier 2026-11-26 ZIPs are superseded for installation. Full phase acceptance remains separate.**
+
+- ZIP: `ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-editable-school-profile.zip`
+- SHA-256: `65e2f59611170897708816103d5691fea20e7dc1b27675ac22fc1ad6ffc73b95`
+- Size: 7,039,339 bytes; 2,244 files.
+- PHP lint: 1,968/1,968 PASS. Archive integrity and exact staged-source parity: 2,244/2,244 PASS.
+- Source-hash list: `HASHES/SOURCE_SHA256_1.2.4.66.a-2026-11-27-editable-school-profile.txt`; ZIP hash: `HASHES/ZIP_SHA256_1.2.4.66.a-2026-11-27-editable-school-profile.txt`.
+- Focused runtime report: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_1.2.4.66.a_2026-11-27.md`.
+- Build report: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_ZIP_BUILD_1.2.4.66.a_2026-11-27.md`.
+- Owner installation and visual confirmation: pending.
+
+---
 # Release manifest — ZMP Competitions 1.2.4.66.a
 
 # 🚨 CURRENT TEST CANDIDATE — 2026-11-26

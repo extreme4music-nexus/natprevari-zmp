@@ -18,6 +18,12 @@ The WordPress dashboard **ЗМП Натпревари → Што е ново?** 
 
 Local evidence for these scopes is recorded in `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md` and `reports/FULL_FUNCTIONAL_SECURITY_REGRESSION_1.2.4.66.a_2026-11-26.md`. The owner's installation/visual check on the official site remains separate. The ZIP contains code only; it does not copy synthetic database rows, create an active President mandate, or populate the live approved-subject catalog.
 
+## Primary school profile can be corrected — 2026-11-27
+
+- Existing linked Teacher/President profiles can edit the primary school and municipality instead of seeing disabled fields.
+- Saving a correction updates the same primary school engagement and keeps the subject/grade assignment linked. The server continues to validate the municipality and derive the region.
+- If a linked teacher profile has no primary engagement yet, the form exposes the primary subject/grade controls needed for the first save.
+- Local test on the existing `:8111` clone: **5/5 PASS**, including submit/readback, role stacking, assignment continuity, and synthetic cleanup. Details: `reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_1.2.4.66.a_2026-11-27.md`.
 ## CURRENT .65 TRANSFER ADDENDUM — 2026-11-25
 
 The direct comparison found and transferred one additional user-facing .65 change that had been incomplete in this phase: when a valid Subscriber + Teacher account has no linked teacher record, the WordPress profile now explains to check both roles and the linked teacher record. The service still returns `teacher_profile_required`; the missing-link state is not mislabeled as a schema failure.
