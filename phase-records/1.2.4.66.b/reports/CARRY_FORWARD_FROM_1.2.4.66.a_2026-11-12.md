@@ -1,6 +1,6 @@
-## HISTORICAL RECORD — STATUS AS OF ITS ORIGINAL DATE
+# 🚨 HISTORICAL EVIDENCE — NOT CURRENT PHASE STATUS
 
-This is dated phase evidence. Current `.66.a` checklist status is in `../1.2.4.66.a/reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`; do not treat older status text below as current where a later exact-scope PASS exists.
+This document is dated evidence for its original phase and scope. The current `.66.a` checklist is summarized in `../zmp-competitions-1.2.4.66.a/reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`. A later PASS supersedes older status only for the same exact scope.
 
 # 🚨 HISTORICAL CARRY-FORWARD SNAPSHOT — 2026-11-12. Current `.66.b` same-scope status is reconciled in `PROJECT_STATE_1.2.4.66.b.md` and `reports/INHERITED_65_FIXES_AND_66B_OPEN_SCOPE_1.2.4.66.b_2026-11-25.md`: President setup 10/10 PASS; profile handler submit/readback 10/10 PASS; partial-schema injection 4/4 PASS. Browser step-up remains a separate unresolved UI scope.
 

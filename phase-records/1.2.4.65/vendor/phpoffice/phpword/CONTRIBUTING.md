@@ -1,6 +1,3 @@
-# 🚨 OWNER MANDATE — READ FIRST: 2026-11-24 PASS IS FINAL FOR ITS EXACT CHECK SCOPE. NEVER REOPEN OR REPEAT IT, OR COUNT AN OLDER NOT RUN/FAIL FOR THAT SAME SCOPE AS OPEN, UNLESS NEW CONTRADICTORY EVIDENCE EXISTS.
-# 🚨 ROLE STACK: EVERY ZMP MEMBER MUST HAVE SUBSCRIBER; TEACHER IS OPTIONAL AND ADDITIVE. PRESIDENT MUST HAVE TEACHER AND SUBSCRIBER.
-
 # Contributing to PHPWord
 
 PHPWord is built by the crowd and for the crowd. Every contribution is welcome; either by [reporting a bug](https://github.com/PHPOffice/PHPWord/issues/new?labels=Bug+Report&template=bug_report.md) or [suggesting improvements](https://github.com/PHPOffice/PHPWord/issues/new?labels=Change+Request&template=feature_request.md), or in a more active form like [requesting a pull](https://github.com/PHPOffice/PHPWord/pulls).

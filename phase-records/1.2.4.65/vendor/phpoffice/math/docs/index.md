@@ -1,6 +1,3 @@
-# 🚨 OWNER MANDATE — READ FIRST: 2026-11-24 PASS IS FINAL FOR ITS EXACT CHECK SCOPE. NEVER REOPEN OR REPEAT IT, OR COUNT AN OLDER NOT RUN/FAIL FOR THAT SAME SCOPE AS OPEN, UNLESS NEW CONTRADICTORY EVIDENCE EXISTS.
-# 🚨 ROLE STACK: EVERY ZMP MEMBER MUST HAVE SUBSCRIBER; TEACHER IS OPTIONAL AND ADDITIVE. PRESIDENT MUST HAVE TEACHER AND SUBSCRIBER.
-
 #
 
 Math is a library written in pure PHP that provides a set of classes to manipulate different formula file formats, i.e. [MathML](https://en.wikipedia.org/wiki/MathML) and [Office MathML (OOML)](https://en.wikipedia.org/wiki/Office_Open_XML_file_formats#Office_MathML_(OMML)).
