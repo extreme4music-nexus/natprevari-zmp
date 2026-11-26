@@ -1,0 +1,11 @@
+ordinary_category_assignment_absent=true
+exact_regional_assignment_present=true
+eligibility_pass=true
+registration_options_issued=true
+options_bound_to_local_relying_party=true
+challenge_row_exact=true
+no_credential_created=true
+expired_challenges_restored_exactly=true
+exact_cleanup=true
+wp db check: Success; all listed tables OK
+PHP lint: no syntax errors

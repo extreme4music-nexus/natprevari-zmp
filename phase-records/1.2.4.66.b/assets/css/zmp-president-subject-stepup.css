@@ -1,0 +1,33 @@
+.zmp-president-stepup-status {
+    min-height: 1.5em;
+    margin: 0.5rem 0 0;
+    max-width: 42rem;
+    color: #1d2327;
+}
+
+.zmp-president-stepup-form[aria-busy="true"] .zmp-president-stepup-status {
+    font-weight: 600;
+}
+
+.zmp-president-stepup-form button:focus-visible,
+.zmp-president-stepup-form select:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+@media (max-width: 782px) {
+    .zmp-president-stepup-form select,
+    .zmp-president-stepup-form button {
+        box-sizing: border-box;
+        min-height: 40px;
+        margin: 0.25rem 0.25rem 0.25rem 0;
+    }
+
+    .zmp-president-stepup-form select {
+        max-width: 100%;
+    }
+
+    .zmp-president-stepup-status {
+        overflow-wrap: anywhere;
+    }
+}

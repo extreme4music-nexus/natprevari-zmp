@@ -1,0 +1,8 @@
+options_http_200=true
+approved_docs_render_finalize_form=true
+pending_doc_hides_finalize_form=true
+pending_document_post_redirected=true
+pending_document_no_result_or_audit_write=true
+exact_state_restored=true
+wp db check: Success; all listed tables OK
+PHP lint: no syntax errors

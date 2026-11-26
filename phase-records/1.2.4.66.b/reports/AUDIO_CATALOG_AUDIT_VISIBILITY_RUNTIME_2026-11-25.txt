@@ -1,0 +1,2 @@
+ZMP_AUDIO_AUDIT_VISIBILITY={"public_https_url_valid":true,"mocked_audit_available":true,"exact_mock_only":true,"fresh_approved_visible":true,"stale_approved_hidden":true,"pending_hidden":true,"source_sha256":"10641166B008302FD12A05CD8AD0372DB30ECB5B8B7B31AF626475C17FA8F1E7","mock_calls":1,"unexpected_http":0,"exact_option_restored":true,"all_assertions_pass":true}
+wp db check: Success; all listed tables OK.

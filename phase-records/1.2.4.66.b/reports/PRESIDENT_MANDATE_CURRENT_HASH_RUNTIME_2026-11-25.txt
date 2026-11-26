@@ -1,0 +1,16 @@
+# 🚨 OWNER POLICY — ROLE STACKING — READ FIRST
+
+**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL, BUT ANY MEMBER MAY ALSO HAVE IT. BOTH MUST COEXIST WITH OTHER AUTHORIZED ROLES WITHOUT BREAKING THE PLUGIN.**
+
+**THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`. TEACHER-SCOPED FUNCTIONS REQUIRE `zmp_teacher`; OTHER MEMBER FUNCTIONS MUST NOT. EXTERNAL NON-MEMBER COMMISSION IS THE ONLY MEMBERSHIP EXCEPTION.**
+
+**THIS 2026-11-25 OWNER POLICY OVERRIDES ANY CONFLICTING OLDER WORDING BELOW. HISTORICAL TEST RESULTS REMAIN LIMITED TO THE ROLE STACKS THEY ACTUALLY TESTED.** Canonical record: `00_START_HERE/ROLE_STACKING_OWNER_POLICY_2026-11-25.md`.
+
+---
+admin_post_zmp_president_mandate_appoint: PASS; scheduled; appointed audit; subscriber retained; exact cleanup=true
+admin_post_zmp_president_mandate_cancel: PASS; revoked; appointed/revoked audit; exact cleanup=true
+admin_post_zmp_president_mandate_revoke: PASS; revoked; President removed; subscriber restored; exact cleanup=true
+Residual synthetic mandate rows=0; wp db check=PASS; existing active mandate id=58/user=116 unchanged
+admin_post_zmp_president_mandate_appoint subscriber+valid nonce: DENIED; no mutation
+admin_post_zmp_president_mandate_appoint administrator+invalid nonce: DENIED; no mutation
+Denial fixture exact cleanup=true; no synthetic test users remain; wp db check=PASS

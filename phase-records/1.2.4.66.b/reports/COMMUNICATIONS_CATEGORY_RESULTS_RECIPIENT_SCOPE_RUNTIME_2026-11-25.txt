@@ -1,0 +1,11 @@
+category_results_gate_before_publish=PASS
+eligible_entry_ids=[8]
+synthetic_entry_ids=[8,9]
+saved_announcement=true
+exact_phase_recipient_only=true
+linked_public_post=true
+email_not_sent=true
+exact_cleanup=true
+
+wp db check: Success: Database checked. All listed WordPress and ZMP tables reported OK.
+PHP lint: no syntax errors in product file or runtime fixture.

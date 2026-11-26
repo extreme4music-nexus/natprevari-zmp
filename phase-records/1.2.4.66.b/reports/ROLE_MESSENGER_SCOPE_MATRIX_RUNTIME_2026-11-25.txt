@@ -1,0 +1,14 @@
+# 🚨 OWNER POLICY — ROLE STACKING — READ FIRST
+
+**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL, BUT ANY MEMBER MAY ALSO HAVE IT. BOTH MUST COEXIST WITH OTHER AUTHORIZED ROLES WITHOUT BREAKING THE PLUGIN.**
+
+**THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`. TEACHER-SCOPED FUNCTIONS REQUIRE `zmp_teacher`; OTHER MEMBER FUNCTIONS MUST NOT. EXTERNAL NON-MEMBER COMMISSION IS THE ONLY MEMBERSHIP EXCEPTION.**
+
+**THIS 2026-11-25 OWNER POLICY OVERRIDES ANY CONFLICTING OLDER WORDING BELOW. HISTORICAL TEST RESULTS REMAIN LIMITED TO THE ROLE STACKS THEY ACTUALLY TESTED.** Canonical record: `00_START_HERE/ROLE_STACKING_OWNER_POLICY_2026-11-25.md`.
+
+---
+ZMP_ROLE_MESSENGER_SCOPE_MATRIX={"checks":{"subscriber_teacher_present_on_all_synthetic_roles":true,"moderator_room":true,"moderator_not_tester":true,"stacked_tester_assigned_room":true,"stacked_moderator_room":true,"stacked_regional_commission_room":true,"stacked_tester_not_organizer":true,"stacked_regional_scope_not_national":true,"stacked_regional_other_region_denied":true,"organizer_assigned_room":true,"organizer_not_commission":true,"commission_assigned_category":true,"commission_other_category_denied":true,"commission_exact_region":true,"commission_other_region_denied":true,"president_has_no_bypass":true,"administrator_has_no_bypass":true,"ordinary_teacher_denied":true},"exact_cleanup":true,"all_assertions_pass":true}
+PHP lint: PASS
+WP database integrity: PASS (all tables)
+Local HTTP: 200
+Fixture SHA-256: 9254f1135a1ed798a6781d79dec81b1109c8daf2240535c77931e9f7d911c3e9

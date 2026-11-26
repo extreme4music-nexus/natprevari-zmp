@@ -1,0 +1,5 @@
+unit_cases: absent=false PASS; exact 0=false PASS; exact 1 with next stage=true PASS; on rejected PASS; 2 rejected PASS; 1 at terminal stage rejected PASS
+actual_post_rejected_before_write=true
+result_and_audit_counts_unchanged=true
+synthetic_user_removed=true
+wp db check: Success; all listed tables OK

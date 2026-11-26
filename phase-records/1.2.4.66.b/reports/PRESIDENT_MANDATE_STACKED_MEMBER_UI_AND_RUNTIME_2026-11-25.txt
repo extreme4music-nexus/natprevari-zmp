@@ -1,0 +1,16 @@
+# 🚨 OWNER POLICY — ROLE STACKING — READ FIRST
+
+**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL, BUT ANY MEMBER MAY ALSO HAVE IT. BOTH MUST COEXIST WITH OTHER AUTHORIZED ROLES WITHOUT BREAKING THE PLUGIN.**
+
+**THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`. TEACHER-SCOPED FUNCTIONS REQUIRE `zmp_teacher`; OTHER MEMBER FUNCTIONS MUST NOT. EXTERNAL NON-MEMBER COMMISSION IS THE ONLY MEMBERSHIP EXCEPTION.**
+
+**THIS 2026-11-25 OWNER POLICY OVERRIDES ANY CONFLICTING OLDER WORDING BELOW. HISTORICAL TEST RESULTS REMAIN LIMITED TO THE ROLE STACKS THEY ACTUALLY TESTED.** Canonical record: `00_START_HERE/ROLE_STACKING_OWNER_POLICY_2026-11-25.md`.
+
+---
+PASS: Edge displayed stacked teacher/subscriber/moderator/commission/testator/organizer candidate and role-retention guidance.
+PASS: current admin-post appointment scheduled for 2030-11-06, one appointed audit event.
+PASS: all original roles retained; President role withheld until scheduled mandate activation.
+PASS: exact fixture cleanup; temporary UI users 218 and 219 removed; existing mandate 58/116 unchanged.
+PASS: PHP lint, candidate/runtime hash match, and wp db check.
+Scope limited to stacked-role eligibility/form/scheduled appointment. Other mandate/phase gates remain open.
+PASS supplemental candidate filter: 4/4 (stacked member included; stale President and Administrator excluded); exact cleanup; PHP lint and DB check passed. Fixture SHA-256 7ea8bde9892f95f4a57d18e5b99692a5bd6236d2b7a847e549edade08db44ede.

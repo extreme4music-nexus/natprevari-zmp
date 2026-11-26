@@ -1,0 +1,21 @@
+# 🚨 OWNER POLICY — ROLE STACKING — READ FIRST
+
+**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL, BUT ANY MEMBER MAY ALSO HAVE IT. BOTH MUST COEXIST WITH OTHER AUTHORIZED ROLES WITHOUT BREAKING THE PLUGIN.**
+
+**THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`. TEACHER-SCOPED FUNCTIONS REQUIRE `zmp_teacher`; OTHER MEMBER FUNCTIONS MUST NOT. EXTERNAL NON-MEMBER COMMISSION IS THE ONLY MEMBERSHIP EXCEPTION.**
+
+**THIS 2026-11-25 OWNER POLICY OVERRIDES ANY CONFLICTING OLDER WORDING BELOW. HISTORICAL TEST RESULTS REMAIN LIMITED TO THE ROLE STACKS THEY ACTUALLY TESTED.** Canonical record: `00_START_HERE/ROLE_STACKING_OWNER_POLICY_2026-11-25.md`.
+
+---
+President approval with stacked teacher/subscriber roles=PASS
+requester own valid nonce exact synthetic contact disclosed=PASS
+single disclosed audit event; no email in audit payload=PASS
+other teacher valid nonce=denied not_approved; no new disclosure event
+requester invalid nonce=denied forbidden; no new event
+request remains approved; exact cleanup and role/debug restoration=PASS
+existing active mandate 58/116 unchanged; db check=PASS
+summary=7/7 PASS
+source_hash=d8855bc141d5e1f854b751a10420eb90d04af9b6cbcd2f7a3e0da7664be796ce
+changed_contact_old_approval=invalidated; response=contact_unavailable; contact_changed audit has no address
+fixture_hash=e0c46d39abf7dfca9ddae4aa74282c5e1302138f5fc71a047009be03aeeabe0a
+guard_marker=412 bytes; api.wordpress.org=4; localhost=34

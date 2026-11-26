@@ -1,0 +1,18 @@
+# 🚨 OWNER POLICY — ROLE STACKING — READ FIRST
+
+**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL, BUT ANY MEMBER MAY ALSO HAVE IT. BOTH MUST COEXIST WITH OTHER AUTHORIZED ROLES WITHOUT BREAKING THE PLUGIN.**
+
+**THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`. TEACHER-SCOPED FUNCTIONS REQUIRE `zmp_teacher`; OTHER MEMBER FUNCTIONS MUST NOT. EXTERNAL NON-MEMBER COMMISSION IS THE ONLY MEMBERSHIP EXCEPTION.**
+
+**THIS 2026-11-25 OWNER POLICY OVERRIDES ANY CONFLICTING OLDER WORDING BELOW. HISTORICAL TEST RESULTS REMAIN LIMITED TO THE ROLE STACKS THEY ACTUALLY TESTED.** Canonical record: `00_START_HERE/ROLE_STACKING_OWNER_POLICY_2026-11-25.md`.
+
+---
+ZMP_PRESIDENT_DASHBOARD_STACK={"checks":{"teacher_subscriber_stacked_president_recognized":true,"active_stacked_president_dashboard_allowed":true,"active_stacked_president_menu_registered":true,"active_stacked_president_dashboard_rendered":true,"president_without_teacher_rejected":true,"inactive_mandate_dashboard_and_menu_denied":true,"administrator_not_treated_as_president":true},"exact_cleanup":true,"all_assertions_pass":true}
+Supplemental server: existing http://localhost:8103 clone only; no server started.
+Owner-reported prior checks on 127.0.0.1:8100 retained separately, not replaced.
+Candidate/runtime dashboard class SHA-256: c4b888a081f248f343819fd9d7ff3188b6a54e1c25b7d6ab982d70ade3cd6a9a (match)
+Fixture SHA-256: 363b3fdb99e43333300d5295b61cfd1a9ae15fbb1a01a480ce9e0fa6988b1c73
+PHP lint: PASS
+Stacked President school-email service regression: 8/8 PASS with --user=1
+Stacked President school-email admin-post regression: 10/10 PASS with --user=1
+Exact cleanup: PASS

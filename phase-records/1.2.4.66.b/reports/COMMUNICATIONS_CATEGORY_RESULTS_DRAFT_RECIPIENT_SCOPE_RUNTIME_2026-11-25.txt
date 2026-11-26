@@ -1,0 +1,9 @@
+category_results_gate_before_publish=PASS
+eligible_entry_ids=[10]
+saved_announcement=true
+exact_phase_recipient_only=true
+linked_published_wordpress_post=true
+email_not_sent=true
+exact_cleanup=true
+wp db check: Success; all listed tables OK
+PHP lint: no syntax errors

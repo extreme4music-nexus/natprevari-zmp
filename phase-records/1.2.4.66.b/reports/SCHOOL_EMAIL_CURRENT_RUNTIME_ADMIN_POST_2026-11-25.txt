@@ -1,0 +1,1 @@
+SCHOOL_EMAIL_CURRENT_RUNTIME_ADMIN_POST: 10/10 PASS; authenticated local admin-post approval; no address in redirect/body; exact cleanup.

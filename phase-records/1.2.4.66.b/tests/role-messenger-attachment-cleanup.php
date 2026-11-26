@@ -1,0 +1,18 @@
+<?php
+if(!defined('WP_CLI')){WP_CLI::error('WP-CLI required');} require_once ABSPATH.'wp-admin/includes/user.php'; global $wpdb;
+$secret='/home/tonic/zmp-local-sandbox/phase66b-test/private/messenger-attachment-session.json'; $data=json_decode(file_get_contents($secret),true); if(!is_array($data)||($data['fixture']??'')!=='synthetic-messenger-attachment'){WP_CLI::error('exact synthetic fixture not identified');}
+$mid=(int)$data['messages']['root'];$rid=(int)$data['messages']['reply'];$aid=(int)$data['attachment_id'];$m=$wpdb->prefix.'zmp_role_messages';$a=$wpdb->prefix.'zmp_role_message_attachments';$n=$wpdb->prefix.'zmp_role_message_notifications';$reads=$wpdb->prefix.'zmp_role_message_reads';
+$att=$wpdb->get_row($wpdb->prepare("SELECT id,message_id,file_key,store_hash,sha256 FROM $a WHERE id=%d AND message_id=%d",$aid,$rid));if(!$att||!hash_equals((string)$data['attachment_sha256'],(string)$att->sha256)||!preg_match('/^[a-f0-9]{48}\.pdf$/',(string)$att->file_key)){WP_CLI::error('exact attachment metadata mismatch; cleanup refused');}
+$bucket=substr(hash('sha256',home_url('/')),0,12);if(!hash_equals($bucket,(string)$att->store_hash)){WP_CLI::error('attachment bucket mismatch; cleanup refused');}
+$site=realpath('/home/tonic/zmp-local-sandbox/phase66b-test/site');$parent=realpath(dirname($site));$dir=$parent.'/zmp-private-role-messages-'.$bucket;$expected=$dir.'/'.$att->file_key;$real=realpath($expected);if(!$real||$real!==$expected||strpos($real.'/',rtrim($site,'/').'/')===0||!hash_equals((string)$att->sha256,(string)hash_file('sha256',$real))){WP_CLI::error('exact private file path/hash mismatch; cleanup refused');}
+if(!unlink($real)){WP_CLI::error('private test file cleanup failed');}
+foreach(array($rid,$mid) as $id){$wpdb->delete($reads,array('message_id'=>$id),array('%d'));$wpdb->delete($n,array('message_id'=>$id),array('%d'));}
+$wpdb->delete($a,array('id'=>$aid,'message_id'=>$rid),array('%d','%d'));
+$wpdb->delete($m,array('id'=>$rid,'message'=>'Synthetic attachment reply for private storage and download verification.'),array('%d','%s'));
+$wpdb->delete($m,array('id'=>$mid,'message'=>'Synthetic root for file and scope verification.'),array('%d','%s'));
+foreach(array_map('absint',$data['users']) as $id){wp_delete_user($id);}
+$remaining=(int)$wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $m WHERE id IN (%d,%d)",$mid,$rid))+(int)$wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $a WHERE id=%d",$aid));$files_gone=!file_exists($expected);$users_gone=true;foreach(array_map('absint',$data['users']) as $id){if(get_userdata($id)){$users_gone=false;}}
+if($files_gone&&is_dir($dir)){ $items=array_values(array_diff(scandir($dir),array('.','..')));if(!$items){$rmdir_ok=rmdir($dir);$files_gone=$rmdir_ok&&!file_exists($dir);} }
+foreach(array('/home/tonic/zmp-local-sandbox/phase66b-test/tmp/messenger-attachment-post-response.bin','/home/tonic/zmp-local-sandbox/phase66b-test/tmp/messenger-download-response.bin','/home/tonic/zmp-local-sandbox/phase66b-test/tmp/messenger-export-response.csv','/home/tonic/zmp-local-sandbox/phase66b-test/tmp/synthetic-messenger-attachment.pdf',$secret) as $f){if(is_file($f)){unlink($f);}}
+echo 'exact_database_fixture_removed='.($remaining===0?'PASS':'FAIL').PHP_EOL;echo 'synthetic_users_removed='.($users_gone?'PASS':'FAIL').PHP_EOL;echo 'private_file_and_empty_store_removed='.($files_gone?'PASS':'FAIL').PHP_EOL;
+if($remaining!==0||!$users_gone||!$files_gone){WP_CLI::error('Exact fixture cleanup incomplete');}WP_CLI::success('Synthetic attachment fixture removed.');

@@ -1,0 +1,533 @@
+.zmp-president-mandate {
+    --zmp-pm-brand: #174a7e;
+    --zmp-pm-border: #d8e1ec;
+    --zmp-pm-muted: #5b6470;
+    max-width: 1440px;
+}
+
+.zmp-president-mandate .zmp-pm-account-notice {
+    margin: 16px 0 20px;
+    padding-inline-start: 12px;
+}
+
+.zmp-president-mandate .zmp-pm-card {
+    margin: 0 0 18px;
+    padding: 20px 22px;
+    border: 1px solid var(--zmp-pm-border);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 3px 14px rgba(24, 50, 79, .07);
+}
+
+.zmp-president-mandate .zmp-pm-section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.zmp-president-mandate .zmp-pm-section-heading h2,
+.zmp-president-mandate .zmp-pm-card > h2 {
+    margin: 0 0 6px;
+    color: var(--zmp-pm-brand);
+    font-size: 19px;
+    line-height: 1.35;
+}
+
+.zmp-president-mandate .zmp-pm-section-heading p,
+.zmp-president-mandate .zmp-pm-empty p {
+    margin: 0;
+    color: var(--zmp-pm-muted);
+}
+
+.zmp-president-mandate .zmp-pm-status {
+    flex: 0 0 auto;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #e7f5ec;
+    color: #176b37;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.zmp-president-mandate .zmp-pm-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.zmp-president-mandate .zmp-pm-summary > div {
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #e8eef5;
+    border-radius: 8px;
+    background: #f7f9fc;
+}
+
+.zmp-president-mandate .zmp-pm-summary dt {
+    margin-bottom: 5px;
+    color: var(--zmp-pm-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-summary dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 900px;
+}
+
+.zmp-president-mandate .zmp-pm-field {
+    min-width: 0;
+}
+
+.zmp-president-mandate .zmp-pm-field-wide {
+    grid-column: 1 / -1;
+}
+
+.zmp-president-mandate .zmp-pm-field label,
+.zmp-president-mandate .zmp-pm-revoke-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-field input,
+.zmp-president-mandate .zmp-pm-field select,
+.zmp-president-mandate .zmp-pm-field textarea,
+.zmp-president-mandate .zmp-pm-revoke-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.zmp-president-mandate .zmp-pm-field input:focus-visible,
+.zmp-president-mandate .zmp-pm-field select:focus-visible,
+.zmp-president-mandate .zmp-pm-field textarea:focus-visible,
+.zmp-president-mandate .zmp-pm-revoke-form textarea:focus-visible,
+.zmp-president-mandate .zmp-pm-table-wrap:focus-visible {
+    outline: 2px solid #1685ee;
+    outline-offset: 2px;
+}
+
+.zmp-president-mandate .zmp-pm-field .description {
+    margin: 6px 0 0;
+    color: var(--zmp-pm-muted);
+}
+
+.zmp-president-mandate .zmp-pm-term-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    min-height: 72px;
+    padding: 12px 14px;
+    border: 1px solid #d8e1ec;
+    border-radius: 8px;
+    background: #f7f9fc;
+}
+
+.zmp-president-mandate .zmp-pm-term-preview-label {
+    color: var(--zmp-pm-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-term-preview output {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.zmp-president-mandate .zmp-pm-handover-card {
+    max-width: 850px;
+}
+
+.zmp-president-mandate .zmp-pm-handover-form {
+    display: grid;
+    gap: 8px;
+    max-width: 680px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #e8eef5;
+}
+
+.zmp-president-mandate .zmp-pm-handover-form label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-handover-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.zmp-president-mandate .zmp-pm-handover-form textarea:focus-visible {
+    outline: 2px solid #1685ee;
+    outline-offset: 2px;
+}
+
+.zmp-president-mandate .zmp-pm-handover-form .description {
+    margin: 2px 0 8px;
+    color: var(--zmp-pm-muted);
+}
+
+.zmp-president-mandate .zmp-pm-revoke-form {
+    max-width: 680px;
+    padding-top: 16px;
+    border-top: 1px solid #e8eef5;
+}
+
+.zmp-president-mandate .zmp-pm-revoke-form .description {
+    margin: 5px 0 10px;
+}
+
+.zmp-president-mandate .zmp-pm-scheduled-list {
+    display: grid;
+    gap: 12px;
+}
+
+.zmp-president-mandate .zmp-pm-scheduled-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr);
+    gap: 18px;
+    padding: 16px;
+    border: 1px solid #e8eef5;
+    border-radius: 9px;
+    background: #f9fbfd;
+}
+
+.zmp-president-mandate .zmp-pm-scheduled-item h3 {
+    margin: 0 0 10px;
+    color: var(--zmp-pm-brand);
+    font-size: 15px;
+}
+
+.zmp-president-mandate .zmp-pm-scheduled-item dl {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+}
+
+.zmp-president-mandate .zmp-pm-scheduled-item dl > div {
+    display: grid;
+    grid-template-columns: minmax(130px, .4fr) minmax(0, 1fr);
+    gap: 10px;
+}
+
+.zmp-president-mandate .zmp-pm-scheduled-item dt {
+    color: var(--zmp-pm-muted);
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-scheduled-item dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.zmp-president-mandate .zmp-pm-cancel-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-cancel-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.zmp-president-mandate .zmp-pm-cancel-form textarea:focus-visible {
+    outline: 2px solid #1685ee;
+    outline-offset: 2px;
+}
+
+.zmp-president-mandate .zmp-pm-cancel-form .description {
+    margin: 5px 0 10px;
+}
+
+.zmp-president-mandate .zmp-pm-muted {
+    color: var(--zmp-pm-muted);
+}
+
+.zmp-president-mandate .zmp-pm-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.zmp-president-mandate .zmp-pm-history-table {
+    min-width: 760px;
+}
+
+.zmp-president-mandate .zmp-pm-history-table th {
+    white-space: nowrap;
+}
+
+.zmp-president-mandate .zmp-pm-history-table td {
+    overflow-wrap: anywhere;
+}
+
+.zmp-president-mandate .zmp-pm-governance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-section {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #e8eef5;
+    border-radius: 9px;
+    background: #fbfcfe;
+}
+
+.zmp-president-mandate .zmp-pm-governance-section h3,
+.zmp-president-mandate .zmp-pm-governance-section h4,
+.zmp-president-mandate .zmp-pm-governance-acknowledgments h5 {
+    margin-top: 0;
+    color: var(--zmp-pm-brand);
+}
+
+.zmp-president-mandate .zmp-pm-governance-form {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+
+.zmp-president-mandate .zmp-pm-governance-form label {
+    display: block;
+    margin: 8px 0 0;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-governance-form input[type="text"],
+.zmp-president-mandate .zmp-pm-governance-form input[type="file"],
+.zmp-president-mandate .zmp-pm-governance-form select,
+.zmp-president-mandate .zmp-pm-governance-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.zmp-president-mandate .zmp-pm-governance-form input:focus-visible,
+.zmp-president-mandate .zmp-pm-governance-form select:focus-visible,
+.zmp-president-mandate .zmp-pm-governance-form textarea:focus-visible,
+.zmp-president-mandate .zmp-pm-governance-version-text summary:focus-visible,
+.zmp-president-mandate .zmp-pm-governance-actions button:focus-visible {
+    outline: 2px solid #1685ee;
+    outline-offset: 2px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-publish {
+    max-width: 900px;
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px solid #d8e1ec;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.zmp-president-mandate .zmp-pm-governance-publish .description {
+    margin: 0 0 6px;
+    color: var(--zmp-pm-muted);
+}
+
+.zmp-president-mandate .zmp-pm-governance-list {
+    display: grid;
+    gap: 12px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-item {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #e8eef5;
+    border-radius: 9px;
+    background: #fff;
+    overflow-wrap: anywhere;
+}
+
+.zmp-president-mandate .zmp-pm-governance-item-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-item-heading h4 {
+    min-width: 0;
+    margin: 0;
+    color: var(--zmp-pm-brand);
+    overflow-wrap: anywhere;
+}
+
+.zmp-president-mandate .zmp-pm-governance-badge {
+    flex: 0 0 auto;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.zmp-president-mandate .zmp-pm-governance-badge.is-active {
+    background: #e7f5ec;
+    color: #176b37;
+}
+
+.zmp-president-mandate .zmp-pm-governance-badge.is-archived {
+    background: #edf0f4;
+    color: #4a5563;
+}
+
+.zmp-president-mandate .zmp-pm-governance-meta {
+    display: grid;
+    gap: 7px;
+    margin: 0 0 12px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-meta > div {
+    display: grid;
+    grid-template-columns: minmax(120px, .4fr) minmax(0, 1fr);
+    gap: 10px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-meta dt {
+    color: var(--zmp-pm-muted);
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-governance-meta dd {
+    min-width: 0;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.zmp-president-mandate .zmp-pm-governance-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-actions form {
+    margin: 0;
+}
+
+.zmp-president-mandate .zmp-pm-governance-version-text {
+    margin-top: 12px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-version-text summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.zmp-president-mandate .zmp-pm-governance-version-text > div {
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #e8eef5;
+    border-radius: 8px;
+    background: #f7f9fc;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}
+
+.zmp-president-mandate .zmp-pm-governance-acknowledgments {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #e8eef5;
+}
+
+.zmp-president-mandate .zmp-pm-governance-acknowledgments h5 {
+    margin-bottom: 8px;
+}
+
+.zmp-president-mandate .zmp-pm-governance-acknowledgments ul {
+    margin: 0 0 0 20px;
+}
+
+@media (max-width: 782px) {
+    .zmp-president-mandate .zmp-pm-card {
+        padding: 16px;
+    }
+
+    .zmp-president-mandate .zmp-pm-summary {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .zmp-president-mandate .zmp-pm-form-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .zmp-president-mandate .zmp-pm-term-preview {
+        min-height: 0;
+    }
+
+    .zmp-president-mandate .zmp-pm-field-wide {
+        grid-column: auto;
+    }
+
+    .zmp-president-mandate .zmp-pm-scheduled-item {
+        grid-template-columns: 1fr;
+    }
+
+    .zmp-president-mandate .zmp-pm-scheduled-item dl > div {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .zmp-president-mandate .zmp-pm-section-heading {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .zmp-president-mandate .zmp-pm-history-table {
+        min-width: 680px;
+    }
+
+    .zmp-president-mandate .zmp-pm-governance-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .zmp-president-mandate .zmp-pm-governance-section,
+    .zmp-president-mandate .zmp-pm-governance-publish {
+        padding: 13px;
+    }
+
+    .zmp-president-mandate .zmp-pm-governance-item-heading {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .zmp-president-mandate .zmp-pm-governance-meta > div {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .zmp-president-mandate .zmp-pm-governance-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .zmp-president-mandate .zmp-pm-governance-actions form,
+    .zmp-president-mandate .zmp-pm-governance-actions button {
+        width: 100%;
+    }
+}

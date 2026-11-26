@@ -1,0 +1,4 @@
+ZMP_MESSENGER_SCHEMA_READINESS={"checks":{"messenger_schema_compatible":true,"retention_audit_compatible":true,"schema_marker_current":true,"retry_not_pending":true,"retry_storage_confirmed":true},"messenger_table_row_counts_unchanged":true,"schema_options_unchanged":true,"all_assertions_pass":true}
+Candidate/runtime Messenger class SHA-256: 328606de0a02633b3f7362e83257df2b4c7946a230104479e78bc3f58c1d16ba (match)
+Fixture SHA-256: 35ff2247fda1374732f09d74c12994e329be7da5e06b05e98681ffe5f43f9402
+PHP lint: PASS; full wp db check: PASS; local HTTP: 200
