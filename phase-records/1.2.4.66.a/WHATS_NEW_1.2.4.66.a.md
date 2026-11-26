@@ -2,10 +2,7 @@
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
-**CURRENT .66.a CHECKLIST: ITEMS 1–6 PASS. ONLY ITEM 7 (FRESH ZIP, PHASE HASH CHECK, AUTHORIZED GITHUB SYNC/READBACK) IS OPEN. NEWER SAME-SCOPE PASS EVIDENCE SUPERSEDES EVERY OLDER NOT RUN/FAIL/OPEN STATEMENT BELOW. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`; DETAILS: `reports/FULL_FUNCTIONAL_SECURITY_REGRESSION_1.2.4.66.a_2026-11-26.md`.**
-
-# 🚨 OWNER MANDATE — READ FIRST: 2026-11-24 PASS IS FINAL FOR ITS EXACT CHECK SCOPE. NEVER REOPEN OR REPEAT IT, OR COUNT AN OLDER NOT RUN/FAIL FOR THAT SAME SCOPE AS OPEN, UNLESS NEW CONTRADICTORY EVIDENCE EXISTS.
-# 🚨 ROLE STACK: EVERY ZMP MEMBER MUST HAVE SUBSCRIBER; TEACHER IS OPTIONAL AND ADDITIVE. PRESIDENT MUST HAVE TEACHER AND SUBSCRIBER.
+**CURRENT .66.a CHECKLIST: ITEMS 1–7 PASS. FRESH ZIP, PHASE HASH CHECK, RESTRICTIVE LICENSE, AND GITHUB SYNC/READBACK ARE COMPLETE. OWNER INSTALLATION/TEST OF THE ZIP IS THE NEXT USER-SIDE STEP. NEWER SAME-SCOPE PASS EVIDENCE SUPERSEDES EVERY OLDER NOT RUN/FAIL/OPEN STATEMENT BELOW. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
 
 ## CURRENT .65 TRANSFER ADDENDUM — 2026-11-25
 
@@ -182,3 +179,10 @@ The isolated .66.a candidate returned the fixed generic sign-in error when expir
 - UI Reviewer output is suggestion-only and cannot assign status or gate the phase. `.66.a` remains unreleased.
 - GitHub readback: private repo `extreme4music-nexus/zmp-competitions` has verified branch `version/1.2.4.64` at `b66e70ecdc78010001c270c329298e2f2cbbc920`; `version/1.2.4.65` and `version/1.2.4.66.a` refs were not found. Do not claim `.66.a` sync; preserve the missing `.65` remote lineage as a provenance gap if a `.66.a` branch is prepared.
 - This is an active status correction; dated historical entries remain historical. No release artifact or sync is claimed by this note.
+
+
+## 2026-11-26 — final local regression and owner candidate package
+
+- The seven-item checklist now has PASS for items 1–6. The President subject decision matrix completed 38 checks on the existing local clone, including positive route outcomes, negative assertion/context checks, no-write behavior, and cleanup. The exact-hash concurrent route-replay V2 fixture remains PASS.
+- Candidate ZIP `zmp-competitions-1.2.4.66.a-2026-11-26.zip` was rebuilt from the phase-folder sources. Archive integrity and every package-to-phase file hash passed. `LICENSE.md` is included; third-party vendor terms remain intact.
+- Item 7 also passed: the ZIP and restricted license were synced and read back from GitHub on both `main` and `version/1.2.4.66.a`. Owner installation validation is next.

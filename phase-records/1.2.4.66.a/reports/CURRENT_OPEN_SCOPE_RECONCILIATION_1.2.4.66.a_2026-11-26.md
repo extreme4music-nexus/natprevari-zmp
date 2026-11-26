@@ -12,10 +12,8 @@
 4. Cancel/unavailable authenticator followed by owner-entered PIN retry — **PASS**; PIN entry/waiting is expected.
 5. Focus, subject selection, reverse Tab, keyboard, and Narrator — **PASS**; Narrator success owner-confirmed.
 6. Functional/security regression for the open `.66.a` scopes — **PASS, 2026-11-26**. Actual decision routes and negative security cases passed 38 checks; exact-hash concurrent V2 diagnostic remains PASS. See [full regression report](FULL_FUNCTIONAL_SECURITY_REGRESSION_1.2.4.66.a_2026-11-26.md).
-7. Fresh ZIP from the phase folder, package-to-phase hash verification, and authorized GitHub sync/readback — **OPEN**.
+7. Fresh ZIP from the phase folder, package-to-phase hash verification, and GitHub sync/readback — **PASS, 2026-11-26**. Owner installation validation is the next step.
 
 ## Remaining work
 
-Only checklist item 7 remains. Do not reopen items 1–6 based on older FAIL/NOT RUN records for the same scope unless contradictory current evidence appears. The 2026-11-25 register was superseded; it does not describe the current open count.
-
-No ZIP or GitHub sync is claimed complete yet. The root project roadmap was not changed.
+All seven listed checks now have PASS evidence. No test item in this checklist remains open. Owner installation/visual confirmation of the provided ZIP remains the next user-side step. Do not reopen any exact scope from older FAIL/NOT RUN text without contradictory current evidence. The 2026-11-25 register was superseded. The root project roadmap was not changed.

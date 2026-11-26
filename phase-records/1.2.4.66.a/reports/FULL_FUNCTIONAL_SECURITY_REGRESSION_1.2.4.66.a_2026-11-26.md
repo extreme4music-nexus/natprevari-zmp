@@ -38,4 +38,4 @@ Compared plugin source files in the `.66.a` phase folder with the installed plug
 
 ## Disposition
 
-The full functional/security regression item on the current seven-item checklist is **PASS** for its enumerated `.66.a` scopes. The only remaining checklist item is **7: build a fresh ZIP from the phase folder, verify package-to-phase hashes, and complete the authorized GitHub sync/readback**. No ZIP or repository update is claimed in this report. Root project roadmap was not changed.
+The full functional/security regression item on the current seven-item checklist is **PASS** for its enumerated `.66.a` scopes. Checklist items **1–7 are PASS**: the fresh ZIP was built from the phase folder, archive integrity and package-to-phase hashes passed, and GitHub content/ref readback passed on `main` and `version/1.2.4.66.a`. The owner may now install and validate this candidate on the site. Root project roadmap was not changed.
