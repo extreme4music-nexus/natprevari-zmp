@@ -27,6 +27,6 @@ This manifest's ZIP and full-regression evidence predate the President appointme
 
 - ZIP: ZIP/zmp-competitions-1.2.4.66.a-2026-11-26-role-policy-fix.zip — SHA-256 $sha; 7137152 bytes; 2,244 files.
 - Built from the current .66.a phase folder after the President appointment eligibility/UI correction. Archive listing/integrity PASS; exact path-set parity 2,244/2,244; PHP syntax PASS 1,968/1,968; key packaged source hashes match the phase source.
-- Focused President eligibility test PASS 18/18. This is an installable owner test candidate, not a claim that the full current-source phase regression is complete. Item 6, GitHub readback, and owner installation/visual validation remain open.
+- Focused President eligibility test PASS 18/18. This is an installable owner test candidate, not a claim that the full current-source phase regression is complete. Item 6 and owner installation/visual validation remain open. GitHub readback PASS at commit ed434feabfcf965c0ed873a0eb39eaad892db803; the remote ZIP SHA-256 matches the candidate.
 - Detailed evidence: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/PRESIDENT_APPOINTMENT_ROLE_POLICY_ZIP_BUILD_1.2.4.66.a_2026-11-26.md`.
 - An intermediate archive named zmp-competitions-1.2.4.66.a-2026-11-26-president-appointment.zip is not the current candidate. Install only the *-role-policy-fix.zip above.

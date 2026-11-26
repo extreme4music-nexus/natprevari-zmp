@@ -22,6 +22,6 @@ The administrator is the authorized person who records the first President's man
 
 `04_RELEASES/VERSIONS/1.2.4.66.a/ZIP/zmp-competitions-1.2.4.66.a-2026-11-26-role-policy-fix.zip`
 
-This is an installable **test candidate** for the owner. Items 1–5 retain their exact-scope PASS evidence and the President appointment policy has the focused PASS above. The full regression of the current source (item 6), GitHub readback, and owner installation/visual confirmation remain open. This package is not represented as full-phase acceptance. The earlier archive named `*-president-appointment.zip` was an intermediate build attempt; use only the `*-role-policy-fix.zip` archive linked above.
+This is an installable **test candidate** for the owner. Items 1–5 retain their exact-scope PASS evidence and the President appointment policy has the focused PASS above. The full regression of the current source (item 6) and owner installation/visual confirmation remain open. GitHub readback PASS at commit ed434feabfcf965c0ed873a0eb39eaad892db803 on main and version/1.2.4.66.a; the remote ZIP hash matches EE660D4F521BD655CE79B61E37995AF5933261B45C0FB84882AF547AD8447CD6. This package is not represented as full-phase acceptance. The earlier archive named `*-president-appointment.zip` was an intermediate build attempt; use only the `*-role-policy-fix.zip` archive linked above.
 
 No production website, production users, or `wp-config.php` were changed.

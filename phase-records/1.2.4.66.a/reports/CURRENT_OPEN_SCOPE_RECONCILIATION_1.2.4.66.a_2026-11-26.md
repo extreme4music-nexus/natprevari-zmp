@@ -12,7 +12,7 @@
 4. Cancel/unavailable authenticator followed by owner-entered PIN retry — **PASS**; PIN entry/waiting is expected.
 5. Focus, subject selection, reverse Tab, keyboard, and Narrator — **PASS**; Narrator success owner-confirmed.
 6. Functional/security regression — **DEFERRED TO FINAL CLOSE-OUT**. The previous full regression PASS predates the 2026-11-26 President appointment role-policy source change and is not a full regression of the current source.
-7. Fresh ZIP and current-source hash/package verification — **PASS** (new candidate built after the 2026-11-26 source change); GitHub readback and owner installation remain pending. Whole-phase ZIP acceptance remains part of final close-out after item 6.
+7. Fresh ZIP and current-source hash/package verification — **PASS** (new candidate built after the 2026-11-26 source change); GitHub readback PASS at commit ed434feabfcf965c0ed873a0eb39eaad892db803 on both refs; owner installation remains pending. Whole-phase ZIP acceptance remains part of final close-out after item 6.
 
 ### Release-notes follow-up — 2026-11-26
 
@@ -20,7 +20,7 @@ The dashboard's **Што е ново?** list includes a dedicated `.66.a` releas
 
 ## Remaining work
 
-Items 1-5 retain PASS evidence for their exact scopes. The President appointment role-policy/UI correction has focused 18/18 PASS evidence. Items 6 and 7 remain for the final close-out because the full-phase regression and ZIP recorded above belong to the earlier source. Do not reopen older FAIL/NOT RUN text for the exact scopes in items 1-5 without contradictory current evidence. The root project roadmap was not changed.
+Items 1-5 retain PASS evidence for their exact scopes. The President appointment role-policy/UI correction has focused 18/18 PASS evidence. Item 6 (full current-source regression) and the owner installation/visual portion of item 7 remain for final close-out. GitHub readback for the current source and ZIP passed at commit ed434feabfcf965c0ed873a0eb39eaad892db803. Do not reopen older FAIL/NOT RUN text for the exact scopes in items 1-5 without contradictory current evidence. The root project roadmap was not changed.
 
 
 ## What's New admin render probe - 2026-11-26
