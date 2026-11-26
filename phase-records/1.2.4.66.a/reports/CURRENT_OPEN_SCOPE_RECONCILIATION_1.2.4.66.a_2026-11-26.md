@@ -21,3 +21,10 @@ The dashboard's **Што е ново?** list now includes a dedicated `.66.a` re
 ## Remaining work
 
 All seven listed checks now have PASS evidence. No test item in this checklist remains open. Owner installation/visual confirmation of the provided ZIP remains the next user-side step. Do not reopen any exact scope from older FAIL/NOT RUN text without contradictory current evidence. The 2026-11-25 register was superseded. The root project roadmap was not changed.
+
+
+## What's New admin render probe - 2026-11-26
+
+**PASS - server-rendered dashboard callback contains the current .66.a release entry and owner-facing content.** On the existing local clone at :8111, WordPress rendered ZMP_Admin::view_dashboard() under the pre-existing synthetic administrator account (user 4). No account, role, database, or server state was changed.
+
+Read-only output checks: 26,645 bytes rendered; the What's New section was present; the selected release entry for 1.2.4.66.a was present; passkey release text was present; and both required subscriber and additive zmp_teacher role terms were present. The live browser remained logged in as the synthetic President, which is correctly denied access to this administrator-only page; browser visual confirmation is deferred to the owner ZIP-install step (item 7), as requested. This probe does not replace the full regression/ZIP close-out (items 6 and 7).
