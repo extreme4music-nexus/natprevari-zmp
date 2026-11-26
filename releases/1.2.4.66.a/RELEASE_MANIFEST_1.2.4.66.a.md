@@ -14,4 +14,4 @@
 - Archive hash file: `HASHES/ZIP_SHA256_1.2.4.66.a-2026-11-26.txt`.
 - License: restricted proprietary terms in the phase root `LICENSE.md`; third-party dependencies under `vendor/` keep their upstream licenses.
 - The earlier `ZIP/zmp-competitions-1.2.4.66.a.zip` is preserved as the old 2026-11-12 archive. It is not the current candidate.
-- GitHub sync/readback: **PASS** on `main` and `version/1.2.4.66.a`; report `phase-records/1.2.4.66.a/reports/GITHUB_SYNC_READBACK_1.2.4.66.a_2026-11-26.md`. Owner installation validation remains pending.
+- GitHub sync/readback: **PASS** on `main` and `version/1.2.4.66.a`; both refs matched commit `a09a566896b65ef3e7a04559b3d1b45223545a80`. Report: `phase-records/1.2.4.66.a/reports/GITHUB_SYNC_READBACK_1.2.4.66.a_2026-11-26.md`. Owner installation validation remains pending.
