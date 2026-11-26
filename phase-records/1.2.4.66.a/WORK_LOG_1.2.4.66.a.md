@@ -1149,3 +1149,7 @@ eports/MESSENGER_LEGACY_SCOPED_THREADS_REPAIR_1.2.4.66_a_2026-11-24.md. Producti
 - Existing 2026-11-24 role-stack and Messenger legacy-index PASS records remain final for their scopes; this work did not rerun or downgrade them.
 - Current outstanding product checks: President browser passkey step-up (prior attempt did not submit; cause unknown) and browser submit/readback of the President/Teacher WordPress profile form. Scoped local service results do not close those browser checks.
 - Full report: `reports/INHERITED_65_FIXES_AND_66A_OPEN_SCOPE_1.2.4.66.a_2026-11-25.md`. Main roadmap unchanged; no production site accessed.
+
+## 2026-11-26 - President first-appointment correction and test ZIP
+
+Recorded the administrator-as-appointing-actor versus separate candidate rule; corrected the .66.a eligibility/UI wording and required President role stack; focused matrix 18/18 PASS. Built and checked test ZIP zmp-competitions-1.2.4.66.a-2026-11-26-role-policy-fix.zip (SHA-256 EE660D4F521BD655CE79B61E37995AF5933261B45C0FB84882AF547AD8447CD6, 7137152 bytes, path parity 2,244/2,244, PHP lint 1,968/1,968). Full current-source regression, GitHub readback, and owner installation remain open. See reports/PRESIDENT_APPOINTMENT_ROLE_POLICY_ZIP_BUILD_1.2.4.66.a_2026-11-26.md.

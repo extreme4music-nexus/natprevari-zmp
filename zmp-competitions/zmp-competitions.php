@@ -280,6 +280,29 @@ function zmp_competitions_sync_role_caps() {
 
 
 
+/** Validate the required member role stack for a President account. */
+function zmp_competitions_president_account_is_eligible($user) {
+    if (!($user instanceof WP_User)) { return false; }
+    $user = get_user_by('id', (int) $user->ID);
+    if (!($user instanceof WP_User)
+        || in_array('administrator', (array) $user->roles, true)
+        || $user->has_cap('manage_options')) { return false; }
+    $roles = array_values((array) $user->roles);
+    $required_roles = array('subscriber', 'zmp_teacher');
+    $allowed_roles = array('subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer');
+    foreach ($required_roles as $required_role) {
+        if (!in_array($required_role, $roles, true)) { return false; }
+    }
+    if (array_diff($roles, $allowed_roles)) { return false; }
+    $cap_roles = array_keys((array) $user->caps);
+    sort($roles); sort($cap_roles);
+    if ($roles !== $cap_roles) { return false; }
+    foreach ($roles as $role) {
+        if (empty($user->caps[$role])) { return false; }
+    }
+    return true;
+}
+
 /** Grant the scoped President role only under an authorized, date-valid mandate. */
 function zmp_competitions_grant_president_role($user, $effective_date = null) {
     $is_cron = function_exists('wp_doing_cron') && wp_doing_cron();
@@ -294,14 +317,9 @@ function zmp_competitions_grant_president_role($user, $effective_date = null) {
     if (!($user instanceof WP_User) || in_array('administrator', (array)$user->roles, true) || $user->has_cap('manage_options')) {
         return false;
     }
-    $roles = array_values((array) $user->roles);
-    $allowed_roles = array('subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer');
-    if (!in_array('subscriber', $roles, true) || array_diff($roles, $allowed_roles)) { return false; }
-    $caps = (array) $user->caps;
-    $cap_roles = array_keys($caps);
-    sort($roles); sort($cap_roles);
-    if ($roles !== $cap_roles) { return false; }
-    foreach ($roles as $role) { if (empty($caps[$role])) { return false; } }
+    if (!zmp_competitions_president_account_is_eligible($user)) {
+        return false;
+    }
     if (null === $effective_date) {
         $effective_date = current_time('Y-m-d');
     }

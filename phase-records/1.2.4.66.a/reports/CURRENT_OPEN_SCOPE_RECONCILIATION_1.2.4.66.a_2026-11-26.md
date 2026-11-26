@@ -11,16 +11,16 @@
 3. Normal expired-challenge cleanup — **PASS**.
 4. Cancel/unavailable authenticator followed by owner-entered PIN retry — **PASS**; PIN entry/waiting is expected.
 5. Focus, subject selection, reverse Tab, keyboard, and Narrator — **PASS**; Narrator success owner-confirmed.
-6. Functional/security regression for the open `.66.a` scopes — **PASS, 2026-11-26**. Actual decision routes and negative security cases passed 38 checks; exact-hash concurrent V2 diagnostic remains PASS. See [full regression report](FULL_FUNCTIONAL_SECURITY_REGRESSION_1.2.4.66.a_2026-11-26.md).
-7. Fresh ZIP from the phase folder, package-to-phase hash verification, and GitHub sync/readback — **PASS, 2026-11-26**. Owner installation validation is the next step.
+6. Functional/security regression — **DEFERRED TO FINAL CLOSE-OUT**. The previous full regression PASS predates the 2026-11-26 President appointment role-policy source change and is not a full regression of the current source.
+7. Fresh ZIP and current-source hash/package verification — **PASS** (new candidate built after the 2026-11-26 source change); GitHub readback and owner installation remain pending. Whole-phase ZIP acceptance remains part of final close-out after item 6.
 
 ### Release-notes follow-up — 2026-11-26
 
-The dashboard's **Што е ново?** list now includes a dedicated `.66.a` release entry and an owner-facing test checklist for passkey enrollment/login/subject decisions, profile readback, role stacking, fail-closed schema handling, and privacy-safe diagnostics. The current package is `04_RELEASES/VERSIONS/1.2.4.66.a/ZIP/zmp-competitions-1.2.4.66.a-2026-11-26-whats-new.zip`; its earlier same-day package is superseded. The updated dashboard file was copied to the existing `localhost:8111` installation. A direct dashboard view could not be confirmed in-browser because the currently logged-in synthetic President account lacks permission to open that admin page; no database or user data was changed. Owner install/visual confirmation remains pending.
+The dashboard's **Што е ново?** list includes a dedicated `.66.a` release entry and owner-facing test checklist. The previously built package `04_RELEASES/VERSIONS/1.2.4.66.a/ZIP/zmp-competitions-1.2.4.66.a-2026-11-26-whats-new.zip` predates the President appointment correction and is now superseded; do not treat it as the current candidate. The updated dashboard file is present on the existing `localhost:8111` installation. The logged-in synthetic President lacks permission to open this admin-only page, so browser visual confirmation remains part of final item 7.
 
 ## Remaining work
 
-All seven listed checks now have PASS evidence. No test item in this checklist remains open. Owner installation/visual confirmation of the provided ZIP remains the next user-side step. Do not reopen any exact scope from older FAIL/NOT RUN text without contradictory current evidence. The 2026-11-25 register was superseded. The root project roadmap was not changed.
+Items 1-5 retain PASS evidence for their exact scopes. The President appointment role-policy/UI correction has focused 18/18 PASS evidence. Items 6 and 7 remain for the final close-out because the full-phase regression and ZIP recorded above belong to the earlier source. Do not reopen older FAIL/NOT RUN text for the exact scopes in items 1-5 without contradictory current evidence. The root project roadmap was not changed.
 
 
 ## What's New admin render probe - 2026-11-26
@@ -28,3 +28,8 @@ All seven listed checks now have PASS evidence. No test item in this checklist r
 **PASS - server-rendered dashboard callback contains the current .66.a release entry and owner-facing content.** On the existing local clone at :8111, WordPress rendered ZMP_Admin::view_dashboard() under the pre-existing synthetic administrator account (user 4). No account, role, database, or server state was changed.
 
 Read-only output checks: 26,645 bytes rendered; the What's New section was present; the selected release entry for 1.2.4.66.a was present; passkey release text was present; and both required subscriber and additive zmp_teacher role terms were present. The live browser remained logged in as the synthetic President, which is correctly denied access to this administrator-only page; browser visual confirmation is deferred to the owner ZIP-install step (item 7), as requested. This probe does not replace the full regression/ZIP close-out (items 6 and 7).
+
+
+## President appointment role-policy correction - 2026-11-26
+
+The administrator appoints the first President; the administrator's own account is excluded as the appointee. The page previously stated that Teacher/Moderator/Commission/Testator accounts could not be selected, which contradicted the role-stacking policy and the code. The UI and all candidate-validation paths now require Subscriber+Teacher, permit allowed additional ZMP roles, and preserve existing roles. Focused result: 18/18 PASS with synthetic cleanup and database integrity PASS. See [focused report](PRESIDENT_APPOINTMENT_ROLE_POLICY_FIX_1.2.4.66.a_2026-11-26.md). Items 6 and 7 are deferred for this updated source.

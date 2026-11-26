@@ -2,11 +2,11 @@
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
-**CURRENT .66.a CHECKLIST: ITEMS 1–7 PASS. FRESH ZIP, PHASE HASH CHECK, RESTRICTIVE LICENSE, AND GITHUB SYNC/READBACK ARE COMPLETE. OWNER INSTALLATION/TEST OF THE ZIP IS THE NEXT USER-SIDE STEP. NEWER SAME-SCOPE PASS EVIDENCE SUPERSEDES EVERY OLDER NOT RUN/FAIL/OPEN STATEMENT BELOW. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
+**CURRENT .66.a STATUS: ITEMS 1–5 RETAIN THEIR EXACT-SCOPE PASS EVIDENCE. PRESIDENT APPOINTMENT ROLE-POLICY FIX: FOCUSED 18/18 PASS. ITEMS 6 AND 7 ARE DEFERRED FOR FINAL CLOSE-OUT AFTER THIS SOURCE CHANGE; THE EARLIER FULL-REGRESSION AND ZIP PASS DO NOT APPLY TO THE CURRENT SOURCE. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
 
 ## CURRENT PASS SUPERSESSION — PROFILE, PASSKEY SCHEMA, EXPIRY, AND UI LAYOUT — 2026-11-25
 
-**Original open-scope items 2, 3, 4, 5, and 6 are PASS on the existing local clone at `:8111`; do not count older NOT RUN/INCONCLUSIVE records for these exact scopes as current.** Item 2: synthetic President/Teacher profile form submit/reload/readback plus stale-form partial-save repair. Item 3: exact v2-to-v3 `ADD COLUMN peer_hash` failure injection failed closed. Item 4: normal expiry cleanup removed only an expired row and preserved a future-expiring row. Item 5: owner-confirmed Cancel followed by deliberate PIN-authenticated retry; repeated locally with assertion success and persisted synthetic approval. Item 6: corrected profile layout, visible focus, keyboard interactions, and owner-confirmed Narrator operation (`reports/PRESIDENT_TEACHER_PROFILE_UI_LAYOUT_AND_KEYBOARD_CHECK_1.2.4.66.a_2026-11-25.md`). PIN entry/waiting is expected, not a defect. As of 2026-11-26, checklist items 1–7 PASS. The owner installation check is the next user-side step. Consult the 2026-11-26 regression report.
+**Original open-scope items 2, 3, 4, 5, and 6 are PASS on the existing local clone at `:8111`; do not count older NOT RUN/INCONCLUSIVE records for these exact scopes as current.** Item 2: synthetic President/Teacher profile form submit/reload/readback plus stale-form partial-save repair. Item 3: exact v2-to-v3 `ADD COLUMN peer_hash` failure injection failed closed. Item 4: normal expiry cleanup removed only an expired row and preserved a future-expiring row. Item 5: owner-confirmed Cancel followed by deliberate PIN-authenticated retry; repeated locally with assertion success and persisted synthetic approval. Item 6: corrected profile layout, visible focus, keyboard interactions, and owner-confirmed Narrator operation (`reports/PRESIDENT_TEACHER_PROFILE_UI_LAYOUT_AND_KEYBOARD_CHECK_1.2.4.66.a_2026-11-25.md`). PIN entry/waiting is expected, not a defect. These results PASS for their exact scope and tested source snapshot only. The later 2026-11-26 President appointment eligibility/UI source change supersedes the older whole-phase and ZIP acceptance. Current status: checklist items 1-5 retain exact-scope PASS, appointment policy test 18/18 PASS, and current-source full regression/package acceptance remains pending. Consult the current reconciliation.
 ## CURRENT .65 TRANSFER ADDENDUM — 2026-11-25
 
 The direct comparison found and transferred one additional user-facing .65 change that had been incomplete in this phase: when a valid Subscriber + Teacher account has no linked teacher record, the WordPress profile now explains to check both roles and the linked teacher record. The service still returns `teacher_profile_required`; the missing-link state is not mislabeled as a schema failure.
@@ -30,9 +30,9 @@ New regression fixture: `tests/phase66a-president-teacher-stacked-profile-self-s
 **OWNER RULE:** The 2026-11-24 PASS results recorded in this phase work log (mixed-role runtime 28/28; role/President preservation 26/26; stacked-President school-email route; stacked-Teacher subject route; Messenger legacy-index migration 7/7) supersede older NOT RUN/FAIL status for those exact checks. Do not reopen or repeat those accepted scopes without new contradictory evidence. These scoped PASS results do not by themselves declare unrelated phase checks or full-phase acceptance complete.
 
 
-## CURRENT REGRESSION STATUS — 2026-11-26
+## HISTORICAL REGRESSION SNAPSHOT - 2026-11-26 (BEFORE PRESIDENT APPOINTMENT POLICY CHANGE)
 
-**CHECKLIST ITEMS 1–6: PASS. ONLY ITEM 7 (FRESH ZIP, PHASE-HASH VERIFICATION, AND AUTHORIZED GITHUB SYNC/READBACK) REMAINS.** The end-to-end step-up matrix passed 38 checks on the existing local `:8111` clone; the exact-hash concurrent V2 fixture remains PASS. See `reports/FULL_FUNCTIONAL_SECURITY_REGRESSION_1.2.4.66.a_2026-11-26.md`. Do not use older open-count statements below this current addendum.
+The 38-check end-to-end step-up matrix and concurrent V2 fixture passed for the source snapshot tested before the President appointment eligibility/UI correction. This evidence remains valid for that snapshot and exact scope; it is not a whole-phase PASS for the current source. Re-run the full regression after the role-policy correction before final acceptance. The focused current appointment-policy test is recorded separately as 18/18 PASS.
 
 # 🚨 OWNER POLICY — ROLE STACKING — READ FIRST
 
@@ -42,7 +42,7 @@ New regression fixture: `tests/phase66a-president-teacher-stacked-profile-self-s
 
 **THIS 2026-11-25 OWNER POLICY OVERRIDES ANY CONFLICTING OLDER WORDING BELOW. HISTORICAL TEST RESULTS REMAIN LIMITED TO THE ROLE STACKS THEY ACTUALLY TESTED.** Canonical record: `00_START_HERE/ROLE_STACKING_OWNER_POLICY_2026-11-25.md`.
 
-## CURRENT RESULTS — 2026-11-25
+## HISTORICAL OPEN-SCOPE SNAPSHOT — 2026-11-25
 
 - `.65` inherited-fix regression on `.66.a`: **12/12 PASS**.
 - Confirmed stale schema marker bypasses future retry deadline; current marker preserves cooldown: **2/2 PASS**.
@@ -1018,3 +1018,7 @@ The existing local Edge tab at `localhost:8101/wp-admin/admin.php?page=zmp-presi
 ## 2026-11-24 — member role stacks and President role preservation — PASS
 Focused synthetic role/mandate runtime: 26/26 PASS on this phase; all 13 product PHP files matched this phase's loopback runtime source. Across four snapshots 52/52 phase/runtime file hashes matched and 54 PHP files linted. Full coverage and constraints: `reports/ROLE_STACK_AND_PRESIDENT_ROLE_PRESERVATION_1_2_4_66_a_2026-11-24.md`. This closes only the tested role/mandate defect; unrelated phase gates remain open.
 
+
+## Current President appointment and candidate package - 2026-11-26
+
+Appointment eligibility/UI correction: focused **18/18 PASS**. Current test ZIP: zmp-competitions-1.2.4.66.a-2026-11-26-role-policy-fix.zip; SHA-256 EE660D4F521BD655CE79B61E37995AF5933261B45C0FB84882AF547AD8447CD6; size 7137152 bytes; path parity **2,244/2,244**, PHP lint **1,968/1,968**, archive integrity **PASS**. This is a test candidate; current full regression/item 6 and owner/GitHub acceptance are still open. See reports/PRESIDENT_APPOINTMENT_ROLE_POLICY_ZIP_BUILD_1.2.4.66.a_2026-11-26.md.

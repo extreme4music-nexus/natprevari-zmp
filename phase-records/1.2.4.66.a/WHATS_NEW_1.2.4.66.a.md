@@ -2,7 +2,7 @@
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
-**CURRENT .66.a CHECKLIST: ITEMS 1–7 PASS. FRESH ZIP, PHASE HASH CHECK, RESTRICTIVE LICENSE, AND GITHUB SYNC/READBACK ARE COMPLETE. OWNER INSTALLATION/TEST OF THE ZIP IS THE NEXT USER-SIDE STEP. NEWER SAME-SCOPE PASS EVIDENCE SUPERSEDES EVERY OLDER NOT RUN/FAIL/OPEN STATEMENT BELOW. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
+**CURRENT .66.a STATUS: ITEMS 1–5 HAVE EXACT-SCOPE PASS EVIDENCE; PRESIDENT APPOINTMENT ROLE-POLICY FIX HAS FOCUSED 18/18 PASS. A FRESH TEST ZIP IS BUILT AND HASH-VERIFIED FOR THIS SOURCE. FULL CURRENT-SOURCE REGRESSION (ITEM 6), GITHUB READBACK, AND OWNER INSTALLATION (ITEM 7) ARE STILL OPEN. OLDER ZIP/FULL-REGRESSION RESULTS DO NOT APPLY TO THE UPDATED SOURCE.**
 
 ## CURRENT .66.a RELEASE NOTES AND OWNER TEST CHECKLIST — 2026-11-26
 
@@ -12,7 +12,7 @@ The WordPress dashboard **ЗМП Натпревари → Што е ново?** 
 2. **Passkey login:** on the WordPress login page, sign in with a previously registered passkey. The normal username/password form remains available. Confirm a failed or cancelled ceremony does not create a session.
 3. **President subject decisions:** for a synthetic pending subject proposal, test approve as new, approve as alias, and reject. Each decision requires a fresh passkey. Cancel or authenticator failure must leave the proposal pending.
 4. **School profile save/readback:** change a synthetic user's per-school employment fields and visibility selections, save, reload, and confirm the values persist. Only fields explicitly selected for directory visibility are shown there.
-5. **Role stacking:** every ZMP member requires `subscriber`; `zmp_teacher` is optional and additive. The President always requires both. Verify that adding teacher, moderator, commission, testator, or organizer roles preserves unrelated features and does not replace existing roles.
+5. **Role stacking and first President appointment:** every ZMP member requires `subscriber`; `zmp_teacher` is optional and additive generally, but the President must have both. An administrator records the first mandate for a separate non-administrator account; the candidate must already have `subscriber + zmp_teacher`. Allowed Moderator, Commission, Testator, Organizer, or existing President roles may be stacked and are preserved.
 6. **Schema failure handling:** passkey table creation/migration is checked independently. A missing or partially migrated schema must fail closed without saving a subject decision or creating an authenticated session.
 7. **Privacy-safe diagnostics:** inspect Debugging events for failed passkey/profile actions. They must contain only safe event details, never a password, PIN, authenticator assertion, challenge, or request body.
 

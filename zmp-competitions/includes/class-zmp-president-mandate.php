@@ -398,15 +398,8 @@ class ZMP_President_Mandate {
     }
 
     private static function eligible_appointee($user) {
-        if (!($user instanceof WP_User) || in_array('administrator', (array) $user->roles, true) || $user->has_cap('manage_options')) { return false; }
-        $roles = array_values((array) $user->roles);
-        $allowed_roles = array('subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer');
-        if (!in_array('subscriber', $roles, true) || array_diff($roles, $allowed_roles)) { return false; }
-        $cap_roles = array_keys((array) $user->caps);
-        sort($roles); sort($cap_roles);
-        if ($roles !== $cap_roles) { return false; }
-        foreach ($roles as $role) { if (empty($user->caps[$role])) { return false; } }
-        return true;
+        return function_exists('zmp_competitions_president_account_is_eligible')
+            && zmp_competitions_president_account_is_eligible($user);
     }
     private static function remove_president_role($user_id) {
         $user = get_user_by('id', (int) $user_id);

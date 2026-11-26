@@ -340,10 +340,8 @@ class ZMP_President_Mandate_Admin {
             }
 
             $roles = array_values((array) $user->roles);
-            $allowed_roles = array('subscriber','zmp_teacher','zmp_president','zmp_moderator','zmp_commission','zmp_testator','zmp_organizer');
-            $cap_roles = array_keys((array) $user->caps);
-            sort($roles); sort($cap_roles);
-            $is_eligible_member = in_array('subscriber', $roles, true) && !array_diff($roles, $allowed_roles) && $roles === $cap_roles;
+            $is_eligible_member = function_exists('zmp_competitions_president_account_is_eligible')
+                && zmp_competitions_president_account_is_eligible($user);
             $is_current_president = $renewal_user_id > 0 && (int) $user->ID === $renewal_user_id
                 && in_array('zmp_president', $roles, true) && $is_eligible_member;
             return $is_eligible_member || $is_current_president;
@@ -444,8 +442,8 @@ class ZMP_President_Mandate_Admin {
 
             <div class="notice notice-warning zmp-pm-account-notice" role="note">
                 <p><strong><?php esc_html_e('Користете посебна, неадминистраторска сметка.', 'zmp-competitions'); ?></strong>
-                    <?php esc_html_e('Администраторската сметка не може да биде Претседател и оваа форма не ѝ доделува пристап до управување со плагин, корисници или код. Изберете регистриран корисник без административни привилегии.', 'zmp-competitions'); ?>
-                    <?php esc_html_e('Сметки со улога наставник, модератор, тестатор, член на комисија или администратор не се прифатливи и нивните улоги нема да се менуваат.', 'zmp-competitions'); ?>
+                    <?php esc_html_e('Администраторот го евидентира мандатот за посебна сметка. Администраторската сметка не може да биде Претседател; оваа форма не му дава администраторски права на кандидатот. Кандидатот мора веќе да има subscriber и zmp_teacher.', 'zmp-competitions'); ?>
+                    <?php esc_html_e('Кандидатот може да ги задржи и другите дозволени ЗМП улоги, како модератор, комисија, тестатор или организатор; формата не ги менува. Администраторски сметки не се прифатливи.', 'zmp-competitions'); ?>
                     <a href="<?php echo esc_url(admin_url('user-new.php')); ?>"><?php esc_html_e('Додај корисник', 'zmp-competitions'); ?></a>
                 </p>
             </div>
@@ -713,7 +711,7 @@ class ZMP_President_Mandate_Admin {
                                         <option value="<?php echo esc_attr($user->ID); ?>"><?php echo esc_html($user->display_name . ' (#' . $user->ID . ')'); ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <p class="description" id="zmp-pm-user-help"><?php esc_html_e('Изберете посебна сметка со единствена улога Subscriber или тековниот претседател за обновување. Сметките на наставник, модератор, тестатор, комисија и администратор се исклучени и не се менуваат.', 'zmp-competitions'); ?></p>
+                                <p class="description" id="zmp-pm-user-help"><?php esc_html_e('Изберете регистриран корисник што веќе има subscriber и zmp_teacher, без администраторски права. Тековниот Претседател може да се избере при обновување. Дозволените дополнителни ЗМП улоги се зачувуваат и формата не ги менува.', 'zmp-competitions'); ?></p>
                             </div>
                             <div class="zmp-pm-field">
                                 <label for="zmp-pm-start-date"><?php esc_html_e('Почеток на мандатот', 'zmp-competitions'); ?></label>
