@@ -1,14 +1,13 @@
 # 🚨 STATUS UPDATE — 2026-11-27
 
-**OWNER UPDATE 2026-11-27: synthetic Moderator sending/receiving is user-confirmed PASS. The installed Messenger schema-fix ZIP still shows the automatic-retention-cleanup warning, whose live root cause is not yet known.** Earlier migration evidence remains limited to local `:8111`. The diagnostic candidate is at the top of the release manifest; use it to report the live marker/retry state, exact Messenger schema mismatch, and already-recorded diagnostics from other shared prerequisites. Details: `reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md`. This is not whole-phase acceptance.
-
+**OWNER UPDATE 2026-11-27: synthetic Moderator sending/receiving is user-confirmed PASS. Live diagnostic: Messenger schema compatible YES; shared marker stale at 1.2.4.53.2; retry pending. Code inspection found stale markers bypassed the five-minute cooldown, and the global marker commit did not log its blocking prerequisite. The new build fixes cooldown handling and records the exact blocker. The live blocker still needs a post-install event to identify; retention cleanup is not yet PASS.** Details: reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md. This is not whole-phase acceptance.
 # 🚨 HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
-**CURRENT .66.a STATUS: ITEMS 1–5 RETAIN THEIR EXACT-SCOPE PASS EVIDENCE. PRESIDENT APPOINTMENT ROLE-POLICY FIX: FOCUSED 18/18 PASS. ITEMS 6 AND 7 ARE DEFERRED FOR FINAL CLOSE-OUT AFTER THIS SOURCE CHANGE; THE EARLIER FULL-REGRESSION AND ZIP PASS DO NOT APPLY TO THE CURRENT SOURCE. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
+**HISTORICAL STATUS SNAPSHOT — 2026-11-26. It predates the owner live diagnostic and the 2026-11-27 Messenger retry fix.**
 
-## CURRENT PASS SUPERSESSION — PROFILE, PASSKEY SCHEMA, EXPIRY, AND UI LAYOUT — 2026-11-25
+## HISTORICAL PASS EVIDENCE — PROFILE, PASSKEY SCHEMA, EXPIRY, AND UI LAYOUT — 2026-11-25
 
 **Original open-scope items 2, 3, 4, 5, and 6 are PASS on the existing local clone at `:8111`; do not count older NOT RUN/INCONCLUSIVE records for these exact scopes as current.** Item 2: synthetic President/Teacher profile form submit/reload/readback plus stale-form partial-save repair. Item 3: exact v2-to-v3 `ADD COLUMN peer_hash` failure injection failed closed. Item 4: normal expiry cleanup removed only an expired row and preserved a future-expiring row. Item 5: owner-confirmed Cancel followed by deliberate PIN-authenticated retry; repeated locally with assertion success and persisted synthetic approval. Item 6: corrected profile layout, visible focus, keyboard interactions, and owner-confirmed Narrator operation (`reports/PRESIDENT_TEACHER_PROFILE_UI_LAYOUT_AND_KEYBOARD_CHECK_1.2.4.66.a_2026-11-25.md`). PIN entry/waiting is expected, not a defect. These results PASS for their exact scope and tested source snapshot only. The later 2026-11-26 President appointment eligibility/UI source change supersedes the older whole-phase and ZIP acceptance. Current status: checklist items 1-5 retain exact-scope PASS, appointment policy test 18/18 PASS, and current-source full regression/package acceptance remains pending. Consult the current reconciliation.
 ## CURRENT .65 TRANSFER ADDENDUM — 2026-11-25

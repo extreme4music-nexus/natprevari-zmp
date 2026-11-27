@@ -2,6 +2,8 @@
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
+**SUPERSEDED 2026-11-27: this 2026-11-26 checklist is a historical checkpoint, not the current acceptance. The owner live diagnostic now shows Messenger schema compatible, global marker 1.2.4.53.2 stale, and retry pending. The 2026-11-27 root-cause build fixes stale-marker retry cooldown and records the exact failed prerequisite; live cleanup remains unresolved until that blocker is identified and repaired. See PROJECT_STATE_1.2.4.66.a.md and the current release manifest.**
+
 # .66.a current checklist — 2026-11-26
 
 ## Current seven-item checklist

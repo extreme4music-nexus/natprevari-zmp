@@ -1,12 +1,18 @@
 # 🚨 STATUS UPDATE — 2026-11-27
 
-**THE 2026-11-26 STATUS BELOW IS HISTORICAL AND IS NOT THE CURRENT ACCEPTANCE.** On 2026-11-27 the appointment policy was corrected to permit Administrator + Subscriber + Teacher and allowed stacked ZMP roles. Eligibility/list matrix **21/21 PASS**; full stacked Administrator appointment **PASS**; role/capability preservation **PASS**; synthetic cleanup **PASS**; changed PHP lint **PASS**. A matching `TypeError` was reproduced and fixed in the local appointment grant path. The refreshed ZIP still requires owner installation to confirm the live-site error is resolved; no full `.66.a` acceptance is claimed.
+**CURRENT STATUS 2026-11-27: The latest owner live diagnostic finds Messenger schema-compatible YES, global marker 1.2.4.53.2 stale, retry pending; the exact blocking prerequisite is not yet identified. The active root-cause ZIP is zmp-competitions-1.2.4.66.a-2026-11-27-messenger-root-cause-04.zip (SHA-256 ab8acc203ba040f088c9ef75b70a066fb9779608af69881aec8db1dd96b34127). Source now honors the five-minute cooldown for stale markers and records schema_prerequisite_component. Messenger retention cleanup remains unresolved, so .66.a is not fully accepted. PASS/ZIP/GitHub statements from 2026-11-26 are historical checkpoints, not current phase acceptance.**
+
+## Messenger root-cause follow-up — 2026-11-27
+
+The owner diagnostic reports Messenger compatibility YES, shared marker 1.2.4.53.2 stale, and retry pending. Code review found stale markers bypassed the five-minute retry cooldown and the shared schema commit did not log its first failed prerequisite. The new build fixes cooldown handling, logs schema_prerequisite_component, and is packaged in the current release manifest. Local :8111 checks passed for retry timing 2/2 and safe blocker logging 1/1; options and diagnostic events were restored. Live cleanup remains open until the exact blocker is captured and repaired.
+
+**THE EARLIER 2026-11-27 APPOINTMENT UPDATE BELOW IS A SEPARATE HISTORICAL CHECKPOINT.**
 
 # 🚨 HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
-**CURRENT .66.a CHECKLIST: ITEMS 1–7 PASS. FRESH ZIP, PHASE HASH CHECK, RESTRICTIVE LICENSE, AND GITHUB SYNC/READBACK ARE COMPLETE. OWNER INSTALLATION/TEST OF THE ZIP IS THE NEXT USER-SIDE STEP. NEWER SAME-SCOPE PASS EVIDENCE SUPERSEDES EVERY OLDER NOT RUN/FAIL/OPEN STATEMENT BELOW. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
+**HISTORICAL CHECKPOINT ONLY — 2026-11-26:** the record at that date marked items 1–7 complete and listed a then-current ZIP/GitHub readback. It predates the 2026-11-27 source and Messenger schema-marker change. Use the dated current candidate and evidence in the release manifest; owner validation of this Messenger fix is still pending.
 
 ## CURRENT .65 TRANSFER ADDENDUM — 2026-11-25
 

@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('ZMP_VERSION', '1.2.4.66.a');
-define('ZMP_SCHEMA_VERSION', '1.2.4.65');
+define('ZMP_SCHEMA_VERSION', '1.2.4.66.a');
 define('ZMP_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ZMP_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -94,25 +94,77 @@ ZMP_School_Email_Access_UI::init();
 /**
  * Активација на додатокот - креирање на табели во базата и регистрација на улоги
  */
-function zmp_competitions_commit_messenger_schema($messenger_schema_ready, $school_profile_ready, $school_email_access_ready) {
-    if (!$messenger_schema_ready || !class_exists('ZMP_Registration_Requirements')
-        || !is_callable(array('ZMP_Registration_Requirements', 'admin_facsimile_schema_is_compatible'))
-        || !ZMP_Registration_Requirements::admin_facsimile_schema_is_compatible()
-        || !is_callable(array('ZMP_Role_Messenger', 'schema_is_compatible'))
-        || !ZMP_Role_Messenger::schema_is_compatible(true)
-        || !is_callable(array('ZMP_Role_Messenger', 'retention_audit_schema_is_compatible'))
-        || !ZMP_Role_Messenger::retention_audit_schema_is_compatible(true)
-        || !class_exists('ZMP_Mentor_Subject_Proposals')
-        || !is_callable(array('ZMP_Mentor_Subject_Proposals', 'schema_is_compatible'))
-        || !ZMP_Mentor_Subject_Proposals::schema_is_compatible()
-        || !$school_profile_ready || !class_exists('ZMP_Mentor_School_Profile')
-        || !ZMP_Mentor_School_Profile::schema_is_compatible()
-        || !$school_email_access_ready || !class_exists('ZMP_School_Email_Access')
-        || !ZMP_School_Email_Access::schema_is_compatible()) {
-        if (class_exists('ZMP_Role_Messenger') && is_callable(array('ZMP_Role_Messenger', 'mark_schema_retry_pending'))) {
-            ZMP_Role_Messenger::mark_schema_retry_pending();
-        }
-        return false;
+function zmp_competitions_log_schema_prerequisite_failure($component) {
+    $allowed = array(
+        'messenger_install','mentor_schools_install','mentor_subjects_install','subject_proposals_install','region_requests_install',
+        'school_profile_install','school_email_install','registration_requirements_api','registration_facsimile_schema',
+        'messenger_schema_api','messenger_schema_contract','messenger_retention_audit_schema','subject_proposals_api',
+        'subject_proposals_schema','school_profile_api','school_profile_schema','school_email_api','school_email_schema',
+        'retry_option_cleanup','database_marker_read','database_marker_write','database_marker_readback','database_marker_postcondition'
+    );
+    if (!in_array($component, $allowed, true)) { $component = 'messenger_install'; }
+    if (class_exists('ZMP_Debug')) {
+        ZMP_Debug::log('error', 'Plugin schema prerequisite not ready.', array(
+            'schema_component' => 'messenger',
+            'schema_issue' => 'prerequisite_not_ready',
+            'schema_expected' => 'plugin schema upgrade prerequisite ready',
+            'schema_actual' => 'not_ready',
+            'schema_prerequisite_component' => $component,
+            'schema_prerequisite_check_state' => 'blocked',
+            'outcome' => 'fail_closed',
+            'error_code' => 'schema_not_ready',
+        ), 'communications');
+    }
+    if (class_exists('ZMP_Role_Messenger') && is_callable(array('ZMP_Role_Messenger', 'mark_schema_retry_pending'))) {
+        ZMP_Role_Messenger::mark_schema_retry_pending();
+    }
+    return false;
+}
+
+function zmp_competitions_commit_messenger_schema($messenger_schema_ready, $school_profile_ready, $school_email_access_ready, $install_results = array()) {
+    foreach ((array) $install_results as $component => $ready) {
+        if (!$ready) { return zmp_competitions_log_schema_prerequisite_failure($component); }
+    }
+    if (!$messenger_schema_ready) { return zmp_competitions_log_schema_prerequisite_failure('messenger_install'); }
+    if (!class_exists('ZMP_Registration_Requirements')
+        || !is_callable(array('ZMP_Registration_Requirements', 'admin_facsimile_schema_is_compatible'))) {
+        return zmp_competitions_log_schema_prerequisite_failure('registration_requirements_api');
+    }
+    if (!ZMP_Registration_Requirements::admin_facsimile_schema_is_compatible()) {
+        return zmp_competitions_log_schema_prerequisite_failure('registration_facsimile_schema');
+    }
+    if (!is_callable(array('ZMP_Role_Messenger', 'schema_is_compatible'))) {
+        return zmp_competitions_log_schema_prerequisite_failure('messenger_schema_api');
+    }
+    if (!ZMP_Role_Messenger::schema_is_compatible(true)) {
+        return zmp_competitions_log_schema_prerequisite_failure('messenger_schema_contract');
+    }
+    if (!is_callable(array('ZMP_Role_Messenger', 'retention_audit_schema_is_compatible'))) {
+        return zmp_competitions_log_schema_prerequisite_failure('messenger_schema_api');
+    }
+    if (!ZMP_Role_Messenger::retention_audit_schema_is_compatible(true)) {
+        return zmp_competitions_log_schema_prerequisite_failure('messenger_retention_audit_schema');
+    }
+    if (!class_exists('ZMP_Mentor_Subject_Proposals')
+        || !is_callable(array('ZMP_Mentor_Subject_Proposals', 'schema_is_compatible'))) {
+        return zmp_competitions_log_schema_prerequisite_failure('subject_proposals_api');
+    }
+    if (!ZMP_Mentor_Subject_Proposals::schema_is_compatible()) {
+        return zmp_competitions_log_schema_prerequisite_failure('subject_proposals_schema');
+    }
+    if (!$school_profile_ready) { return zmp_competitions_log_schema_prerequisite_failure('school_profile_install'); }
+    if (!class_exists('ZMP_Mentor_School_Profile')) {
+        return zmp_competitions_log_schema_prerequisite_failure('school_profile_api');
+    }
+    if (!ZMP_Mentor_School_Profile::schema_is_compatible()) {
+        return zmp_competitions_log_schema_prerequisite_failure('school_profile_schema');
+    }
+    if (!$school_email_access_ready) { return zmp_competitions_log_schema_prerequisite_failure('school_email_install'); }
+    if (!class_exists('ZMP_School_Email_Access')) {
+        return zmp_competitions_log_schema_prerequisite_failure('school_email_api');
+    }
+    if (!ZMP_School_Email_Access::schema_is_compatible()) {
+        return zmp_competitions_log_schema_prerequisite_failure('school_email_schema');
     }
 
     // Clear and verify Messenger's retry intent before advancing the shared DB
@@ -121,8 +173,7 @@ function zmp_competitions_commit_messenger_schema($messenger_schema_ready, $scho
     $retry_read_ok = false;
     $retry_value = ZMP_Role_Messenger::schema_option_read('zmp_role_messenger_schema_retry', $retry_read_ok);
     if (!$retry_read_ok || $retry_value !== null || ZMP_Role_Messenger::schema_retry_pending()) {
-        ZMP_Role_Messenger::mark_schema_retry_pending();
-        return false;
+        return zmp_competitions_log_schema_prerequisite_failure('retry_option_cleanup');
     }
 
     // Capture the current marker state before handling the general DB version.
@@ -134,8 +185,7 @@ function zmp_competitions_commit_messenger_schema($messenger_schema_ready, $scho
     $marker_read_ok = false;
     $previous_marker = ZMP_Role_Messenger::schema_option_read('zmp_db_version', $marker_read_ok);
     if (!$marker_read_ok || ($marker_was_current && $previous_marker !== ZMP_SCHEMA_VERSION)) {
-        ZMP_Role_Messenger::mark_schema_retry_pending();
-        return false;
+        return zmp_competitions_log_schema_prerequisite_failure('database_marker_read');
     }
     if ($previous_marker !== ZMP_SCHEMA_VERSION) {
         $updated = update_option('zmp_db_version', ZMP_SCHEMA_VERSION);
@@ -144,15 +194,13 @@ function zmp_competitions_commit_messenger_schema($messenger_schema_ready, $scho
         if (!$updated || !$saved_read_ok || $saved_marker !== ZMP_SCHEMA_VERSION) {
             if ($previous_marker === null) { delete_option('zmp_db_version'); }
             else { update_option('zmp_db_version', $previous_marker); }
-            ZMP_Role_Messenger::mark_schema_retry_pending();
-            return false;
+            return zmp_competitions_log_schema_prerequisite_failure('database_marker_write');
         }
     }
     if (!ZMP_Role_Messenger::schema_marker_is_current() || ZMP_Role_Messenger::schema_retry_pending()) {
         if ($previous_marker === null) { delete_option('zmp_db_version'); }
         else { update_option('zmp_db_version', $previous_marker); }
-        ZMP_Role_Messenger::mark_schema_retry_pending();
-        return false;
+        return zmp_competitions_log_schema_prerequisite_failure('database_marker_postcondition');
     }
     delete_option('zmp_role_messenger_schema_retry_after');
     return true;
@@ -190,7 +238,15 @@ function zmp_competitions_activate() {
                 ZMP_Document_Review::install();
                 ZMP_Credentials::migrate_legacy_pins();
                 ZMP_Database::insert_initial_data();
-                zmp_competitions_commit_messenger_schema($messenger_schema_ready && $mentor_schools_ready && $mentor_subjects_ready && $subject_proposals_ready && $region_requests_ready, $school_profile_ready, $school_email_access_ready);
+                zmp_competitions_commit_messenger_schema($messenger_schema_ready && $mentor_schools_ready && $mentor_subjects_ready && $subject_proposals_ready && $region_requests_ready, $school_profile_ready, $school_email_access_ready, array(
+                    'messenger_install' => $messenger_schema_ready,
+                    'mentor_schools_install' => $mentor_schools_ready,
+                    'mentor_subjects_install' => $mentor_subjects_ready,
+                    'subject_proposals_install' => $subject_proposals_ready,
+                    'region_requests_install' => $region_requests_ready,
+                    'school_profile_install' => $school_profile_ready,
+                    'school_email_install' => $school_email_access_ready,
+                ));
             }
         } finally {
             if (!ZMP_Role_Messenger::release_schema_migration_lock()) { ZMP_Role_Messenger::mark_schema_retry_pending(); }
@@ -437,13 +493,10 @@ function zmp_competitions_init() {
     $schema_marker = ZMP_Role_Messenger::schema_option_read('zmp_db_version', $schema_marker_read_ok);
     $schema_upgrade_required = $schema_marker_read_ok && $schema_marker !== ZMP_SCHEMA_VERSION;
     if (!$schema_marker_read_ok || $schema_upgrade_required || ZMP_Role_Messenger::schema_retry_pending()) {
-        $retry_allowed = $schema_upgrade_required || ZMP_Role_Messenger::schema_retry_allowed();
+        $retry_allowed = ZMP_Role_Messenger::schema_retry_allowed();
         if (ZMP_Role_Messenger::mark_schema_retry_pending() && $retry_allowed && ZMP_Role_Messenger::acquire_schema_migration_lock()) {
             try {
-                $locked_marker_read_ok = false;
-                $locked_marker = ZMP_Role_Messenger::schema_option_read('zmp_db_version', $locked_marker_read_ok);
-                $locked_upgrade_required = $locked_marker_read_ok && $locked_marker !== ZMP_SCHEMA_VERSION;
-                $locked_retry_allowed = $locked_upgrade_required || ZMP_Role_Messenger::schema_retry_allowed();
+                $locked_retry_allowed = ZMP_Role_Messenger::schema_retry_allowed();
                 if (ZMP_Role_Messenger::mark_schema_retry_pending() && $locked_retry_allowed && ZMP_Role_Messenger::defer_schema_retry()) {
                     ZMP_Database::create_tables();
                     $mentor_schools_ready = ZMP_Mentor_Schools::install();
@@ -470,7 +523,15 @@ function zmp_competitions_init() {
                     ZMP_Credentials::migrate_legacy_pins();
                     ZMP_Regions::migrate_existing_data();
                     ZMP_YouTube::install();
-                    zmp_competitions_commit_messenger_schema($messenger_schema_ready && $mentor_schools_ready && $mentor_subjects_ready && $subject_proposals_ready && $region_requests_ready, $school_profile_ready, $school_email_access_ready);
+                    zmp_competitions_commit_messenger_schema($messenger_schema_ready && $mentor_schools_ready && $mentor_subjects_ready && $subject_proposals_ready && $region_requests_ready, $school_profile_ready, $school_email_access_ready, array(
+                    'messenger_install' => $messenger_schema_ready,
+                    'mentor_schools_install' => $mentor_schools_ready,
+                    'mentor_subjects_install' => $mentor_subjects_ready,
+                    'subject_proposals_install' => $subject_proposals_ready,
+                    'region_requests_install' => $region_requests_ready,
+                    'school_profile_install' => $school_profile_ready,
+                    'school_email_install' => $school_email_access_ready,
+                ));
                 }
             } finally {
                 if (!ZMP_Role_Messenger::release_schema_migration_lock()) { ZMP_Role_Messenger::mark_schema_retry_pending(); }

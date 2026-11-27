@@ -2,7 +2,7 @@
 
 ## Owner-reported reproduction
 
-The owner confirmed installing `04_RELEASES/VERSIONS/1.2.4.66.a/ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-messenger-schema-fix.zip`. The live administrator page still displays the Messenger schema warning. Therefore the local migration PASS in the earlier report does not prove that the live database has been repaired. The live root cause remains undetermined until this diagnostic is run on that site.
+Historical reproduction: the owner installed the messenger-schema-fix.zip and the live administrator page still displayed the warning. The owner later ran the read-only diagnostic; its result and the subsequent source finding are recorded below.
 
 The owner also reports that private-message exchange works end-to-end for a synthetic Moderator account. Record that as a user-confirmed PASS for sending/receiving messages only. The remaining warning is specifically about Messenger schema readiness for automatic retention cleanup; message exchange success does not prove the cleanup schema gate or scheduled deletion is healthy.
 
@@ -25,9 +25,9 @@ The diagnostic action does not itself run a migration, change Messenger options,
 
 ## Next action and status
 
-Install the diagnostic ZIP listed at the top of the `.66.a` release manifest, open the Debugging page, and run the button once. Share the result panel or export the **Пораки и известувања** event. Use that evidence to fix the identified live cause; do not label the Messenger issue PASS before the live warning clears and a fresh readiness check succeeds.
+Install the current root-cause ZIP listed at the top of the `.66.a` release manifest. After the next schema retry, inspect the latest Plugin schema prerequisite not ready event for schema_prerequisite_component. The Debugging button remains read-only and can display that stored event. Share its result or export the communications event. Do not label Messenger cleanup PASS until the blocker is fixed, the global marker advances, and a fresh readiness check succeeds.
 
-This report documents the diagnostic implementation only. It is not evidence that the live-site problem is fixed.
+This report records the diagnostic and root-cause code correction. It is not evidence that the live-site problem is fixed.
 
 ## Build and local verification
 
@@ -38,3 +38,28 @@ This report documents the diagnostic implementation only. It is not evidence tha
 - On the existing local `:8111` clone, the diagnostic returned: `notice_active=false`, marker `current`, retry `none`, Messenger schema-compatible `yes`; before/after retry/marker option values were unchanged. Other component checks were deliberately not rerun. This verifies the diagnostic's healthy-state output only; the local clone is not the live production database.
 - Local WordPress Debugging page render: button and result panel present **2/2 PASS**. Privacy-context sanitizer retained the expected diagnostic fields and reduced the prefix-presence flag to a boolean **PASS**.
 - SHA-256 inventory: `04_RELEASES/VERSIONS/1.2.4.66.a/HASHES/SHA256_MESSENGER_DIAGNOSTIC_2026-11-27.txt`.
+
+## Owner diagnostic result — 2026-11-27 02:31
+
+The owner ran the diagnostic on the live site and supplied:
+
+- plugin/schema required version 1.2.4.66.a;
+- zmp_db_version marker 1.2.4.53.2 (stale);
+- retry state pending, with a five-minute retry deadline;
+- Messenger schema compatibility yes, with no Messenger table/column/index mismatch;
+- five stored prerequisite events, all from 2026-11-25 and naming school email or school engagement readiness.
+
+This proves the warning is not currently explained by a structural Messenger mismatch. The Messenger warning is gated by the plugin-wide schema marker and retry option; the marker advances only after all participating plugin schema prerequisites pass. School-profile/email prerequisite failures are the most relevant existing clues, but their events predate this diagnostic and do not prove the current failing component.
+
+A second source defect was found in zmp_competitions_init(): the stale marker previously bypassed the five-minute retry cooldown. The code now relies on schema_retry_allowed() even when the marker is stale.
+
+The migration commit now records the first failing prerequisite in the safe diagnostic context as schema_prerequisite_component, including install results, component schema checks, and database-marker persistence failures. The next installed build can therefore identify the actual blocker without executing a separate readiness check from the diagnostic button.
+
+**No database marker was changed manually. No production message or user data was changed. The live cleanup issue remains open until the new event identifies its blocker and a successful retry advances the schema marker.**
+
+
+## 2026-11-27 code correction after live diagnostic
+
+The owner-provided live snapshot reports Messenger structural compatibility YES, shared marker 1.2.4.53.2 stale, and a pending retry. Review of zmp_competitions_commit_messenger_schema() confirms the marker is shared: it advances only after Messenger, school-profile, school-email, subject-proposal, mentor-school, region-request, and facsimile schema prerequisites pass. The notice therefore does not prove a Messenger table defect.
+
+A retry-dispatch bug was confirmed: the stale marker previously made schema_upgrade_required true and bypassed schema_retry_allowed(), so the five-minute cooldown did not apply on every request. This build removes that bypass. It also logs the first failed prerequisite/install result or marker persistence step as schema_prerequisite_component. Exact live blocker remains unknown until this code runs on the live site.

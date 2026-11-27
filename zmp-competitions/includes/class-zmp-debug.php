@@ -123,14 +123,15 @@ class ZMP_Debug {
             'post_fields_count','role_count','duration_minutes','actor_user_id','proposal_id','canonical_subject_id','page','page_size',
             'result_count','batch_count','row_count','count','total','updated_count','inserted_count','schema_prerequisite_event_count'
         );
-        $schema_detail_keys = array('schema_component','schema_table','schema_object','schema_issue','schema_expected','schema_actual','schema_marker_state','schema_retry_state','schema_retry_after_state','schema_compatible','schema_version','plugin_version','schema_database_marker','schema_retry_deadline','schema_prerequisite_check_state');
+        $schema_detail_keys = array('schema_component','schema_table','schema_object','schema_issue','schema_expected','schema_actual','schema_marker_state','schema_retry_state','schema_retry_after_state','schema_compatible','schema_version','plugin_version','schema_database_marker','schema_retry_deadline','schema_prerequisite_check_state','schema_prerequisite_component');
         $schema_detail_values = array(
             'schema_component' => array('messenger'),
             'schema_marker_state' => array('current','missing','stale','storage_failure','read_failed','unexpected'),
             'schema_retry_state' => array('none','pending','storage_failure','unexpected','read_failed'),
             'schema_retry_after_state' => array('missing','cooldown','due','invalid','read_failed'),
             'schema_compatible' => array('yes','no'),
-            'schema_prerequisite_check_state' => array('not_rechecked_read_only'),
+            'schema_prerequisite_check_state' => array('not_rechecked_read_only','blocked'),
+            'schema_prerequisite_component' => array('messenger_install','mentor_schools_install','mentor_subjects_install','subject_proposals_install','region_requests_install','school_profile_install','school_email_install','registration_requirements_api','registration_facsimile_schema','messenger_schema_api','messenger_schema_contract','messenger_retention_audit_schema','subject_proposals_api','subject_proposals_schema','school_profile_api','school_profile_schema','school_email_api','school_email_schema','retry_option_cleanup','database_marker_read','database_marker_write','database_marker_readback','database_marker_postcondition'),
         );
         $flag_keys = array('is_admin','is_teacher','profile_found','db_error_present','insert_id_present','redirect_has_result_flag','nonce_field_present','schema_notice_active','schema_prefix_present',
             'has_first_name','has_last_name','has_grade','has_language','logged_in','email_changed');

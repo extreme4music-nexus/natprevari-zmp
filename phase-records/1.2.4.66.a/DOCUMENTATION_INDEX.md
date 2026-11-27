@@ -1,15 +1,8 @@
 # 🚨 CURRENT OWNER STATUS — 2026-11-27 — READ FIRST
 
-**OWNER CONFIRMED 2026-11-27: synthetic Moderator message exchange works, but the installed `messenger-schema-fix.zip` still shows the automatic-cleanup schema warning on the live site. Message exchange is PASS; retention-cleanup readiness is NOT PASS / root cause unknown.** A diagnostic build adds a read-only Messenger checker to the Debugging page. Install the candidate at the top of the release manifest, run that check, and use its result before further migration changes.
+**OWNER CONFIRMED: synthetic Moderator message exchange works. Live Messenger diagnostic reports schema compatibility YES, global marker 1.2.4.53.2 stale, and retry pending. This indicates an incomplete plugin-wide schema commit, not a detected Messenger table mismatch. The stale-marker cooldown bypass is fixed; the new build logs schema_prerequisite_component. Live retention cleanup remains unresolved until that blocker is identified and repaired.**
 
-Prior local evidence (not live confirmation): reports/MESSENGER_SCHEMA_AUTO_UPGRADE_FIX_1.2.4.66.a_2026-11-27.md; reports/MESSENGER_SCHEMA_FIX_ZIP_BUILD_1.2.4.66.a_2026-11-27.md. Current diagnostic and owner next step: reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md. Current ZIP and hash: `../../04_RELEASES/VERSIONS/1.2.4.66.a/RELEASE_MANIFEST_1.2.4.66.a.md`.
-
-# HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
-
-
-**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
-
-**HISTORICAL CHECKPOINT ONLY — 2026-11-26:** the record at that date marked items 1–7 complete and listed a then-current ZIP/GitHub readback. It predates the 2026-11-27 source and Messenger schema-marker change. Use the current evidence block above and the release manifest; owner validation of this Messenger fix remains pending.
+**CURRENT ZIP:** zmp-competitions-1.2.4.66.a-2026-11-27-messenger-root-cause-04.zip — SHA-256 ab8acc203ba040f088c9ef75b70a066fb9779608af69881aec8db1dd96b34127. Evidence: reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md and reports/MESSENGER_ROOT_CAUSE_RETRY_FIX_ZIP_BUILD_1.2.4.66.a_2026-11-27.md.
 
 ## REQUIRED RULE — READ BEFORE CONTINUING ANY PHASE
 
@@ -53,3 +46,8 @@ reports/MESSENGER_LEGACY_SCOPED_THREADS_REPAIR_1.2.4.66_a_2026-11-24.md.
 - Functional/security regression: `reports/FULL_FUNCTIONAL_SECURITY_REGRESSION_1.2.4.66.a_2026-11-26.md`.
 - Current candidate package and hashes: `../../04_RELEASES/VERSIONS/1.2.4.66.a/RELEASE_MANIFEST_1.2.4.66.a.md`.
 - Restrictive project license: `LICENSE.md`; third-party notices remain under `vendor/`.
+
+
+## Messenger retry root-cause build evidence
+
+See reports/MESSENGER_ROOT_CAUSE_RETRY_FIX_ZIP_BUILD_1.2.4.66.a_2026-11-27.md.

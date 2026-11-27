@@ -1,15 +1,26 @@
-# 🚨 CURRENT TEST CANDIDATE — 2026-11-27 — MESSENGER ROOT-CAUSE DIAGNOSTICS
+# 🚨 CURRENT TEST CANDIDATE — 2026-11-27 — MESSENGER GLOBAL SCHEMA RETRY ROOT CAUSE
 
-**OWNER CONFIRMED: the previously installed `messenger-schema-fix.zip` still displays the Messenger warning on the live site. This diagnostic build does not claim the live issue is fixed. It adds an administrator-only diagnostic action that reads Messenger retry/marker state and actual table/column/index compatibility, and displays already-recorded diagnostics from other schema prerequisites. It does not rerun those components because their readiness functions can change Messenger retry state. Existing plugin initialization may still run its automatic retry if the five-minute deadline is due. Install this build to collect the live evidence.**
+**OWNER DIAGNOSTIC: Messenger tables, columns and indexes are compatible, but the shared schema marker is stale at 1.2.4.53.2 and the global migration retry is pending. This is not evidence of a Messenger table mismatch. The global schema commit is blocked by an unidentified prerequisite; the old stored school-profile/email events are clues only.**
 
-**OWNER ALSO CONFIRMED SYNTHETIC MODERATOR MESSAGE EXCHANGE WORKS END-TO-END. This is a PASS for sending/receiving messages only; the automatic retention-cleanup schema warning remains unresolved and must be diagnosed separately.**
+**SOURCE FIX:** stale database markers no longer bypass the five-minute cooldown. The migration commit now logs the first failing install/schema prerequisite or marker persistence step as schema_prerequisite_component. The diagnostic button remains read-only. No database marker was forced current, and no production message/user data was changed.
+
+- ZIP: ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-messenger-root-cause-04.zip
+- SHA-256: ab8acc203ba040f088c9ef75b70a066fb9779608af69881aec8db1dd96b34127; size 7,043,241 bytes; runtime files 2,244.
+- Archive integrity: PASS; exact runtime path parity: 2,244/2,244 PASS.
+- SHA-256 source/archive inventory: HASHES/SHA256_MESSENGER_ROOT_CAUSE_2026-11-27.txt.
+- PHP syntax: 4/4 changed runtime files PASS.
+- Existing local :8111 clone: future retry cooldown blocked; expired retry permitted (2/2 PASS); safe prerequisite event retained with school_profile_install (1/1 PASS); schema-control options and diagnostic log restored after checks.
+- Live status remains unresolved until this build is installed and a fresh failed migration event identifies the blocker. Synthetic Moderator message exchange is owner-confirmed PASS; retention cleanup is not yet PASS.
+- Evidence: 03_PHASES/zmp-competitions-1.2.4.66.a/reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md and MESSENGER_ROOT_CAUSE_RETRY_FIX_ZIP_BUILD_1.2.4.66.a_2026-11-27.md.
+
+---
+
+# HISTORICAL DIAGNOSTIC CANDIDATE — 2026-11-27 — SUPERSEDED
+
+The previous read-only diagnostic showed stale shared marker and compatible Messenger tables, but did not identify the global migration blocker or fix stale-marker cooldown bypass. It is superseded by the candidate at the top of this manifest.
 
 - ZIP: ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-messenger-diagnostic-03.zip
-- SHA-256: `5b248c34e4819760466d82f2a1c7b884428cee57dde88f9c16f6c0a514b71ecd`; size 9,155,708 bytes; 2,244 files (2,246 ZIP entries including directory entries).
-- Package path parity: 2,244/2,244 PASS; archive readback PASS; 5 key-file hashes match the `.66.a` phase source; changed-file PHP lint 3/3 PASS.
-- Existing local `:8111` clone diagnostic: no warning, marker current, retry none, Messenger compatible; schema-control options unchanged by the check. Other component readiness functions were not rerun; only existing logged evidence is displayed. This is local-only evidence and does not resolve the owner-reported live warning.
-- SHA-256 source/archive inventory: `HASHES/SHA256_MESSENGER_DIAGNOSTIC_2026-11-27.txt`.
-- Detailed behavior and next owner action: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md`.
+- SHA-256: 5b248c34e4819760466d82f2a1c7b884428cee57dde88f9c16f6c0a514b71ecd.
 
 ---
 

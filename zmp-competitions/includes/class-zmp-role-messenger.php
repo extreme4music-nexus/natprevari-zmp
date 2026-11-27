@@ -361,6 +361,7 @@ class ZMP_Role_Messenger {
                 'table' => isset($context['schema_table']) ? (string) $context['schema_table'] : '',
                 'object' => isset($context['schema_object']) ? (string) $context['schema_object'] : '',
                 'issue' => isset($context['schema_issue']) ? (string) $context['schema_issue'] : '',
+                'prerequisite' => isset($context['schema_prerequisite_component']) ? (string) $context['schema_prerequisite_component'] : '',
                 'expected' => isset($context['schema_expected']) ? (string) $context['schema_expected'] : '',
                 'actual' => isset($context['schema_actual']) ? (string) $context['schema_actual'] : '',
             );
