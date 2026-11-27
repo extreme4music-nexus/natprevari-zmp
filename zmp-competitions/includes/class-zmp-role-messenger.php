@@ -12,6 +12,7 @@ class ZMP_Role_Messenger {
     private static $schema_retry_storage_unconfirmed = false;
     private static $schema_compatible_cache = null;
     private static $schema_compatible_prefix = null;
+    private static $schema_compatibility_diagnostic = array();
     private static $audit_compatible_cache = null;
     private static $audit_compatible_prefix = null;
 
@@ -122,7 +123,7 @@ class ZMP_Role_Messenger {
         $error_offset = count($EZSQL_ERROR);
         $charset = $wpdb->get_charset_collate();
         $p = $wpdb->prefix;
-        if (!self::repair_legacy_scoped_threads_index($p . 'zmp_role_messages')) { return false; }
+        if (!self::repair_legacy_scoped_threads_index($p . 'zmp_role_messages')) { self::$schema_compatible_cache = null; return false; }
         dbDelta("CREATE TABLE {$p}zmp_role_messages (
             id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
             thread_id BIGINT(20) UNSIGNED NOT NULL DEFAULT 0,
@@ -287,6 +288,97 @@ class ZMP_Role_Messenger {
         $value = $wpdb->get_var($wpdb->prepare("SELECT option_value FROM `{$table}` WHERE option_name=%s LIMIT 1", $name));
         $read_ok = $wpdb->last_error === '';
         return $value;
+    }
+
+    /** Return a privacy-safe snapshot explaining why the Messenger notice is active. */
+    public static function schema_diagnostic_snapshot() {
+        global $wpdb;
+        $marker_read_ok = false;
+        $marker = self::schema_option_read('zmp_db_version', $marker_read_ok);
+        $pending_read_ok = false;
+        $pending = self::schema_option_read(self::SCHEMA_RETRY_OPTION, $pending_read_ok);
+        $retry_read_ok = false;
+        $retry_after = self::schema_option_read('zmp_role_messenger_schema_retry_after', $retry_read_ok);
+        $marker_fallback = self::retry_marker_fallback($marker);
+        $marker_state = !$marker_read_ok ? 'read_failed' : ($marker_fallback === false ? 'unexpected' : (is_array($marker_fallback) ? 'storage_failure' : ($marker === null ? 'missing' : ($marker === ZMP_SCHEMA_VERSION ? 'current' : (is_string($marker) && preg_match('/^[0-9A-Za-z.+_-]{1,80}$/', $marker) ? 'stale' : 'unexpected')))));
+        $retry_state = !$pending_read_ok ? 'read_failed' : ($pending === null ? 'none' : ($pending === '1' ? 'pending' : ($pending === self::SCHEMA_RETRY_STORAGE_FAILED ? 'storage_failure' : 'unexpected')));
+        if (!$retry_read_ok) { $retry_after_state = 'read_failed'; }
+        elseif ($retry_after === null) { $retry_after_state = 'missing'; }
+        elseif (!is_scalar($retry_after) || !ctype_digit((string) $retry_after)) { $retry_after_state = 'invalid'; }
+        else { $retry_after_state = (int) $retry_after > time() ? 'cooldown' : 'due'; }
+
+        self::$schema_compatibility_diagnostic = array();
+        $compatible = self::schema_is_compatible(true);
+        $schema_issue = self::$schema_compatibility_diagnostic;
+        if ($compatible && !$schema_issue) { $schema_issue = array('schema_issue'=>'none','schema_expected'=>'all required Messenger tables, columns and indexes','schema_actual'=>'compatible'); }
+        $prerequisite_events = self::recent_schema_prerequisite_events();
+        $notice_active = self::schema_retry_pending() || !self::schema_marker_is_current();
+        $result = array(
+            'notice_active' => $notice_active,
+            'schema_marker_state' => $marker_state,
+            'schema_retry_state' => $retry_state,
+            'schema_retry_after_state' => $retry_after_state,
+            'schema_compatible' => $compatible ? 'yes' : 'no',
+            'schema_component' => 'messenger',
+            'schema_table' => isset($schema_issue['schema_table']) ? $schema_issue['schema_table'] : '',
+            'schema_object' => isset($schema_issue['schema_object']) ? $schema_issue['schema_object'] : '',
+            'schema_issue' => isset($schema_issue['schema_issue']) ? $schema_issue['schema_issue'] : 'metadata_check_failed',
+            'schema_expected' => isset($schema_issue['schema_expected']) ? $schema_issue['schema_expected'] : '',
+            'schema_actual' => isset($schema_issue['schema_actual']) ? $schema_issue['schema_actual'] : '',
+            'schema_version' => defined('ZMP_SCHEMA_VERSION') ? ZMP_SCHEMA_VERSION : '',
+            'plugin_version' => defined('ZMP_VERSION') ? ZMP_VERSION : '',
+            'schema_database_marker' => ($marker_state === 'current' || $marker_state === 'stale') ? (string) $marker : $marker_state,
+            'schema_retry_deadline' => $retry_after_state === 'cooldown' || $retry_after_state === 'due' ? (string) $retry_after : $retry_after_state,
+            'schema_prerequisite_check_state' => 'not_rechecked_read_only',
+            'schema_prerequisite_event_count' => count($prerequisite_events),
+            'schema_prerequisite_recent_events' => $prerequisite_events,
+            'schema_prefix_present' => !empty($wpdb->prefix),
+        );
+        return $result;
+    }
+
+    /** Read only a bounded set of existing, fixed schema diagnostics; do not rerun other components. */
+    public static function recent_schema_prerequisite_events() {
+        if (!class_exists('ZMP_Debug')) { return array(); }
+        $labels = array(
+            'Plugin schema prerequisite not ready.' => 'plugin_schema_not_ready',
+            'Messenger schema migration failure detail.' => 'messenger_schema_failure',
+            'School engagement schema is not ready.' => 'school_engagement_schema_not_ready',
+            'School email access schema prerequisite is not ready.' => 'school_email_schema_not_ready',
+            'School profile schema is not ready.' => 'school_profile_schema_not_ready',
+            'School profile schema is not ready for save.' => 'school_profile_save_schema_not_ready',
+        );
+        $events = get_option(ZMP_Debug::OPTION, array());
+        if (!is_array($events)) { return array(); }
+        $recent = array();
+        foreach (array_reverse($events) as $raw_event) {
+            $event = ZMP_Debug::normalize_event($raw_event);
+            if (!isset($labels[$event['message']])) { continue; }
+            $context = isset($event['context']) && is_array($event['context']) ? $event['context'] : array();
+            $recent[] = array(
+                'time' => preg_match('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/', (string) $event['time']) ? (string) $event['time'] : '',
+                'event' => $labels[$event['message']],
+                'table' => isset($context['schema_table']) ? (string) $context['schema_table'] : '',
+                'object' => isset($context['schema_object']) ? (string) $context['schema_object'] : '',
+                'issue' => isset($context['schema_issue']) ? (string) $context['schema_issue'] : '',
+                'expected' => isset($context['schema_expected']) ? (string) $context['schema_expected'] : '',
+                'actual' => isset($context['schema_actual']) ? (string) $context['schema_actual'] : '',
+            );
+            if (count($recent) >= 5) { break; }
+        }
+        return $recent;
+    }
+
+    private static function schema_compatibility_fail($table, $object, $issue, $expected, $actual) {
+        self::$schema_compatibility_diagnostic = array(
+            'schema_component' => 'messenger',
+            'schema_table' => (string) $table,
+            'schema_object' => (string) $object,
+            'schema_issue' => (string) $issue,
+            'schema_expected' => (string) $expected,
+            'schema_actual' => (string) $actual,
+        );
+        return self::$schema_compatible_cache = false;
     }
 
     /** Parse the alternate cooldown stored in the schema marker after both retry-option writes fail. */
@@ -464,6 +556,7 @@ class ZMP_Role_Messenger {
     public static function schema_is_compatible($refresh = false) {
         global $wpdb;
         if (!$refresh && self::$schema_compatible_cache !== null && self::$schema_compatible_prefix === $wpdb->prefix) { return self::$schema_compatible_cache; }
+        self::$schema_compatibility_diagnostic = array();
         self::$schema_compatible_prefix = $wpdb->prefix;
         $contracts = array(
             'zmp_role_messages' => array('id,thread_id,scope_type,season_id,category_id,region_key,sender_id,subject,message,created_at,expires_at', array('primary'=>array(1,'id'),'scoped_threads'=>array(0,'scope_type,season_id,category_id,region_key,thread_id,id'),'sender_time'=>array(0,'sender_id,created_at'),'retention_expiry'=>array(0,'scope_type,expires_at,id'))),
@@ -486,39 +579,51 @@ class ZMP_Role_Messenger {
             . " UNION ALL SELECT 'index', TABLE_NAME, INDEX_NAME, COLUMN_NAME, SEQ_IN_INDEX, NON_UNIQUE, SUB_PART, NULL, NULL FROM information_schema.STATISTICS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME IN ({$placeholders})";
         $wpdb->last_error = '';
         $rows = $wpdb->get_results($wpdb->prepare($query, array_merge($names, $names, $names)), ARRAY_A);
-        if ($wpdb->last_error !== '' || !is_array($rows)) { return self::$schema_compatible_cache = false; }
+        if ($wpdb->last_error !== '' || !is_array($rows)) { return self::schema_compatibility_fail('metadata', 'tables_columns_indexes', 'metadata_read_failed', 'information_schema metadata available', 'database_metadata_unavailable'); }
         $tables = array();
         $columns = array();
         $indexes = array();
         foreach ($rows as $row) {
-            if (!isset($row['kind'], $row['table_name'], $row['item_name'])) { return self::$schema_compatible_cache = false; }
+            if (!isset($row['kind'], $row['table_name'], $row['item_name'])) { return self::schema_compatibility_fail('metadata', 'metadata_row', 'metadata_incomplete', 'kind, table, and object name', 'required_metadata_missing'); }
             $table = (string) $row['table_name'];
             if ($row['kind'] === 'table') { $tables[$table] = array('engine'=>$row['item_name'],'table_type'=>$row['info']); continue; }
             if ($row['kind'] === 'column') { $columns[$table][(string) $row['item_name']] = array('column_type'=>$row['info'],'is_nullable'=>$row['is_nullable'],'extra'=>$row['extra']); continue; }
-            if ($row['kind'] !== 'index' || !isset($row['seq'], $row['non_unique'])) { return self::$schema_compatible_cache = false; }
+            if ($row['kind'] !== 'index' || !isset($row['seq'], $row['non_unique'])) { return self::schema_compatibility_fail((string) $row['table_name'], 'index_metadata', 'metadata_incomplete', 'index sequence and uniqueness metadata', 'required_metadata_missing'); }
             $name = strtolower((string) $row['item_name']); $seq = (int) $row['seq'];
             if ($seq < 1 || isset($indexes[$table][$name]['columns'][$seq]) || !isset($row['info']) || $row['sub_part'] !== null) { $indexes[$table][$name]['invalid'] = true; continue; }
             $unique = (int) $row['non_unique'] === 0;
-            if (isset($indexes[$table][$name]['unique']) && $indexes[$table][$name]['unique'] !== $unique) { return self::$schema_compatible_cache = false; }
+            if (isset($indexes[$table][$name]['unique']) && $indexes[$table][$name]['unique'] !== $unique) { return self::schema_compatibility_fail($table, $name, 'index_metadata_conflict', 'consistent uniqueness metadata', 'conflicting_metadata'); }
             $indexes[$table][$name]['unique'] = $unique;
             $indexes[$table][$name]['columns'][$seq] = (string) $row['info'];
         }
         foreach ($contracts as $suffix => $contract) {
             $table = $wpdb->prefix . $suffix;
-            if (!isset($tables[$table]) || strcasecmp((string) $tables[$table]['engine'], 'InnoDB') !== 0 || $tables[$table]['table_type'] !== 'BASE TABLE') { return self::$schema_compatible_cache = false; }
+            if (!isset($tables[$table]) || strcasecmp((string) $tables[$table]['engine'], 'InnoDB') !== 0 || $tables[$table]['table_type'] !== 'BASE TABLE') {
+                $actual_table = !isset($tables[$table]) ? 'missing' : (string) $tables[$table]['engine'] . ' ' . (string) $tables[$table]['table_type'];
+                return self::schema_compatibility_fail($table, 'table', 'table_missing_or_incompatible', 'InnoDB BASE TABLE', $actual_table);
+            }
             foreach (explode(',', $contract[0]) as $column) {
-                if (!isset($columns[$table][$column]) || !self::schema_column_is_compatible($suffix, $column, $columns[$table][$column])) { return self::$schema_compatible_cache = false; }
+                if (!isset($columns[$table][$column])) { return self::schema_compatibility_fail($table, $column, 'column_missing', 'required column with compatible type/nullability', 'missing'); }
+                if (!self::schema_column_is_compatible($suffix, $column, $columns[$table][$column])) {
+                    $actual_column = (string) $columns[$table][$column]['column_type'] . ' ' . ((string) $columns[$table][$column]['is_nullable'] === 'YES' ? 'NULL' : 'NOT NULL') . ' ' . (string) $columns[$table][$column]['extra'];
+                    return self::schema_compatibility_fail($table, $column, 'column_incompatible', 'required type, nullability, and attributes', $actual_column);
+                }
             }
             foreach ($contract[1] as $name => $expected) {
-                if (!isset($indexes[$table][$name]['unique']) || !empty($indexes[$table][$name]['invalid']) || $indexes[$table][$name]['unique'] !== (bool) $expected[0]) { return self::$schema_compatible_cache = false; }
+                if (!isset($indexes[$table][$name]['unique'])) { return self::schema_compatibility_fail($table, $name, 'index_missing', $expected[0] ? 'unique index ' . $expected[1] : 'nonunique index ' . $expected[1], 'missing'); }
+                if (!empty($indexes[$table][$name]['invalid']) || $indexes[$table][$name]['unique'] !== (bool) $expected[0]) { return self::schema_compatibility_fail($table, $name, 'index_incompatible', $expected[0] ? 'unique index ' . $expected[1] : 'nonunique index ' . $expected[1], !empty($indexes[$table][$name]['invalid']) ? 'invalid index metadata' : ($indexes[$table][$name]['unique'] ? 'unique' : 'nonunique')); }
                 ksort($indexes[$table][$name]['columns']);
-                if (array_keys($indexes[$table][$name]['columns']) !== range(1, count($indexes[$table][$name]['columns'])) || array_values($indexes[$table][$name]['columns']) !== explode(',', $expected[1])) { return self::$schema_compatible_cache = false; }
+                if (array_keys($indexes[$table][$name]['columns']) !== range(1, count($indexes[$table][$name]['columns'])) || array_values($indexes[$table][$name]['columns']) !== explode(',', $expected[1])) { return self::schema_compatibility_fail($table, $name, 'index_columns_mismatch', $expected[1], implode(',', array_values($indexes[$table][$name]['columns']))); }
             }
         }
         // The audit column's width was checked against the same fresh metadata.
         self::$audit_compatible_prefix = $wpdb->prefix;
         self::$audit_compatible_cache = true;
-        return self::$schema_compatible_cache = self::retention_audit_schema_is_compatible();
+        if (!self::retention_audit_schema_is_compatible()) {
+            return self::schema_compatibility_fail($wpdb->prefix . 'zmp_role_retention_audit', 'trigger_type', 'column_incompatible', 'VARCHAR(32) or wider, NOT NULL', 'missing_or_incompatible');
+        }
+        self::$schema_compatibility_diagnostic = array();
+        return self::$schema_compatible_cache = true;
     }
 
     /** Require the storage capacity and nullability used by Messenger writes. */
@@ -550,9 +655,28 @@ class ZMP_Role_Messenger {
         $table = str_replace('`', '``', $wpdb->prefix . 'zmp_role_retention_audit');
         $column = $wpdb->get_row($wpdb->prepare("SHOW COLUMNS FROM `{$table}` WHERE Field = %s", 'trigger_type'));
         if ($wpdb->last_error !== '' || !$column || !isset($column->Field, $column->Type) || $column->Field !== 'trigger_type') {
+            self::$schema_compatibility_diagnostic = array(
+                'schema_component' => 'messenger',
+                'schema_table' => $wpdb->prefix . 'zmp_role_retention_audit',
+                'schema_object' => 'trigger_type',
+                'schema_issue' => 'column_missing_or_unreadable',
+                'schema_expected' => 'VARCHAR(32) or wider, NOT NULL',
+                'schema_actual' => 'missing_or_metadata_unavailable',
+            );
             return self::$audit_compatible_cache = false;
         }
-        return self::$audit_compatible_cache = preg_match('/^varchar\((\d+)\)$/i', trim($column->Type), $matches) === 1 && (int) $matches[1] >= 32;
+        $compatible = preg_match('/^varchar\((\d+)\)$/i', trim($column->Type), $matches) === 1 && (int) $matches[1] >= 32 && isset($column->Null) && strtoupper((string) $column->Null) === 'NO';
+        if (!$compatible) {
+            self::$schema_compatibility_diagnostic = array(
+                'schema_component' => 'messenger',
+                'schema_table' => $wpdb->prefix . 'zmp_role_retention_audit',
+                'schema_object' => 'trigger_type',
+                'schema_issue' => 'column_incompatible',
+                'schema_expected' => 'VARCHAR(32) or wider, NOT NULL',
+                'schema_actual' => trim((string) $column->Type) . ' ' . (strtoupper((string) ($column->Null ?? '')) === 'YES' ? 'NULL' : 'NOT NULL'),
+            );
+        }
+        return self::$audit_compatible_cache = $compatible;
     }
 
     public static function init() {

@@ -160,6 +160,17 @@ class ZMP_Admin {
             exit;
         }
 
+        if (isset($_POST['zmp_run_messenger_schema_diagnostic'])) {
+            check_admin_referer('zmp_run_messenger_schema_diagnostic');
+            $diagnostic = ZMP_Role_Messenger::schema_diagnostic_snapshot();
+            $diagnostic['schema_notice_active'] = !empty($diagnostic['notice_active']) ? 1 : 0;
+            $diagnostic['outcome'] = !empty($diagnostic['notice_active']) || ($diagnostic['schema_compatible'] ?? '') !== 'yes' ? 'failed' : 'ready';
+            unset($diagnostic['notice_active']);
+            ZMP_Debug::log(($diagnostic['outcome'] === 'ready') ? 'info' : 'error', 'Messenger schema diagnostic completed.', $diagnostic, 'communications');
+            wp_safe_redirect(add_query_arg(array('page' => 'zmp-debugging', 'messenger_schema_check' => '1'), admin_url('admin.php')));
+            exit;
+        }
+
         if (isset($_POST['zmp_start_debug_capture'])) {
             check_admin_referer('zmp_start_debug_capture');
             $capture = ZMP_Debug::start_capture(
@@ -553,6 +564,7 @@ class ZMP_Admin {
                 'Профилот на наставникот/Претседателот ги зачувува училишните ангажмани и полињата за видливост по училиште. По зачувување, повторно отворете го профилот и потврдете ги вредностите.',
                 'Улогите се комбинираат: секој член мора да има subscriber; zmp_teacher е дополнителна улога. Претседателот мора да има subscriber и zmp_teacher; дополнителните дозволени улоги не смеат да ги исклучат другите функции.',
                 'Назначување прв Претседател: администраторот ја евидентира одлуката. Кандидатот мора да има subscriber и zmp_teacher; администраторските и дозволените ЗМП улоги може да се комбинираат и се зачувуваат.',
+                'При ажурирање од .65 на .66.a се извршува поправката на Messenger шемата; ако базата содржи застарен scoped_threads индекс, плагинот го заменува без да ги избрише пораките.',
                 'Шемата за passkey има посебна проверка и миграција. При неподготвена или делумно мигрирана шема текот запира без да зачува одлука или да создаде автентицирана сесија.',
                 'Дебагирањето е проширено со безбедни настани за passkey и профилните текови; не ги запишува PIN-от, лозинката, assertion-от, challenge-вредноста или содржината на барањето.',
                 'Проверка од сопственик: користете тест-сметка со subscriber и zmp_teacher, активен претседателски мандат и синтетички предложен предмет. Потврдете регистрација, најава, одлука со свеж passkey, откажување без поднесување и зачувување/повторно читање на профилот.',
@@ -1712,6 +1724,7 @@ class ZMP_Admin {
         $selected_flow = sanitize_text_field(wp_unslash($_GET['zmp_debug_flow'] ?? ''));
         $events = ZMP_Debug::filter_events($all_events, $selected_type, $selected_session, $selected_flow);
         $events = array_reverse($events);
+        $messenger_diagnostic = isset($_GET['messenger_schema_check']) ? ZMP_Role_Messenger::schema_diagnostic_snapshot() : null;
         $capture = ZMP_Debug::active_capture();
         $wp_log_path = (defined('WP_DEBUG_LOG') && WP_DEBUG_LOG) ? (is_string(WP_DEBUG_LOG) ? WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log') : '';
         $wp_lines = array();
@@ -1734,6 +1747,18 @@ class ZMP_Admin {
             <?php if (isset($_GET['capture_started'])): ?><div class="notice notice-success is-dismissible"><p>Снимањето на дијагностички тест е започнато.</p></div><?php endif; ?>
             <?php if (isset($_GET['capture_stopped'])): ?><div class="notice notice-success is-dismissible"><p>Снимањето на дијагностички тест е запрено.</p></div><?php endif; ?>
             <div class="notice notice-info"><p><strong>Приватност:</strong> логовите не запишуваат имиња, е-пошти, лозинки, PIN-кодови, токени, cookies или вредности од одговорите. Query-параметрите од адресите се отстрануваат. Експортот содржи само структурирани ZMP-настани, а не целиот WordPress debug.log.</p></div>
+            <h2>Messenger — проверка на шемата</h2>
+            <p>Проверката само ги чита состојбата на верзијата/retry и тековните табели, колони и индекси. Не извршува миграција и не менува пораки.</p>
+            <form method="post" style="margin:12px 0;">
+                <?php wp_nonce_field('zmp_run_messenger_schema_diagnostic'); ?>
+                <button type="submit" name="zmp_run_messenger_schema_diagnostic" value="1" class="button button-primary">Провери ја Messenger шемата</button>
+            </form>
+            <?php if (is_array($messenger_diagnostic)): ?>
+                <div class="notice <?php echo (!empty($messenger_diagnostic['notice_active']) || ($messenger_diagnostic['schema_compatible'] ?? '') !== 'yes') ? 'notice-error' : 'notice-success'; ?>"><p><strong>Messenger дијагностика:</strong> инсталиран плагин <code><?php echo esc_html($messenger_diagnostic['plugin_version']); ?></code>; предупредување <?php echo !empty($messenger_diagnostic['notice_active']) ? 'активно' : 'неактивно'; ?>; DB marker <code><?php echo esc_html($messenger_diagnostic['schema_database_marker']); ?></code> (<?php echo esc_html($messenger_diagnostic['schema_marker_state']); ?>); потребна шема <code><?php echo esc_html($messenger_diagnostic['schema_version']); ?></code>; retry <code><?php echo esc_html($messenger_diagnostic['schema_retry_state']); ?></code>; retry рок <code><?php echo esc_html($messenger_diagnostic['schema_retry_deadline']); ?></code>; шема компатибилна <code><?php echo esc_html($messenger_diagnostic['schema_compatible']); ?></code>.</p>
+                <p>Наод: <code><?php echo esc_html($messenger_diagnostic['schema_table'] ?: '—'); ?></code> / <code><?php echo esc_html($messenger_diagnostic['schema_object'] ?: '—'); ?></code>; причина <code><?php echo esc_html($messenger_diagnostic['schema_issue']); ?></code>; очекувано <code><?php echo esc_html($messenger_diagnostic['schema_expected'] ?: '—'); ?></code>; најдено <code><?php echo esc_html($messenger_diagnostic['schema_actual'] ?: '—'); ?></code>.</p>
+                <p>Другите шемни предуслови не се извршуваат повторно од ова копче, за дијагностиката да не ја менува retry-состојбата. Последни постоечки релевантни записи: <?php echo (int) $messenger_diagnostic['schema_prerequisite_event_count']; ?>.</p>
+                <?php if (!empty($messenger_diagnostic['schema_prerequisite_recent_events'])): ?><ul><?php foreach ($messenger_diagnostic['schema_prerequisite_recent_events'] as $schema_event): ?><li><code><?php echo esc_html($schema_event['time']); ?></code> — <code><?php echo esc_html($schema_event['event']); ?></code><?php if ($schema_event['table'] !== ''): ?> — <code><?php echo esc_html($schema_event['table']); ?></code> / <code><?php echo esc_html($schema_event['object']); ?></code>; <code><?php echo esc_html($schema_event['issue']); ?></code><?php endif; ?><?php if ($schema_event['expected'] !== '' || $schema_event['actual'] !== ''): ?>; очекувано <code><?php echo esc_html($schema_event['expected']); ?></code>; најдено <code><?php echo esc_html($schema_event['actual']); ?></code><?php endif; ?></li><?php endforeach; ?></ul><?php else: ?><p>Нема совпаѓачки зачуван настан во локалниот ZMP дневник.</p><?php endif; ?></div>
+            <?php endif; ?>
             <h2>Снимање на тест</h2>
             <?php if ($capture): ?>
                 <p><strong>Снимањето е активно:</strong> <?php echo esc_html($types[$capture['test_type']] ?? $capture['test_type']); ?> — започнато <?php echo esc_html($capture['started_at'] ?? ''); ?>; истекува автоматски. Идентификатор: <code><?php echo esc_html($capture['session_id']); ?></code></p>

@@ -1,0 +1,11 @@
+Messenger diagnostic candidate 2026-11-27
+9a635f7115f2f53264337fa88a7f3345a2c7ea9b4ded2cdcc4edb2b033f5479e  03_PHASES/zmp-competitions-1.2.4.66.a/admin/class-zmp-admin.php
+55163efde0b1fdd37dfd05b68a85d3aa9594138116ca523f9b10e78ff9e7aa1d  03_PHASES/zmp-competitions-1.2.4.66.a/includes/class-zmp-role-messenger.php
+f1b80ea1688170a36f601bdd92d6f9d80ec729ac9752ffd774abe938f2ae06d9  03_PHASES/zmp-competitions-1.2.4.66.a/includes/class-zmp-debug.php
+e7ee34f25ac0b4445a036205399a8dbc13d4e8f29a5855b4c4d59403e833825a  03_PHASES/zmp-competitions-1.2.4.66.a/WHATS_NEW_1.2.4.66.a.md
+e6f91b18bd64286d47a2bca7f8f7bd1977e1e3b5036653ff4785ded92b2f1a47  03_PHASES/zmp-competitions-1.2.4.66.a/DEBUGGING_1.2.4.66.a.md
+05dae5a9f6406aed0cb6c99541c8d9a0b480b4c3f2608e0a5dd67fee9bfabcf6  03_PHASES/zmp-competitions-1.2.4.66.a/TEST_REPORT_1.2.4.66.a.md
+08f21de853a1b99799cd82f8db2a063593f9cde78509493a2e0b5fc7040db598  03_PHASES/zmp-competitions-1.2.4.66.a/DOCUMENTATION_INDEX.md
+9c80ff2cc5fd4ad3d5fbce52308594037f6c35973f0db48b680031022893be09  03_PHASES/zmp-competitions-1.2.4.66.a/reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md
+cf750e9380133369eb9b38ad7265a31f145d22c6f83456180d029bbd03cde6c9  04_RELEASES/VERSIONS/1.2.4.66.a/RELEASE_MANIFEST_1.2.4.66.a.md
+5b248c34e4819760466d82f2a1c7b884428cee57dde88f9c16f6c0a514b71ecd  04_RELEASES/VERSIONS/1.2.4.66.a/ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-messenger-diagnostic-03.zip

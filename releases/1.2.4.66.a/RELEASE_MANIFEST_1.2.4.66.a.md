@@ -1,8 +1,38 @@
+# 🚨 CURRENT TEST CANDIDATE — 2026-11-27 — MESSENGER ROOT-CAUSE DIAGNOSTICS
+
+**OWNER CONFIRMED: the previously installed `messenger-schema-fix.zip` still displays the Messenger warning on the live site. This diagnostic build does not claim the live issue is fixed. It adds an administrator-only diagnostic action that reads Messenger retry/marker state and actual table/column/index compatibility, and displays already-recorded diagnostics from other schema prerequisites. It does not rerun those components because their readiness functions can change Messenger retry state. Existing plugin initialization may still run its automatic retry if the five-minute deadline is due. Install this build to collect the live evidence.**
+
+**OWNER ALSO CONFIRMED SYNTHETIC MODERATOR MESSAGE EXCHANGE WORKS END-TO-END. This is a PASS for sending/receiving messages only; the automatic retention-cleanup schema warning remains unresolved and must be diagnosed separately.**
+
+- ZIP: ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-messenger-diagnostic-03.zip
+- SHA-256: `5b248c34e4819760466d82f2a1c7b884428cee57dde88f9c16f6c0a514b71ecd`; size 9,155,708 bytes; 2,244 files (2,246 ZIP entries including directory entries).
+- Package path parity: 2,244/2,244 PASS; archive readback PASS; 5 key-file hashes match the `.66.a` phase source; changed-file PHP lint 3/3 PASS.
+- Existing local `:8111` clone diagnostic: no warning, marker current, retry none, Messenger compatible; schema-control options unchanged by the check. Other component readiness functions were not rerun; only existing logged evidence is displayed. This is local-only evidence and does not resolve the owner-reported live warning.
+- SHA-256 source/archive inventory: `HASHES/SHA256_MESSENGER_DIAGNOSTIC_2026-11-27.txt`.
+- Detailed behavior and next owner action: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md`.
+
+---
+
+# HISTORICAL CANDIDATE — 2026-11-27 — MESSENGER SCHEMA AUTO-UPGRADE
+
+**SUPERSEDED FOR LIVE DIAGNOSIS.** The owner installed this candidate and confirmed the warning remains on the live site. Its previous local PASS is not a live-site PASS.
+
+**This ZIP included the .65 → .66.a schema-marker advance and Messenger legacy-index repair. Local :8111 migration and data-preservation checks passed, but the owner installed it on the live site and confirmed the warning remained. It is superseded by the diagnostic candidate at the top of this manifest and is not a live-site PASS.**
+
+- ZIP: ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-messenger-schema-fix.zip
+- SHA-256: 5d29342d42b83fee09ad9b628fbb4727a23f7b7b4568901b269510f4864855b2
+- Size: 7,091,096 bytes; 2244 files.
+- Exact package path parity: 2244/2244 PASS; archive integrity: PASS.
+- Evidence: 03_PHASES/zmp-competitions-1.2.4.66.a/reports/MESSENGER_SCHEMA_AUTO_UPGRADE_FIX_1.2.4.66.a_2026-11-27.md and 03_PHASES/zmp-competitions-1.2.4.66.a/reports/MESSENGER_SCHEMA_FIX_ZIP_BUILD_1.2.4.66.a_2026-11-27.md.
+- Do not use this historical candidate to investigate the remaining live warning. Install the current diagnostic candidate at the top of this manifest.
+
+---
+
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE FOR MEMBERS GENERALLY; THE PRESIDENT MUST HAVE BOTH `subscriber` AND `zmp_teacher`. OTHER AUTHORIZED ROLES MAY BE STACKED WITHOUT BREAKING SCHOOL PROFILE FUNCTIONS.**
 
-# CURRENT INSTALL CANDIDATE — 2026-11-27
+# HISTORICAL CANDIDATE — 2026-11-27 — SUPERSEDED BY MESSENGER SCHEMA FIX
 
-**Primary school and municipality are editable for linked Teacher/President profiles. Local existing-clone regression: 5/5 PASS. The current install candidate is the editable-school-profile ZIP below; all earlier 2026-11-26 ZIPs are superseded for installation. Full phase acceptance remains separate.**
+**Primary school and municipality are editable for linked Teacher/President profiles. Local existing-clone regression: 5/5 PASS. The editable-school-profile ZIP below was the candidate at that checkpoint and has since been superseded by the Messenger schema fix ZIP at the top of this manifest. Full phase acceptance remains separate.**
 
 - ZIP: `ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-editable-school-profile.zip`
 - SHA-256: `65e2f59611170897708816103d5691fea20e7dc1b27675ac22fc1ad6ffc73b95`
@@ -12,12 +42,12 @@
 - Focused runtime report: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_1.2.4.66.a_2026-11-27.md`.
 - Build report: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/EDITABLE_PRIMARY_SCHOOL_PROFILE_ZIP_BUILD_1.2.4.66.a_2026-11-27.md`.
 - GitHub sync/readback: **PASS** on `main` and `version/1.2.4.66.a`; both refs and the remote ZIP matched at commit `404a7db5f7d0f179b78ca69780dd590da5e4a275`. Report: `phase-records/1.2.4.66.a/reports/GITHUB_SYNC_READBACK_EDITABLE_PRIMARY_SCHOOL_1.2.4.66.a_2026-11-27.md`.
-- Owner installation and visual confirmation: pending.
+- Historical checkpoint note: owner installation of this superseded editable-school-profile candidate was pending then; the later consolidated `.66.a` candidate was installed by the owner, and its remaining live Messenger warning is recorded at the top of this manifest.
 
 ---
 # Release manifest — ZMP Competitions 1.2.4.66.a
 
-# 🚨 CURRENT TEST CANDIDATE — 2026-11-27 — PRESIDENT ROLE STACK FIX
+# HISTORICAL TEST CANDIDATE — 2026-11-27 — PRESIDENT ROLE STACK FIX — SUPERSEDED
 
 **MANDATORY OWNER RULE: every member has `subscriber`; the President also has `zmp_teacher`; Administrator and allowed ZMP roles may be stacked on the same account. If this fails, the entire phase is FAIL regardless of other PASS results.**
 
@@ -35,7 +65,7 @@ The 2026-11-27 `editable-school-profile.zip` and every earlier `.66.a` ZIP preda
 
 # HISTORICAL TEST CANDIDATE — 2026-11-26
 
-**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE FOR MEMBERS GENERALLY; THE PRESIDENT MUST HAVE BOTH `subscriber` AND `zmp_teacher`. THE ROLE-POLICY-FIX ZIP BELOW IS THE CURRENT INSTALLABLE TEST CANDIDATE. ITEMS 1–5 RETAIN EXACT-SCOPE PASS; FOCUSED PRESIDENT APPOINTMENT MATRIX IS 18/18 PASS. FULL CURRENT-SOURCE REGRESSION, GITHUB READBACK, AND OWNER INSTALLATION REMAIN OPEN.**
+**EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE FOR MEMBERS GENERALLY; THE PRESIDENT MUST HAVE BOTH `subscriber` AND `zmp_teacher`. THE ROLE-POLICY-FIX ZIP WAS THE INSTALLABLE TEST CANDIDATE AT THAT CHECKPOINT; IT IS NOW SUPERSEDED BY THE MESSENGER SCHEMA FIX ZIP AT THE TOP. ITEMS 1–5 RETAIN EXACT-SCOPE PASS; FOCUSED PRESIDENT APPOINTMENT MATRIX IS 18/18 PASS. FULL CURRENT-SOURCE REGRESSION, GITHUB READBACK, AND OWNER INSTALLATION REMAIN OPEN.**
 
 - Candidate archive: `ZIP/zmp-competitions-1.2.4.66.a-2026-11-26-whats-new.zip` (supersedes the same-day ZIP below).
 - ZIP SHA-256: `C01DB41036A72C0372A7AAEB86D67B638E48FDA29F68AA290DF95601C47752C0`; size 7,021,558 bytes; 2,223 entries including the plugin license.
@@ -48,7 +78,7 @@ The 2026-11-27 `editable-school-profile.zip` and every earlier `.66.a` ZIP preda
 - License: restricted proprietary terms in the phase root `LICENSE.md`; third-party dependencies under `vendor/` keep their upstream licenses.
 - The earlier `ZIP/zmp-competitions-1.2.4.66.a.zip` is preserved as the old 2026-11-12 archive. It is not the current candidate.
 - `ZIP/zmp-competitions-1.2.4.66.a-2026-11-26.zip` is preserved as the first same-day candidate; it does not include the new dashboard What's New entry and is superseded by the `-whats-new` archive.
-- GitHub sync/readback: **PASS** on `main` and `version/1.2.4.66.a`; both refs matched commit `a1e64831979608f9773334768c66799e71383cd9`, which contains the aligned `.65`, `.66.a`, and `.66.b` snapshots. Report: `phase-records/1.2.4.66.a/reports/GITHUB_SYNC_READBACK_1.2.4.66.a_2026-11-26.md`. Owner installation validation remains pending.
+- Historical GitHub readback at that checkpoint: **PASS** on `main` and `version/1.2.4.66.a` at commit `a1e64831979608f9773334768c66799e71383cd9`. The remote has since advanced; this does not represent the current diagnostic source. Current diagnostic synchronization is tracked with this release candidate.
 
 
 ## Supersession notice - 2026-11-26
@@ -56,10 +86,10 @@ The 2026-11-27 `editable-school-profile.zip` and every earlier `.66.a` ZIP preda
 This manifest's ZIP and full-regression evidence predate the President appointment eligibility/UI correction in `.66.a`. Do not install or call it the current candidate for the updated source. A refreshed ZIP and final regression belong to close-out items 6 and 7.
 
 
-## Current test candidate — 2026-11-26
+## Historical role-policy candidate — 2026-11-26 — superseded
 
 - ZIP: ZIP/zmp-competitions-1.2.4.66.a-2026-11-26-role-policy-fix.zip — SHA-256 $sha; 7137152 bytes; 2,244 files.
 - Built from the current .66.a phase folder after the President appointment eligibility/UI correction. Archive listing/integrity PASS; exact path-set parity 2,244/2,244; PHP syntax PASS 1,968/1,968; key packaged source hashes match the phase source.
 - Focused President eligibility test PASS 18/18. This is an installable owner test candidate, not a claim that the full current-source phase regression is complete. Item 6 and owner installation/visual validation remain open. GitHub readback PASS at commit ed434feabfcf965c0ed873a0eb39eaad892db803; the remote ZIP SHA-256 matches the candidate.
 - Detailed evidence: `03_PHASES/zmp-competitions-1.2.4.66.a/reports/PRESIDENT_APPOINTMENT_ROLE_POLICY_ZIP_BUILD_1.2.4.66.a_2026-11-26.md`.
-- An intermediate archive named zmp-competitions-1.2.4.66.a-2026-11-26-president-appointment.zip is not the current candidate. Install only the *-role-policy-fix.zip above.
+- An intermediate archive named zmp-competitions-1.2.4.66.a-2026-11-26-president-appointment.zip is not the current candidate. That role-policy candidate is superseded; use the current candidate at the top of this manifest.

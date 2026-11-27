@@ -62,6 +62,10 @@ New regression fixture: `tests/phase66a-president-teacher-stacked-profile-self-s
 
 # Debugging Guide — ZMP Competitions 1.2.4.66.a
 
+## CURRENT MESSENGER NOTICE DIAGNOSTIC — 2026-11-27
+
+The owner installed `zmp-competitions-1.2.4.66.a-2026-11-27-messenger-schema-fix.zip`, but the schema warning remained on the live site. Do not call the live issue fixed based on the local PASS. In the diagnostic build, open **ЗМП Натпревари → Дебагирање → Провери ја Messenger шемата**. The read-only result separates the installed plugin/schema versions, retry option and deadline, and actual schema compatibility. If a schema mismatch exists, it names the first table and column/index, expected contract, and observed metadata. It neither runs the migration nor alters Messenger records. Send a screenshot or export the **Пораки и известувања** diagnostic event so the precise cause can be addressed.
+
 ## CURRENT INHERITED-FIX STATUS — 2026-11-25
 
 The `.65` MySQL integer metadata, stale-schema retry and Administrator + Teacher profile fixes are present and passed on the exact `.66.a` source in the local clone. A partial school-profile index failure was injected and verified fail-closed; the index/options were restored. Details and source hashes: `reports/INHERITED_65_FIXES_AND_66A_OPEN_SCOPE_1.2.4.66.a_2026-11-25.md`.

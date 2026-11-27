@@ -1,8 +1,15 @@
-# 🚨 CURRENT OWNER STATUS — 2026-11-26 — READ FIRST
+# 🚨 CURRENT OWNER STATUS — 2026-11-27 — READ FIRST
+
+**OWNER CONFIRMED 2026-11-27: synthetic Moderator message exchange works, but the installed `messenger-schema-fix.zip` still shows the automatic-cleanup schema warning on the live site. Message exchange is PASS; retention-cleanup readiness is NOT PASS / root cause unknown.** A diagnostic build adds a read-only Messenger checker to the Debugging page. Install the candidate at the top of the release manifest, run that check, and use its result before further migration changes.
+
+Prior local evidence (not live confirmation): reports/MESSENGER_SCHEMA_AUTO_UPGRADE_FIX_1.2.4.66.a_2026-11-27.md; reports/MESSENGER_SCHEMA_FIX_ZIP_BUILD_1.2.4.66.a_2026-11-27.md. Current diagnostic and owner next step: reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md. Current ZIP and hash: `../../04_RELEASES/VERSIONS/1.2.4.66.a/RELEASE_MANIFEST_1.2.4.66.a.md`.
+
+# HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
+
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
-**CURRENT .66.a CHECKLIST: ITEMS 1–7 PASS. FRESH ZIP, PHASE HASH CHECK, RESTRICTIVE LICENSE, AND GITHUB SYNC/READBACK ARE COMPLETE. OWNER INSTALLATION/TEST OF THE ZIP IS THE NEXT USER-SIDE STEP. NEWER SAME-SCOPE PASS EVIDENCE SUPERSEDES EVERY OLDER NOT RUN/FAIL/OPEN STATEMENT BELOW. AUTHORITATIVE STATUS: `reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-26.md`.**
+**HISTORICAL CHECKPOINT ONLY — 2026-11-26:** the record at that date marked items 1–7 complete and listed a then-current ZIP/GitHub readback. It predates the 2026-11-27 source and Messenger schema-marker change. Use the current evidence block above and the release manifest; owner validation of this Messenger fix remains pending.
 
 ## REQUIRED RULE — READ BEFORE CONTINUING ANY PHASE
 
@@ -36,7 +43,7 @@ reports/MESSENGER_LEGACY_SCOPED_THREADS_REPAIR_1.2.4.66_a_2026-11-24.md.
 - Focused regression fixtures: `tests/phase66a-inherited65-regression.php`, `tests/phase66a-inherited65-stale-schema-retry.php`, `tests/phase66a-partial-school-profile-schema-fail-closed.php`.
 - Current President + Teacher + Subscriber self-setup regression: `tests/phase66a-president-teacher-stacked-profile-self-setup.php` (**10/10 PASS**, 2026-11-25).
 
-- Phase source vs. local test copy and existing ZIP parity (2026-11-25): reports/PHASE_SOURCE_SERVER_ZIP_PARITY_1.2.4.66.a_2026-11-25.md. The existing release ZIP is stale against the phase folder.
+- Historical phase-source/ZIP comparison (2026-11-25): reports/PHASE_SOURCE_SERVER_ZIP_PARITY_1.2.4.66.a_2026-11-25.md. Its stale-ZIP finding applied at that checkpoint; the current 2026-11-27 Messenger schema fix ZIP is listed in the release manifest.
 
 - Current open-scope reconciliation (2026-11-25): reports/CURRENT_OPEN_SCOPE_RECONCILIATION_1.2.4.66.a_2026-11-25.md; distinguishes current PASS scopes from genuinely open work.
 

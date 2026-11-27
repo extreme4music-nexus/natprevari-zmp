@@ -121,9 +121,18 @@ class ZMP_Debug {
             'certificate_id','mandate_id','facsimile_id','public_key_id','engagement_epoch','official_email_epoch','requester_engagement_id',
             'owner_engagement_id','requester_engagement_epoch','owner_engagement_epoch','file_size','bytes','attempt','rows_affected',
             'post_fields_count','role_count','duration_minutes','actor_user_id','proposal_id','canonical_subject_id','page','page_size',
-            'result_count','batch_count','row_count','count','total','updated_count','inserted_count'
+            'result_count','batch_count','row_count','count','total','updated_count','inserted_count','schema_prerequisite_event_count'
         );
-        $flag_keys = array('is_admin','is_teacher','profile_found','db_error_present','insert_id_present','redirect_has_result_flag','nonce_field_present',
+        $schema_detail_keys = array('schema_component','schema_table','schema_object','schema_issue','schema_expected','schema_actual','schema_marker_state','schema_retry_state','schema_retry_after_state','schema_compatible','schema_version','plugin_version','schema_database_marker','schema_retry_deadline','schema_prerequisite_check_state');
+        $schema_detail_values = array(
+            'schema_component' => array('messenger'),
+            'schema_marker_state' => array('current','missing','stale','storage_failure','read_failed','unexpected'),
+            'schema_retry_state' => array('none','pending','storage_failure','unexpected','read_failed'),
+            'schema_retry_after_state' => array('missing','cooldown','due','invalid','read_failed'),
+            'schema_compatible' => array('yes','no'),
+            'schema_prerequisite_check_state' => array('not_rechecked_read_only'),
+        );
+        $flag_keys = array('is_admin','is_teacher','profile_found','db_error_present','insert_id_present','redirect_has_result_flag','nonce_field_present','schema_notice_active','schema_prefix_present',
             'has_first_name','has_last_name','has_grade','has_language','logged_in','email_changed');
         $outcomes = array('fail_closed','ready','denied','saved','active','reactivated','created','invalidated','pending','approved','rejected','disclosed','failed','success','started','completed','committed');
         $statuses = array('save_error','entry_invalid','invalid_entry','mentor_profile_incomplete','no_active_season','drive_upload_failed','video_database_failed',
@@ -141,7 +150,7 @@ class ZMP_Debug {
             'zmp_mentor_action','zmp_category_entry_action','zmp_exam_action','zmp_student_exam_action',
             'zmp_testator_action','zmp_operations_action','zmp_moderator_action','zmp_jury_action','zmp_commission_action','zmp_commission_question_action',
             'zmp_commission_decision_action','zmp_drive_action','zmp_request_fee_invoice','zmp_announcement_action','zmp_comms_action','zmp_results_action');
-        $allowed = array_merge($integer_keys,$flag_keys,array('outcome','status','error_code','form_action','request_action','tab','slot','flow_id','decision'));
+        $allowed = array_merge($integer_keys,$flag_keys,$schema_detail_keys,array('outcome','status','error_code','form_action','request_action','tab','slot','flow_id','decision'));
         foreach ((array) $context as $key => $value) {
             $key = sanitize_key($key);
             if ($key === '' || !in_array($key,$allowed,true) || !is_scalar($value)) { continue; }
@@ -157,6 +166,16 @@ class ZMP_Debug {
             if (!is_string($value)) { continue; }
             if ($key==='flow_id') {
                 if (preg_match('/^[a-f0-9-]{20,64}$/i',$value)) { $clean[$key]=$value; }
+                continue;
+            }
+            if (in_array($key, $schema_detail_keys, true)) {
+                if (isset($schema_detail_values[$key])) {
+                    $value = sanitize_key($value);
+                    if (in_array($value, $schema_detail_values[$key], true)) { $clean[$key] = $value; }
+                } else {
+                    $value = trim(sanitize_text_field($value));
+                    if ($value !== '' && strlen($value) <= 240 && preg_match('/^[A-Za-z0-9_., ():+\/-]+$/', $value)) { $clean[$key] = $value; }
+                }
                 continue;
             }
             $value=sanitize_key($value);
@@ -180,6 +199,8 @@ class ZMP_Debug {
         $safe_messages=array(
             'Category registration workflow finished.','Teacher Matrices tab requested during diagnostic capture.','ZMP test request reached WordPress init.',
             'Diagnostic self-test: admin button pressed.','Diagnostic test capture started.','Diagnostic test capture stopped.',
+            'Messenger schema diagnostic completed.',
+            'Plugin schema prerequisite not ready.','Messenger schema migration failure detail.',
             'Google Drive video upload started.','Google Drive video upload failed.','Google Drive upload completed but media record could not be saved.',
             'Google Drive video upload and media record completed.','Google Drive video workflow finished.',
             'Mentor action handler entered.','Mentor action handler ignored unknown action.','Mentor profile setup flow started.',

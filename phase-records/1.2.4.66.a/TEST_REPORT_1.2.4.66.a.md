@@ -1,6 +1,6 @@
 # 🚨 STATUS UPDATE — 2026-11-27
 
-**THE 2026-11-26 STATUS BELOW IS HISTORICAL AND IS NOT THE CURRENT ACCEPTANCE.** Appointment role eligibility allows Administrator + Subscriber + Teacher and the permitted stacked ZMP roles; matrix **21/21 PASS**, full synthetic stacked appointment **PASS**, cleanup PASS, and changed-file PHP lint PASS. A matching grant-path `TypeError` was fixed locally. Do not treat this as full current-source regression PASS until owner installation and final regression.
+**OWNER UPDATE 2026-11-27: synthetic Moderator sending/receiving is user-confirmed PASS. The installed Messenger schema-fix ZIP still shows the automatic-retention-cleanup warning, whose live root cause is not yet known.** Earlier migration evidence remains limited to local `:8111`. The diagnostic candidate is at the top of the release manifest; use it to report the live marker/retry state, exact Messenger schema mismatch, and already-recorded diagnostics from other shared prerequisites. Details: `reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md`. This is not whole-phase acceptance.
 
 # 🚨 HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
 

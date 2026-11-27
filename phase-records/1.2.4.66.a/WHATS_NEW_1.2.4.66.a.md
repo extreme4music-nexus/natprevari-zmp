@@ -1,12 +1,21 @@
 # 🚨 STATUS UPDATE — 2026-11-27
 
+# 🚨 CURRENT MESSENGER SCHEMA UPDATE — 2026-11-27
+
+**OWNER REPORT: the installed `zmp-competitions-1.2.4.66.a-2026-11-27-messenger-schema-fix.zip` still displays the Messenger schema warning on the live site. This means the local migration PASS did not establish the live root cause. The diagnostic candidate is built and listed in the release manifest; use its result before claiming the issue is fixed.**
+
+The diagnostic build adds **„Провери ја Messenger шемата“** to the administrator Debugging page. It reports the installed plugin version, database schema marker, retry state/deadline, the first incompatible Messenger table, column, or index with expected and observed metadata, and already-recorded diagnostics from other schema prerequisites. It does not rerun other components' readiness functions because some can change Messenger retry state. It does not run a migration or change message data; it writes one privacy-filtered event to the ZMP diagnostic log. The live cause remains unconfirmed until the owner runs this check.
+
+.66.a advances the database schema marker from .65 to .66.a so the locked upgrade path runs after installation. On the existing local :8111 clone, the legacy index was replaced, Messenger schema verification passed, a synthetic message survived migration, and cleanup completed. **The owner installed that ZIP on the live site and confirmed the warning remains; the live root cause is unresolved.** See reports/MESSENGER_SCHEMA_AUTO_UPGRADE_FIX_1.2.4.66.a_2026-11-27.md and reports/MESSENGER_LIVE_WARNING_DIAGNOSTIC_1.2.4.66.a_2026-11-27.md.
+
+
 **THE 2026-11-26 STATUS BELOW IS HISTORICAL AND IS NOT THE CURRENT ACCEPTANCE.** Appointment role eligibility allows Administrator + Subscriber + Teacher and the permitted stacked ZMP roles; matrix **21/21 PASS** and full synthetic stacked appointment **PASS**. A matching grant-path `TypeError` was fixed locally. Owner installation is still needed to confirm the live-site result; this is not full phase acceptance.
 
 # 🚨 HISTORICAL OWNER STATUS — 2026-11-26 — SUPERSEDED
 
 **EVERY ZMP MEMBER MUST HAVE `subscriber`. `zmp_teacher` IS OPTIONAL AND ADDITIVE; ANY MEMBER MAY ALSO HAVE IT WITHOUT BREAKING OTHER ROLES OR PLUGIN FEATURES. THE PRESIDENT MUST ALWAYS HAVE BOTH `subscriber` AND `zmp_teacher`.**
 
-**CURRENT .66.a STATUS: ITEMS 1–5 HAVE EXACT-SCOPE PASS EVIDENCE; PRESIDENT APPOINTMENT ROLE-POLICY FIX HAS FOCUSED 18/18 PASS. A FRESH TEST ZIP IS BUILT AND HASH-VERIFIED FOR THIS SOURCE. FULL CURRENT-SOURCE REGRESSION (ITEM 6), GITHUB READBACK, AND OWNER INSTALLATION (ITEM 7) ARE STILL OPEN. OLDER ZIP/FULL-REGRESSION RESULTS DO NOT APPLY TO THE UPDATED SOURCE.**
+**HISTORICAL .66.a STATUS AT THAT CHECKPOINT: ITEMS 1–5 HAD EXACT-SCOPE PASS EVIDENCE; PRESIDENT APPOINTMENT ROLE-POLICY FIX HAS FOCUSED 18/18 PASS. A FRESH TEST ZIP IS BUILT AND HASH-VERIFIED FOR THIS SOURCE. FULL CURRENT-SOURCE REGRESSION (ITEM 6), GITHUB READBACK, AND OWNER INSTALLATION (ITEM 7) ARE STILL OPEN. OLDER ZIP/FULL-REGRESSION RESULTS DO NOT APPLY TO THE UPDATED SOURCE.**
 
 ## CURRENT .66.a RELEASE NOTES AND OWNER TEST CHECKLIST — 2026-11-26
 
