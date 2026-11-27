@@ -6,6 +6,7 @@
 
 - ZIP: ZIP/zmp-competitions-1.2.4.66.a-2026-11-27-messenger-root-cause-04.zip
 - SHA-256: ab8acc203ba040f088c9ef75b70a066fb9779608af69881aec8db1dd96b34127; size 7,043,241 bytes; runtime files 2,244.
+- GitHub source/documentation sync and readback: PASS at ersion/1.2.4.66.a, commit 2d102f95b3526ca24977d5f99d776fe2351e384c; the binary ZIP is local-only and is not present in the GitHub branch.
 - Archive integrity: PASS; exact runtime path parity: 2,244/2,244 PASS.
 - SHA-256 source/archive inventory: HASHES/SHA256_MESSENGER_ROOT_CAUSE_2026-11-27.txt.
 - PHP syntax: 4/4 changed runtime files PASS.
